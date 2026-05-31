@@ -1,0 +1,3010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --deep-red: #922B21;
+    --gold: #D4A853;
+    --gold-light: #F0C86E;
+    --ink: #1A1008;
+    --parchment: #FAF6EE;
+    --warm-white: #FFFDF8;
+    --charcoal: #2C2416;
+    --muted: #7A6A58;
+    --border: #E8DFD0;
+    --success: #27AE60;
+    --warn: #E67E22;
+    --danger: #C0392B;
+    --info: #2980B9;
+    --section-pad: 3rem 4rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ---- SIDEBAR NAV ---- */
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 260px;
+    background: var(--charcoal);
+    color: #fff;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid var(--gold);
+  }
+
+  .sidebar-logo {
+    padding: 2rem 1.5rem 1rem;
+    border-bottom: 1px solid rgba(212,168,83,0.3);
+  }
+
+  .sidebar-logo .cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    letter-spacing: 4px;
+  }
+
+  .sidebar-logo .en {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  .sidebar-logo .year {
+    font-family: 'Space Mono', monospace;
+    color: var(--gold);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+
+  .nav-section {
+    padding: 0.8rem 0;
+  }
+
+  .nav-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.3);
+    padding: 0.3rem 1.5rem;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.5rem;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-item:hover, .nav-item.active {
+    color: var(--gold);
+    background: rgba(212,168,83,0.1);
+    border-left-color: var(--gold);
+  }
+
+  .nav-item .icon {
+    width: 18px;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  /* ---- MAIN CONTENT ---- */
+  #main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* ---- HERO ---- */
+  #hero {
+    background: var(--charcoal);
+    color: #fff;
+    padding: 5rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '中国';
+    position: absolute;
+    right: -2rem;
+    top: -1rem;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18rem;
+    color: rgba(212,168,83,0.06);
+    line-height: 1;
+    pointer-events: none;
+    font-weight: 700;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--red), var(--gold));
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  #hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+    max-width: 700px;
+  }
+
+  #hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 540px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---- SECTIONS ---- */
+  .section {
+    padding: var(--section-pad);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:nth-child(even) {
+    background: var(--warm-white);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    min-width: 28px;
+  }
+
+  .section-header-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .section-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  /* ---- CARDS ---- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 1.5rem;
+  }
+
+  .section:nth-child(even) .card {
+    background: var(--parchment);
+  }
+
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .card-icon svg { display: block; flex-shrink: 0; }
+
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .card .card-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .card p {
+    font-size: 0.82rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  /* ---- BADGES ---- */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-green { background: #d5f0e0; color: #1a6b3c; }
+  .badge-red { background: #fde8e8; color: #922B21; }
+  .badge-yellow { background: #fef3d0; color: #8a6000; }
+  .badge-blue { background: #dbeeff; color: #1a4d8a; }
+  .badge-gray { background: #ede8e0; color: #5a5040; }
+
+  /* ---- TABLES ---- */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  th {
+    background: var(--charcoal);
+    color: var(--gold);
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background: rgba(0,0,0,0.015);
+  }
+
+  .tick { color: var(--success); font-weight: 700; }
+  .cross { color: var(--danger); font-weight: 700; }
+  .partial { color: var(--warn); font-weight: 700; }
+
+  /* ---- CALLOUT BOXES ---- */
+  .callout {
+    padding: 1.2rem 1.5rem;
+    margin: 1.2rem 0;
+    border-left: 4px solid;
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .callout-title {
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+  }
+
+  .callout.warning {
+    background: #fff8ed;
+    border-color: var(--warn);
+    color: #5a3800;
+  }
+
+  .callout.warning .callout-title { color: var(--warn); }
+
+  .callout.danger {
+    background: #fff0f0;
+    border-color: var(--danger);
+    color: #5a1010;
+  }
+
+  .callout.danger .callout-title { color: var(--danger); }
+
+  .callout.success {
+    background: #edfbf4;
+    border-color: var(--success);
+    color: #0d3d22;
+  }
+
+  .callout.success .callout-title { color: var(--success); }
+
+  .callout.info {
+    background: #edf5ff;
+    border-color: var(--info);
+    color: #102a4a;
+  }
+
+  .callout.info .callout-title { color: var(--info); }
+
+  /* ---- STEPS ---- */
+  .steps {
+    counter-reset: steps;
+    margin: 1.5rem 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    counter-increment: steps;
+    min-width: 32px;
+    height: 32px;
+    background: var(--charcoal);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-num::after { content: counter(steps); }
+
+  .step-body h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .step-body p {
+    font-size: 0.83rem;
+    color: #4a3f35;
+    line-height: 1.6;
+  }
+
+  /* ---- CHECKLIST ---- */
+  .checklist {
+    list-style: none;
+    margin: 1rem 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: transparent;
+  }
+
+  .check-box.checked {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+  }
+
+  /* ---- APP ROW ---- */
+  .app-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .app-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .app-info h4 { font-size: 0.95rem; font-weight: 600; }
+  .app-info .app-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .app-info p {
+    font-size: 0.8rem;
+    color: #4a3f35;
+    margin-top: 0.3rem;
+    line-height: 1.55;
+  }
+
+  /* ---- RANK LIST ---- */
+  .rank-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rank-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+  }
+
+  .rank-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(0,0,0,0.08);
+    line-height: 1;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .rank-body h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+  }
+
+  .rank-body .rank-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+  }
+
+  .rank-body p {
+    font-size: 0.82rem;
+    color: #4a3f35;
+    line-height: 1.6;
+  }
+
+  /* ---- TWO-COL ---- */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+
+  /* ---- TROUBLE GRID ---- */
+  .trouble-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .trouble-card {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--danger);
+    padding: 1.2rem;
+    background: var(--warm-white);
+  }
+
+  .trouble-card.warning {
+    border-top-color: var(--warn);
+  }
+
+  .trouble-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .trouble-card .fix {
+    background: #edfbf4;
+    border-left: 3px solid var(--success);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.78rem;
+    margin-top: 0.6rem;
+    color: #0d3d22;
+    line-height: 1.55;
+  }
+
+  .trouble-card p {
+    font-size: 0.8rem;
+    color: #5a3800;
+    line-height: 1.55;
+  }
+
+  /* ---- COMPARISON BAR ---- */
+  .compare-bar {
+    margin: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .compare-bar .label {
+    width: 100px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gold);
+  }
+
+  .bar-fill.red { background: var(--red); }
+  .bar-fill.green { background: var(--success); }
+  .bar-fill.blue { background: var(--info); }
+
+  /* ---- DIVIDER ---- */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---- EMERGENCY BOX ---- */
+  .emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .emergency-card {
+    background: var(--charcoal);
+    color: white;
+    padding: 1.2rem;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .emergency-card:hover { border-color: var(--gold); }
+
+  .emergency-card .enum {
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--red);
+    display: block;
+  }
+
+  .emergency-card .ename {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.3rem;
+  }
+
+  .emergency-card .ecn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-top: 0.3rem;
+  }
+
+  /* ---- SCROLLBAR ---- */
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: rgba(212,168,83,0.3); border-radius: 2px; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    #sidebar { width: 220px; }
+    #main { margin-left: 220px; }
+    #hero { padding: 3rem 2rem; }
+    .section { padding: 2rem; }
+    #hero h1 { font-size: 2.6rem; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    #sidebar { display: none; }
+    #main { margin-left: 0; }
+  }
+
+  /* ---- PRINT / DOWNLOAD INDICATOR ---- */
+  .updated-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.55);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.7rem;
+    margin-top: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .updated-tag::before {
+    content: '●';
+    color: var(--success);
+    font-size: 0.5rem;
+  }
+
+  /* ---- HIGHLIGHT TEXT ---- */
+  .hl { color: var(--red); font-weight: 600; }
+  .hl-gold { color: var(--gold); font-weight: 600; }
+  .mono { font-family: 'Space Mono', monospace; font-size: 0.8em; }
+
+  /* ---- PHOTO-STYLE MOCK SCREENS ---- */
+  .mock-screen {
+    background: var(--charcoal);
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    font-size: 0.78rem;
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mock-screen::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--red));
+  }
+
+  .mock-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+
+  .mock-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .mock-val {
+    color: var(--gold-light);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+  }
+
+  /* ---- INFOBAR ---- */
+  .infobar {
+    display: flex;
+    align-items: stretch;
+    background: var(--charcoal);
+    color: white;
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+
+  .infobar-icon {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  .infobar-body {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.83rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .infobar-body strong {
+    color: var(--gold);
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+  }
+  /* ---- UAE MOFA BLOCK ---- */
+  .mofa-block {
+    background: linear-gradient(135deg, #006233 0%, #004d28 100%);
+    color: white;
+    padding: 0;
+    margin: 2rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mofa-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFD700, #C8963E, #FFD700);
+  }
+
+  .mofa-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 1.5rem 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .mofa-flag {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+  }
+
+  .mofa-header-text .mofa-title-en {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+  }
+
+  .mofa-header-text .mofa-title-ar {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFD700;
+    line-height: 1.3;
+    margin-top: 0.1rem;
+  }
+
+  .mofa-header-text .mofa-title-main {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 0.1rem;
+  }
+
+  .mofa-body {
+    padding: 1.2rem 1.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .mofa-col-en, .mofa-col-ar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .mofa-col-ar {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    padding-right: 1.5rem;
+  }
+
+  .mofa-col-en {
+    padding-left: 0;
+  }
+
+  .mofa-greeting {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.65;
+  }
+
+  .mofa-greeting-ar {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.8;
+  }
+
+  .mofa-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mofa-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.82rem;
+  }
+
+  .mofa-contact-row .contact-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    min-width: 90px;
+  }
+
+  .mofa-contact-row .contact-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: #FFD700;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .mofa-contact-row .contact-num:hover {
+    color: #fff;
+  }
+
+  .mofa-contacts-ar .mofa-contact-row {
+    flex-direction: row-reverse;
+  }
+
+  .mofa-contacts-ar .contact-label {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    letter-spacing: 0;
+    text-transform: none;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  .mofa-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .mofa-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,215,0,0.35);
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 0.75rem;
+    padding: 0.45rem 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    border-radius: 2px;
+    width: fit-content;
+  }
+
+  .mofa-link-btn:hover {
+    background: rgba(255,215,0,0.15);
+    border-color: #FFD700;
+  }
+
+  .mofa-link-btn-ar {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    flex-direction: row-reverse;
+  }
+
+  .mofa-footer {
+    padding: 0.7rem 1.5rem;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .mofa-footer-ar {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    direction: rtl;
+  }
+
+  @media (max-width: 700px) {
+    .mofa-body { grid-template-columns: 1fr; }
+    .mofa-col-ar { border-right: none; border-top: 1px solid rgba(255,255,255,0.12); padding-right: 0; padding-top: 1rem; }
+    .mofa-block [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+
+  /* ---- COMING SOON SECTION (Guide Hub) ---- */
+  .guide-hub {
+    padding: 3rem 4rem;
+    background: var(--warm-white);
+    border-top: 3px solid var(--border);
+  }
+  .guide-hub-header { margin-bottom: 2rem; }
+  .guide-hub-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+  .guide-hub-header .cn-sub {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .guide-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1.2rem;
+  }
+  .guide-hub-card {
+    border: 1px solid var(--border);
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    background: var(--parchment);
+    transition: box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .guide-hub-card:hover {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    border-color: var(--gold);
+  }
+  .guide-hub-card.live {
+    border-top: 3px solid var(--gold);
+  }
+  .guide-hub-card.soon {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+    border-top: 3px solid var(--border);
+  }
+  .hub-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .hub-icon svg { display: block; }
+  .guide-hub-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    font-family: 'Playfair Display', serif;
+  }
+  .guide-hub-card p {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0.7rem;
+  }
+  .hub-badge {
+    display: inline-block;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.2rem 0.6rem;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+  .hub-badge.live-badge { background: rgba(39,174,96,0.12); color: #1a6b3c; }
+  .hub-badge.soon-badge { background: rgba(212,168,83,0.15); color: #8a6000; }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <span class="cn">中国</span>
+    <span class="en">Digital Survival Guide</span>
+    <div class="year">2026 EDITION</div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Getting Started</div>
+    <a class="nav-item" href="#intro">🏮 Introduction</a>
+    <a class="nav-item" href="#checklist">✈️ Before You Fly</a>
+    <a class="nav-item" href="#first24">⏱️ First 24 Hours</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Core Infrastructure</div>
+    <a class="nav-item" href="#payments">💳 Payments</a>
+    <a class="nav-item" href="#sim">📶 SIM &amp; Internet</a>
+    <a class="nav-item" href="#vpn">🔒 VPN &amp; Firewall</a>
+    <a class="nav-item" href="#registration">🏛️ Registration</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Daily Life</div>
+    <a class="nav-item" href="#transport">🚄 Transport</a>
+    <a class="nav-item" href="#maps">🗺️ Maps &amp; Nav</a>
+    <a class="nav-item" href="#food">🍜 Food &amp; Delivery</a>
+    <a class="nav-item" href="#comms">💬 Communication</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Extra</div>
+    <a class="nav-item" href="#shopping">🛍️ Shopping</a>
+    <a class="nav-item" href="#travel">🏨 Travel &amp; Booking</a>
+    <a class="nav-item" href="#ai">🤖 AI Tools</a>
+    <a class="nav-item" href="#top15">⭐ Top 15 Apps</a>
+    <a class="nav-item" href="#troubleshoot">🔧 Troubleshooting</a>
+    <a class="nav-item" href="#emergency">🆘 Emergency</a>
+    <a class="nav-item" href="#etiquette">🎋 Etiquette</a>
+    <a class="nav-item" href="medicines.html" style="border-top:1px solid rgba(212,168,83,0.15); margin-top:0.5rem; padding-top:0.8rem;">🌿 Patent Medicines</a>
+  </div>
+</nav>
+
+<!-- ============================================================ MAIN -->
+<main id="main">
+
+<!-- ============================================================ HERO -->
+<section id="intro" style="padding:0; border:none; background: var(--charcoal);">
+  <div id="hero">
+    <div class="hero-tag">✦ 2026 Edition — Updated May 2026</div>
+    <div class="hero-cn">数字生存手册</div>
+    <h1>China Digital <em>Survival</em> Guide</h1>
+    <p class="hero-sub">The complete practical handbook for foreigners navigating China's mobile-first digital ecosystem — from payments and SIM cards to VPNs, registration requirements, and daily life apps.</p>
+    <div class="hero-chips">
+      <span class="chip">Tourists</span>
+      <span class="chip">Business Travelers</span>
+      <span class="chip">Digital Nomads</span>
+      <span class="chip">Students</span>
+      <span class="chip">Long-Stay Foreigners</span>
+      <span class="chip">First-Time Visitors</span>
+    </div>
+    <div class="updated-tag">Verified against Chinese-language sources · May 2026</div>
+  </div>
+</section>
+
+<!-- ============================================================ BEFORE YOU FLY -->
+<section class="section" id="checklist">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-header-inner">
+      <h2>Before You Fly to China</h2>
+      <div class="section-cn">出发前的准备清单</div>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ Critical Warning</div>
+    <span>China's digital infrastructure is almost entirely mobile-first and largely inaccessible without prior setup. Most foreigners who struggle in China failed to prepare these items <strong>before boarding</strong>. Do not leave this to arrival.</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:1rem; margin-bottom:1rem; font-weight:600;">📱 Apps to Install</h3>
+      <ul class="checklist" id="checklist-apps">
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Alipay (支付宝)</strong> — Payment. Set up with passport + foreign card <em>before</em> arrival</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>WeChat (微信)</strong> — Everything: messaging, Pay, mini-programs. Link a card</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Didi (滴滴出行)</strong> — Ride-hailing. Register with home SIM number</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Amap / Gaode (高德地图)</strong> — Navigation. Download offline maps for cities you'll visit</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Trip.com (携程)</strong> — Flights, trains, hotels. Passport-friendly</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Baidu Translate (百度翻译)</strong> — Camera translation. Download Chinese language pack offline</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Meituan (美团)</strong> — Food delivery &amp; restaurant discovery</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:1rem; margin-bottom:1rem; font-weight:600;">🔒 Internet &amp; Connectivity</h3>
+      <ul class="checklist" id="checklist-net">
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Install a VPN</strong> — ExpressVPN or NordVPN. Download &amp; test <em>before</em> you arrive (cannot download in China)</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Purchase eSIM</strong> — Best options: <strong>Trip.com eSIM</strong> or <strong>Alipay eSIM</strong> (available inside Alipay app). These China-sourced eSIMs bypass firewall restrictions natively — no VPN needed for most apps. Data only, no local phone number. For Airalo/Nomad: also fine for short trips but may still need VPN</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Enable international roaming</strong> — Call your carrier. Needed for SMS codes on arrival</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Confirm your bank allows China transactions</strong> — Many cards block China. Call your bank</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span><strong>Download offline maps</strong> — In Amap, download city tiles while on fast WiFi</span></li>
+      </ul>
+
+      <h3 style="font-size:1rem; margin-bottom:1rem; margin-top:1.5rem; font-weight:600;">📄 Documents</h3>
+      <ul class="checklist">
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Scan passport ID page — save to cloud (accessible via VPN)</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Photo of your visa on your phone</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Hotel addresses saved in <strong>Chinese characters</strong></span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Emergency contacts printed on paper (don't rely on phone power)</span></li>
+        <li><span class="check-box" onclick="toggleCheck(this)"></span><span>Travel insurance documents + Chinese emergency line number</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <div class="callout-title">✅ Pro Tip: The 72-Hour Rule</div>
+    <span>Set up Alipay and WeChat Pay at least 72 hours before departure. Both platforms may need 24–48 hours to complete background verification of your passport and card. Don't arrive without tested, working payments.</span>
+  </div>
+</section>
+
+<!-- ============================================================ FIRST 24 HOURS -->
+<section class="section" id="first24">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-header-inner">
+      <h2>First 24 Hours in China</h2>
+      <div class="section-cn">抵达后的第一天</div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">ℹ️ At the Airport — Before Leaving Arrivals Hall</div>
+    <span>The airport is your best opportunity to buy a physical SIM card with English-speaking staff, exchange currency (for emergencies), and get registered connectivity before stepping into the city.</span>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>🛬 Clear Immigration &amp; Customs</h4>
+        <p>Have your <strong>completed arrival card</strong>, valid visa, and passport ready. Keep your entry stamp receipt — you'll need it for police registration. Customs declaration is now digital via WeChat mini-program or official app for many airports.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>📶 Get a SIM Card at the Airport</h4>
+        <p>Head to <strong>China Unicom or China Mobile</strong> counters in the arrivals hall. Bring your passport — real-name registration is mandatory. A 30-day prepaid plan with 15–20 GB data costs ¥200–300. Ask for a plan with <span class="mono">热点 (rèdiǎn)</span> hotspot enabled. Staff speak basic English.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>🔒 Turn On Your VPN</h4>
+        <p>The moment you connect to Chinese data, you lose Google, WhatsApp, Gmail, and everything Western. <strong>Open your pre-installed VPN immediately</strong>. Turn it OFF when using Alipay, Didi, WeChat — Chinese apps work faster without VPN and some actively block VPN traffic.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>💳 Test Your Alipay &amp; WeChat Pay</h4>
+        <p>Find a convenience store (Family Mart, 7-Eleven, Lawson — all at airports) and make a small test purchase. Scan the merchant QR code and confirm payments go through. If one fails, try the other.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>🚗 Book a Didi from the Airport</h4>
+        <p>At major airports, follow signs for <span class="mono">网约车 (wǎng yuē chē)</span> — ride-hailing pickup zone. Set the zone number shown on signs as your pickup point in Didi. Payment is automatic through your linked Alipay/WeChat.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>🏛️ Complete Police Registration (Within 24 Hours)</h4>
+        <p>If staying in a hotel: the hotel handles this automatically at check-in. Just present your passport. If staying in an apartment or with friends: <strong>you must visit the local PSB station (派出所) within 24 hours</strong>. Bring original passport, visa page, entry stamp, and lease/host ID. Penalty for failure: up to ¥2,000 fine.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>🗺️ Download Offline Maps</h4>
+        <p>Open Amap (高德地图), navigate to Offline Maps, and download city packages for wherever you'll be. This prevents getting lost when data is spotty or VPN is slow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PAYMENTS -->
+<section class="section" id="payments">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-header-inner">
+      <h2>Payments &amp; Digital Wallets</h2>
+      <div class="section-cn">支付与数字钱包</div>
+    </div>
+  </div>
+
+  <div class="infobar">
+    <div class="infobar-icon">💡</div>
+    <div class="infobar-body">
+      <strong>2026 Reality Check</strong>
+      <span>China is the world's most advanced cashless society. Street food stalls, wet markets, taxis, temples, vending machines — almost everything accepts mobile QR payments only. As of early 2026, foreigners can use Alipay and WeChat Pay with foreign cards — no Chinese bank account required.</span>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#1677FF"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="34" fill="white" text-anchor="middle">支</text></svg></span>
+      <h3>Alipay</h3>
+      <div class="card-cn">支付宝 — zhīfùbǎo</div>
+      <p>China's #1 payment super-app. Foreign visitors can link Visa/Mastercard and pay everywhere via QR code. Also offers Tour Pass (预付卡) option. <strong>Best choice for tourists.</strong></p>
+      <div class="badges">
+        <span class="badge badge-green">Foreign Cards ✓</span>
+        <span class="badge badge-green">English UI</span>
+        <span class="badge badge-blue">Passport Verify</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#07C160"/><ellipse cx="24" cy="30" rx="13" ry="9" fill="white"/><circle cx="19" cy="30" r="2.2" fill="#07C160"/><circle cx="25" cy="30" r="2.2" fill="#07C160"/><ellipse cx="42" cy="36" rx="10" ry="7" fill="rgba(255,255,255,0.75)"/><circle cx="38" cy="36" r="1.8" fill="#07C160"/><circle cx="43" cy="36" r="1.8" fill="#07C160"/></svg></span>
+      <h3>WeChat Pay</h3>
+      <div class="card-cn">微信支付 — wēixìn zhīfù</div>
+      <p>Integrated into WeChat. In 2026, removed the "Chinese friend guarantee" requirement. Foreign card linking is now more straightforward. Works at ~85% of Alipay locations.</p>
+      <div class="badges">
+        <span class="badge badge-green">Foreign Cards ✓</span>
+        <span class="badge badge-yellow">Partial English</span>
+        <span class="badge badge-blue">Passport Verify</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#1677FF"/><text x="32" y="36" font-family="Arial Black,Arial" font-weight="900" font-size="22" fill="white" text-anchor="middle">支</text><text x="32" y="52" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">TOUR</text></svg></span>
+      <h3>Alipay Tour Pass</h3>
+      <div class="card-cn">支付宝旅行通卡</div>
+      <p>Prepaid virtual card. Top up with foreign currency (5% service fee). Works in locations that even refuse foreign card direct-linking. Best fallback for short trips. Apply inside China only.</p>
+      <div class="badges">
+        <span class="badge badge-green">No Chinese Number</span>
+        <span class="badge badge-yellow">5% Top-up Fee</span>
+        <span class="badge badge-blue">In-China Only Setup</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#2C2416"/><rect x="12" y="16" width="40" height="28" rx="3" fill="none" stroke="white" stroke-width="3"/><text x="32" y="36" font-family="Arial Black,Arial" font-weight="900" font-size="14" fill="white" text-anchor="middle">ATM</text><rect x="22" y="48" width="20" height="5" rx="2" fill="rgba(255,255,255,0.5)"/></svg></span>
+      <h3>ATM / Cash Backup</h3>
+      <div class="card-cn">ATM 取款</div>
+      <p>Bank of China, ICBC, and HSBC ATMs accept most Visa/Mastercard. Keep ¥500–1,000 cash for emergencies (rural areas, some older restaurants). Your bank may charge 1–3% foreign transaction fee.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Emergency Only</span>
+        <span class="badge badge-gray">3% Foreign Fee</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:1.05rem; margin-bottom:1rem; font-weight:600;">Alipay Setup for Foreigners — Step by Step</h3>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>Download the Standard Alipay App</h4>
+        <p>App Store or Google Play. Search "Alipay" — make sure it's the global version, <strong>not</strong> "Alipay HK." The standard app has full English UI for foreigners.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>Register with Your Home Phone Number</h4>
+        <p>No Chinese number required. Use your home country mobile number (+1, +44, +49, etc.). You'll receive an SMS verification code.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>Passport Verification</h4>
+        <p>Go to <span class="mono">Me → Verify Identity</span>. Upload a clear photo of your passport bio page. Approval is usually instant to 24 hours.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>Link Your Foreign Card</h4>
+        <p>Go to <span class="mono">Me → Bank Cards → Add Card</span>. Visa, Mastercard, and some Amex/JCB are supported. Enter card number, expiry, CVV, and billing address. Your bank may require confirmation via app/SMS.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div class="step-body">
+        <h4>Test a Small Payment</h4>
+        <p>Find a convenience store or vending machine. Tap <span class="mono">Pay</span> and scan the merchant QR code. First transaction may require re-entering your card PIN.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Foreign Card</th>
+          <th>Setup Before Arrival</th>
+          <th>No Chinese Number</th>
+          <th>Acceptance</th>
+          <th>Transaction Limit (2026)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Alipay Direct</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td>~95%</td>
+          <td>$5,000/tx · $50,000/yr</td>
+        </tr>
+        <tr>
+          <td><strong>WeChat Pay</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td>~85%</td>
+          <td>$5,000/tx · $50,000/yr</td>
+        </tr>
+        <tr>
+          <td><strong>Alipay Tour Pass</strong></td>
+          <td class="tick">✓ (top-up)</td>
+          <td class="cross">✗ In China only</td>
+          <td class="tick">✓</td>
+          <td>~90%</td>
+          <td>¥1,000 top-up limit</td>
+        </tr>
+        <tr>
+          <td><strong>ATM Cash</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td>Emergency only</td>
+          <td>¥10,000/day typical</td>
+        </tr>
+        <tr>
+          <td><strong>Foreign Visa/MC</strong></td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td class="tick">✓</td>
+          <td>~30% (large/hotels only)</td>
+          <td>Varies</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ Common Payment Failures &amp; Fixes</div>
+    <span><strong>Card declined in Alipay:</strong> Call your bank first — most rejections are your bank blocking China. Try a different card, or use Alipay Tour Pass.<br>
+    <strong>Verification loop:</strong> Clear app cache, restart, retry. If stuck, use WeChat Pay instead.<br>
+    <strong>3% foreign transaction fee:</strong> Use a Wise or Revolut card — minimal forex fees on China transactions.</span>
+  </div>
+</section>
+
+<!-- ============================================================ SIM & INTERNET -->
+<section class="section" id="sim">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-header-inner">
+      <h2>SIM Cards, eSIM &amp; Internet</h2>
+      <div class="section-cn">SIM卡、eSIM与网络连接</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Best For</th>
+          <th>Setup</th>
+          <th>Cost (30 days)</th>
+          <th>VPN Support</th>
+          <th>Local Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>China Unicom Tourist SIM</strong></td>
+          <td>2–4 week trips</td>
+          <td>Airport counter, 30 min</td>
+          <td>¥200–300</td>
+          <td class="partial">⚠️ Varies</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td><strong>China Mobile SIM</strong></td>
+          <td>Best nationwide coverage</td>
+          <td>Any 中国移动 store</td>
+          <td>¥150–250</td>
+          <td class="partial">⚠️ Varies</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr style="background: rgba(212,168,83,0.08);">
+          <td><strong>🏆 Trip.com / Alipay eSIM</strong><br><small style="color:var(--success); font-weight:600;">⭐ Best for Foreigners</small></td>
+          <td>All trip lengths, firewall-free</td>
+          <td>Buy in Trip.com app or Alipay app before/after arrival</td>
+          <td>$10–25</td>
+          <td class="tick">✓ Built-in (no VPN needed)</td>
+          <td class="cross">✗ Data only</td>
+        </tr>
+        <tr>
+          <td><strong>International eSIM (Airalo/Nomad)</strong></td>
+          <td>Short trips &lt;2 weeks</td>
+          <td>Buy online before arrival</td>
+          <td>$15–30</td>
+          <td class="tick">✓ (home routing)</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td><strong>International Roaming</strong></td>
+          <td>Very short trips, corporate</td>
+          <td>Call carrier to enable</td>
+          <td>$5–15/day</td>
+          <td class="tick">✓</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td><strong>China Telecom</strong></td>
+          <td>Western China only</td>
+          <td>Store, need compatible phone</td>
+          <td>¥100–200</td>
+          <td class="partial">⚠️</td>
+          <td class="tick">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="callout info">
+        <div class="callout-title">📶 China Unicom — Recommended for Most Foreigners</div>
+        <span>Most compatible with foreign phones (supports 3G/4G bands). Tourist-friendly staff. Airport counters at PEK, PVG, CAN, and most major airports have English-speaking staff. Ask for <span class="mono">预付费 (yùfùfèi)</span> prepaid plans. Confirm hotspot <span class="mono">(热点)</span> is included.</span>
+      </div>
+    </div>
+    <div>
+      <div class="callout success">
+        <div class="callout-title">📱 Best eSIM Strategy for Foreigners — 2026</div>
+        <span><strong>Top Pick: Trip.com eSIM or Alipay eSIM</strong> — These eSIMs are sourced through China's ecosystem and route traffic natively, meaning they bypass Great Firewall restrictions <strong>without needing a VPN</strong>. Buy inside the Trip.com app (携程) or via the Alipay app before or after arrival. Fast setup, no passport scan at a store, instant activation.<br><br>
+        ⚠️ <strong>Limitation:</strong> Data only — no local Chinese phone number. You won't be able to receive SMS verification codes from Chinese apps. Pair with your home SIM for calls/SMS if needed.<br><br>
+        Alternative: Airalo / Nomad eSIMs work well too but use home-country routing — you may still need a VPN for some apps. Good backup option.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ VPN Rule of Thumb</div>
+    <span>Turn VPN <strong>ON</strong> for: Google, Gmail, WhatsApp, Instagram, YouTube, ChatGPT, Facebook, Twitter/X, Reddit, Netflix, Spotify, Telegram.<br>
+    Turn VPN <strong>OFF</strong> for: Alipay, WeChat, Didi, Meituan, Baidu Maps, Taobao. Chinese apps often detect VPN traffic and refuse connections or show errors.</span>
+  </div>
+</section>
+
+<!-- ============================================================ VPN & FIREWALL -->
+<section class="section" id="vpn">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-header-inner">
+      <h2>VPNs &amp; the Great Firewall</h2>
+      <div class="section-cn">防火长城与VPN</div>
+    </div>
+  </div>
+
+  <div class="infobar">
+    <div class="infobar-icon">🔥</div>
+    <div class="infobar-body">
+      <strong>The Great Firewall (防火长城 — Fánghǔo Chángchéng)</strong>
+      <span>China's internet censorship system blocks most Western apps and services using deep packet inspection (DPI), IP blocking, and DNS poisoning. It blocks over 4 million domains. Without preparation, you lose access to everything you rely on the moment you land.</span>
+    </div>
+  </div>
+
+  <h3 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">What's Blocked in China (2026)</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Blocked Service</th>
+          <th>Chinese Alternative</th>
+          <th>Alt. Chinese Name</th>
+          <th>Works Without VPN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Google Search</td>
+          <td>Baidu</td>
+          <td>百度</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Google Maps</td>
+          <td>Amap (Gaode) / Baidu Maps</td>
+          <td>高德地图 / 百度地图</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Gmail</td>
+          <td>163 Mail / QQ Mail</td>
+          <td>网易邮箱 / QQ邮箱</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>WhatsApp</td>
+          <td>WeChat</td>
+          <td>微信</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Instagram</td>
+          <td>Xiaohongshu (RED)</td>
+          <td>小红书</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Facebook</td>
+          <td>WeChat / Weibo</td>
+          <td>微信 / 微博</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>YouTube</td>
+          <td>Bilibili / Youku</td>
+          <td>哔哩哔哩 / 优酷</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>TikTok (International)</td>
+          <td>Douyin</td>
+          <td>抖音</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Uber</td>
+          <td>Didi</td>
+          <td>滴滴出行</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>ChatGPT / Claude</td>
+          <td>DeepSeek / Kimi / Ernie Bot</td>
+          <td>深度求索 / Kimi / 文心一言</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Spotify</td>
+          <td>NetEase Cloud Music</td>
+          <td>网易云音乐</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Netflix</td>
+          <td>iQIYI / Youku / Tencent Video</td>
+          <td>爱奇艺 / 优酷 / 腾讯视频</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Twitter / X</td>
+          <td>Weibo</td>
+          <td>微博</td>
+          <td class="tick">✓</td>
+        </tr>
+        <tr>
+          <td>Google Translate</td>
+          <td>Baidu Translate / Youdao</td>
+          <td>百度翻译 / 有道翻译</td>
+          <td class="tick">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ VPN Legal Status for Foreigners</div>
+    <span>Only government-approved VPNs are technically legal in China. However, as of 2026, <strong>no foreign visitor has ever been prosecuted</strong> for personal VPN use. Chinese citizens face higher scrutiny. Foreign travelers using VPNs for personal communication are at very low risk. Avoid conspicuous VPN use in politically sensitive regions (Tibet, Xinjiang). Never use VPN for financial fraud, crypto trading, or illegal activity.</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h4 style="font-size:0.9rem; font-weight:600; margin-bottom:0.8rem;">Recommended VPNs for China 2026</h4>
+      <div class="compare-bar">
+        <span class="label">ExpressVPN</span>
+        <div class="bar-track"><div class="bar-fill green" style="width:91%"></div></div>
+        <span style="font-size:0.7rem; color:var(--muted);">91% uptime</span>
+      </div>
+      <div class="compare-bar">
+        <span class="label">NordVPN</span>
+        <div class="bar-track"><div class="bar-fill blue" style="width:82%"></div></div>
+        <span style="font-size:0.7rem; color:var(--muted);">82% uptime</span>
+      </div>
+      <div class="compare-bar">
+        <span class="label">Astrill</span>
+        <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
+        <span style="font-size:0.7rem; color:var(--muted);">78% uptime</span>
+      </div>
+      <div class="compare-bar">
+        <span class="label">Surfshark</span>
+        <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+        <span style="font-size:0.7rem; color:var(--muted);">70% uptime</span>
+      </div>
+      <p style="font-size:0.75rem; color:var(--muted); margin-top:0.7rem;">Uptime drops during National Holidays &amp; major political events.</p>
+    </div>
+    <div>
+      <div class="callout danger">
+        <div class="callout-title">❌ Critical: Download BEFORE Arrival</div>
+        <span>VPN apps are removed from China's App Store. You <strong>cannot</strong> download VPNs after landing. Install, configure, and test your VPN before boarding your plane. This is non-negotiable.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ REGISTRATION -->
+<section class="section" id="registration">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-header-inner">
+      <h2>Arrival Registration Requirements</h2>
+      <div class="section-cn">暂住登记与合法要求</div>
+    </div>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-title">⚠️ Legal Obligation — Non-Negotiable</div>
+    <span>Under China's Exit and Entry Administration Law, ALL foreigners must register their place of residence within <strong>24 hours of arrival</strong> (urban areas) or 72 hours (rural areas). This applies every time you arrive from abroad OR move to a new address. Failure can result in fines up to ¥2,000 and may affect future visa applications.</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">🏨 Staying in a Hotel</h3>
+      <p style="font-size:0.85rem; color:var(--charcoal); line-height:1.65; margin-bottom:0.8rem;">The hotel registers you automatically at check-in. Present your passport to the front desk — they complete the <em>Temporary Accommodation Registration</em> on your behalf and report it to the Public Security Bureau.</p>
+      <div class="callout success" style="margin-top:0.5rem;">
+        <div class="callout-title">✓ Action Required</div>
+        <span>Simply present passport at check-in. Ask for your <strong>Temporary Residence Registration Form (TRRF)</strong> — keep it. Some PSBs may request it later.</span>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">🏠 Staying in an Apartment or with Friends</h3>
+      <p style="font-size:0.85rem; color:var(--charcoal); line-height:1.65; margin-bottom:0.8rem;">You (and your landlord/host) must visit the nearest PSB station (派出所) in person within 24 hours.</p>
+      <div class="callout warning" style="margin-top:0.5rem;">
+        <div class="callout-title">⚠️ Documents Required</div>
+        <span>• Original passport<br>
+        • Copy of visa/residence permit<br>
+        • Entry stamp<br>
+        • Lease agreement or host's ID + their address registration</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout info" style="margin-top:1.5rem;">
+    <div class="callout-title">ℹ️ Online Registration — Pilot Program (2026)</div>
+    <span>As of March 20, 2026, the National Immigration Administration is piloting <strong>online accommodation registration</strong> for foreigners in seven provincial regions. The system is expanding gradually. Check if your destination city has enabled this to avoid a PSB visit. This does not replace the 24-hour registration deadline.</span>
+  </div>
+
+  <div class="section-divider">Key Facts</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Who Registers</th>
+          <th>Deadline</th>
+          <th>Where</th>
+          <th>Penalty if Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hotel stay</td>
+          <td>Hotel (automatic)</td>
+          <td>At check-in</td>
+          <td>Front desk</td>
+          <td>Hotel's responsibility</td>
+        </tr>
+        <tr>
+          <td>Airbnb / rented apartment</td>
+          <td>You + landlord</td>
+          <td>24h (urban)</td>
+          <td>Local PSB station</td>
+          <td>Up to ¥2,000 fine</td>
+        </tr>
+        <tr>
+          <td>Friend's / family home</td>
+          <td>You + host</td>
+          <td>24h (urban)</td>
+          <td>Local PSB station</td>
+          <td>Up to ¥2,000 fine</td>
+        </tr>
+        <tr>
+          <td>Rural area</td>
+          <td>You + host/landlord</td>
+          <td>72h</td>
+          <td>Local PSB station</td>
+          <td>Warning + possible fine</td>
+        </tr>
+        <tr>
+          <td>University student</td>
+          <td>Institution handles it</td>
+          <td>Check with admin office</td>
+          <td>Varies</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ TRANSPORT -->
+<section class="section" id="transport">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div class="section-header-inner">
+      <h2>Transportation &amp; Mobility</h2>
+      <div class="section-cn">交通与出行</div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF7A00"/><text x="32" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="38" fill="white" text-anchor="middle">D</text></svg></span>
+      <h3>Didi Chuxing</h3>
+      <div class="card-cn">滴滴出行</div>
+      <p>China's dominant ride-hailing app (70%+ market share, 400+ cities). Register with international mobile number. Link payment via Alipay or WeChat. English interface available. Use domestic app, not "DiDi Rider" international version.</p>
+      <div class="badges">
+        <span class="badge badge-green">English App</span>
+        <span class="badge badge-green">Int'l Number OK</span>
+        <span class="badge badge-blue">Foreign Card via Alipay</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#E60026"/><text x="32" y="38" font-family="Arial Black,Arial" font-weight="900" font-size="11" fill="white" text-anchor="middle">12306</text><rect x="14" y="44" width="36" height="5" rx="2" fill="rgba(255,255,255,0.5)"/></svg></span>
+      <h3>12306 / Trip.com</h3>
+      <div class="card-cn">中国铁路12306 / 携程</div>
+      <p>High-speed rail (高铁) booking. 12306 is official but complicated for foreigners. <strong>Use Trip.com</strong> — accepts foreign cards, full English, passport booking. Book 30 days in advance for popular routes.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">12306: Foreigners Limited</span>
+        <span class="badge badge-green">Trip.com: Easy</span>
+        <span class="badge badge-blue">Passport Required</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#003F87"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="36" fill="white" text-anchor="middle">M</text></svg></span>
+      <h3>Metro Apps (各城市地铁)</h3>
+      <div class="card-cn">城市地铁</div>
+      <p>Most cities have dedicated metro apps (Beijing Subway, Shanghai Metro, etc.) with QR code tickets. Alipay's transport mini-program works in 100+ cities — just scan the code at the gate. Most convenient option.</p>
+      <div class="badges">
+        <span class="badge badge-green">Alipay QR Works</span>
+        <span class="badge badge-yellow">App: Chinese Only</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FFCC00"/><circle cx="20" cy="40" r="10" fill="none" stroke="#1A1A1A" stroke-width="4"/><circle cx="44" cy="40" r="10" fill="none" stroke="#1A1A1A" stroke-width="4"/><path d="M20 40 L32 20 L44 40" fill="none" stroke="#1A1A1A" stroke-width="4" stroke-linecap="round"/><circle cx="20" cy="40" r="3" fill="#1A1A1A"/><circle cx="44" cy="40" r="3" fill="#1A1A1A"/></svg></span>
+      <h3>Bike Sharing</h3>
+      <div class="card-cn">共享单车</div>
+      <p>Meituan Bike (美团单车) and Hello Bike (哈啰) are ubiquitous. Unlock via WeChat mini-program. Requires mobile number. ¥1–2 per 30 min. Excellent for last-mile travel.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">WeChat Required</span>
+        <span class="badge badge-green">Very Affordable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">🚄 High-Speed Rail Tips for Foreigners</div>
+    <span>• At the station: go to <strong>International Ticket Counter (国际售票窗口)</strong> or any counter with passport symbol — show your passport and ticket QR code<br>
+    • Board with <strong>original passport only</strong> — no copies accepted at the gate<br>
+    • Boarding gates close 5 minutes before departure — arrive 30+ minutes early<br>
+    • Seat classes: Business (商务座) → First (一等座) → Second (二等座). Second class is fast and comfortable<br>
+    • Food: onboard snack cart + platform vendors. Bring water — bottled water is cheap at convenience stores</span>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ Didi Booking Tips for Foreigners</div>
+    <span>• At airports: look for <span class="mono">网约车接客区</span> — ride-hailing pickup zones, separate from regular taxis<br>
+    • If driver calls you but you have no Chinese number: use in-app chat — messages auto-translate in both directions<br>
+    • If card declined: use Alipay Tour Card as backup<br>
+    • Type your destination in English — the app will translate it for the driver</span>
+  </div>
+</section>
+
+<!-- ============================================================ MAPS -->
+<section class="section" id="maps">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-header-inner">
+      <h2>Maps &amp; Navigation</h2>
+      <div class="section-cn">地图与导航</div>
+    </div>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-title">❌ Google Maps is Unreliable in China</div>
+    <span>Google Maps has significant coordinate displacement in China (WGS-84 vs GCJ-02 coordinate system). It shows you in the wrong location, roads are misaligned, and real-time traffic is absent. Use Chinese mapping apps.</span>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF6000"/><circle cx="32" cy="27" r="10" fill="white"/><path d="M32 37 Q32 54 32 54 Q24 42 22 37 A13 13 0 1 1 42 37 Q40 42 32 54 Q32 54 32 37Z" fill="white"/><circle cx="32" cy="27" r="5" fill="#FF6000"/></svg></span>
+      <h3>Amap (Gaode Maps)</h3>
+      <div class="card-cn">高德地图 — gāodé dìtú</div>
+      <p><strong>Best map for foreigners.</strong> English interface, accurate navigation, transit + walking + driving. Integrates directly with Didi. Download offline maps. Search in English or Chinese. Also works as Apple Maps' data source in China.</p>
+      <div class="badges">
+        <span class="badge badge-green">English Available</span>
+        <span class="badge badge-green">Offline Maps</span>
+        <span class="badge badge-green">No VPN Needed</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#2932E1"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="28" fill="white" text-anchor="middle">百</text></svg></span>
+      <h3>Baidu Maps</h3>
+      <div class="card-cn">百度地图 — bǎidù dìtú</div>
+      <p>Most used map in China, excellent indoor mapping and AR navigation. Limited English interface but very accurate. Good for complex buildings (malls, stations, airports). Recommend using alongside Amap.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Limited English</span>
+        <span class="badge badge-green">Best Indoor Maps</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#34C759"/><path d="M32 12 C22 12 14 20 14 30 C14 44 32 54 32 54 C32 54 50 44 50 30 C50 20 42 12 32 12Z" fill="white" opacity="0.9"/><circle cx="32" cy="30" r="6" fill="#34C759"/></svg></span>
+      <h3>Apple Maps (in China)</h3>
+      <div class="card-cn">苹果地图</div>
+      <p>Uses Amap data for mainland China. Works well on iPhones — full English interface with accurate Chinese map data. Good for simple navigation without learning a new app. No Google account needed.</p>
+      <div class="badges">
+        <span class="badge badge-green">Full English</span>
+        <span class="badge badge-green">Uses Amap Data</span>
+        <span class="badge badge-blue">iPhone Only</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <div class="callout-title">✅ Address Tips for Foreigners</div>
+    <span>• Always save hotel/destination addresses in <strong>Chinese characters</strong> — show your phone to taxi drivers or enter in Amap<br>
+    • Chinese addresses read: Province → City → District → Street → Number (opposite to Western format)<br>
+    • Example: <span class="mono">上海市黄浦区南京东路100号</span> = 100 East Nanjing Road, Huangpu District, Shanghai<br>
+    • Use landmark names (地标) for places without clear addresses — search the Chinese name of a nearby landmark</span>
+  </div>
+</section>
+
+<!-- ============================================================ FOOD -->
+<section class="section" id="food">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-header-inner">
+      <h2>Food, Delivery &amp; Restaurant Apps</h2>
+      <div class="section-cn">餐饮与外卖应用</div>
+    </div>
+  </div>
+
+  <div class="app-row">
+    <div class="app-icon" style="background:transparent;padding:0;overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52"><rect width="64" height="64" rx="14" fill="#FFCC00"/><text x="32" y="42" font-family="Arial Black,Arial" font-weight="900" font-size="34" fill="#1A1A1A" text-anchor="middle">M</text></svg></div>
+    <div class="app-info">
+      <h4>Meituan — 美团</h4>
+      <div class="app-cn">měitiān</div>
+      <p>China's super-app for food delivery, restaurant booking, hotel booking, and entertainment tickets. Market leader for delivery. Set your address using Amap location — the app reads it automatically. Requires WeChat login (easiest) or phone number. Chinese-language UI but navigation is icon-based and intuitive after 5 minutes.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Chinese UI</span>
+        <span class="badge badge-green">WeChat Login</span>
+        <span class="badge badge-green">Ubiquitous Delivery</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-row">
+    <div class="app-icon" style="background:transparent;padding:0;overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52"><rect width="64" height="64" rx="14" fill="#1989FA"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="28" fill="white" text-anchor="middle">é</text></svg></div>
+    <div class="app-info">
+      <h4>Ele.me — 饿了么</h4>
+      <div class="app-cn">è le me ("Are you hungry?")</div>
+      <p>Alibaba's food delivery platform, strong competitor to Meituan. Often has better prices in certain cities. Works through Alipay mini-program — no separate app needed. If you have Alipay set up, you already have access to Ele.me.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Chinese UI</span>
+        <span class="badge badge-green">Via Alipay</span>
+        <span class="badge badge-green">No Extra App</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-row">
+    <div class="app-icon" style="background:transparent;padding:0;overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52"><rect width="64" height="64" rx="14" fill="#E60026"/><polygon points="32,10 37,24 52,24 40,33 44,48 32,39 20,48 24,33 12,24 27,24" fill="white"/></svg></div>
+    <div class="app-info">
+      <h4>Dianping — 大众点评</h4>
+      <div class="app-cn">dàzhòng diǎnpíng ("Yelp of China")</div>
+      <p>Restaurant reviews, ratings, discount coupons. Essential for finding quality local food. Look for stores with <span class="mono">★4.5+</span> and hundreds of reviews. Now integrated into Meituan. Many restaurants are <em>only</em> discoverable here — not on Google or TripAdvisor.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Chinese Only</span>
+        <span class="badge badge-green">Built into Meituan</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">ℹ️ QR Menu Culture</div>
+    <span>Most restaurants in China no longer use paper menus. Scan the QR code on the table → choose dishes → pay in app. This is overwhelming at first. Tips:<br>
+    • Use <strong>Baidu Translate camera mode</strong> to translate dish names in real time<br>
+    • Ask staff: <span class="mono">"有英文菜单吗？" (yǒu yīngwén càidān ma?)</span> = "Do you have an English menu?"<br>
+    • Tap the ❤️ on dishes to see photos before ordering</span>
+  </div>
+</section>
+
+<!-- ============================================================ COMMUNICATION -->
+<section class="section" id="comms">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="section-header-inner">
+      <h2>Communication &amp; Social Apps</h2>
+      <div class="section-cn">通讯与社交应用</div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#07C160"/><ellipse cx="24" cy="30" rx="13" ry="9" fill="white"/><circle cx="19" cy="30" r="2.2" fill="#07C160"/><circle cx="25" cy="30" r="2.2" fill="#07C160"/><ellipse cx="42" cy="36" rx="10" ry="7" fill="rgba(255,255,255,0.75)"/><circle cx="38" cy="36" r="1.8" fill="#07C160"/><circle cx="43" cy="36" r="1.8" fill="#07C160"/></svg></span>
+      <h3>WeChat</h3>
+      <div class="card-cn">微信 — wēixìn</div>
+      <p>The single most important app in China. Messaging, payments, mini-programs, social feed, official accounts. Nearly every interaction uses WeChat. Register with your home phone number. Foreigners can register freely — no Chinese number required.</p>
+      <div class="badges">
+        <span class="badge badge-green">English UI</span>
+        <span class="badge badge-green">Foreign Number OK</span>
+        <span class="badge badge-green">No VPN Needed</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF2442"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="26" fill="white" text-anchor="middle">RED</text></svg></span>
+      <h3>Xiaohongshu (RED)</h3>
+      <div class="card-cn">小红书</div>
+      <p>China's lifestyle social platform — Instagram + Pinterest + Google Reviews hybrid. Increasingly popular for travel tips written for Chinese audiences. Many foreigners use it. <strong>Gold mine for authentic local recommendations.</strong> Register with phone number. Partial English.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Partial English</span>
+        <span class="badge badge-green">Foreign-Friendly</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#2932E1"/><text x="22" y="36" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="white">A</text><text x="36" y="50" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="rgba(255,255,255,0.75)">中</text></svg></span>
+      <h3>Baidu Translate</h3>
+      <div class="card-cn">百度翻译 — bǎidù fānyì</div>
+      <p>Best translation app for China. Camera mode translates menus, signs, and documents in real time. Works offline (download Chinese-English pack). Handles traditional and simplified characters. More accurate for local expressions than Google Translate.</p>
+      <div class="badges">
+        <span class="badge badge-green">Camera Mode</span>
+        <span class="badge badge-green">Offline Mode</span>
+        <span class="badge badge-green">No VPN</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#010101"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="13" fill="white" text-anchor="middle">抖音</text></svg></span>
+      <h3>Douyin (Chinese TikTok)</h3>
+      <div class="card-cn">抖音 — dǒuyīn</div>
+      <p>Chinese version of TikTok — different content, different algorithm. Great for discovering local food, culture, and hidden gems. Search in Chinese to find authentic local content. Some restaurants are only found through Douyin.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Chinese UI</span>
+        <span class="badge badge-green">No VPN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SHOPPING -->
+<section class="section" id="shopping">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="section-header-inner">
+      <h2>Shopping &amp; E-Commerce</h2>
+      <div class="section-cn">购物与电子商务</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Chinese Name</th>
+          <th>Best For</th>
+          <th>English</th>
+          <th>Foreign Card</th>
+          <th>Foreigner Difficulty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Taobao</strong></td>
+          <td>淘宝</td>
+          <td>Everything, best prices</td>
+          <td class="cross">✗</td>
+          <td class="partial">⚠️ Via Alipay</td>
+          <td>High (Chinese only)</td>
+        </tr>
+        <tr>
+          <td><strong>JD.com</strong></td>
+          <td>京东</td>
+          <td>Electronics, authenticity guaranteed</td>
+          <td class="partial">⚠️ Partial</td>
+          <td class="tick">✓</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td><strong>Pinduoduo</strong></td>
+          <td>拼多多</td>
+          <td>Cheapest prices, group buying</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td>Very High</td>
+        </tr>
+        <tr>
+          <td><strong>Tmall Global</strong></td>
+          <td>天猫国际</td>
+          <td>International brands</td>
+          <td class="partial">⚠️</td>
+          <td class="tick">✓</td>
+          <td>Medium</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">ℹ️ Practical Shopping Tips for Foreigners</div>
+    <span>• <strong>Physical stores</strong> in malls accept Alipay/WeChat Pay and sometimes foreign cards — safest for foreigners<br>
+    • Use <strong>Baidu Translate camera mode</strong> to read product labels and prices<br>
+    • For online orders: address must be in Chinese. Use Baidu Maps to find the Chinese address of your hotel/accommodation<br>
+    • <strong>Delivery lockers (快递柜)</strong> at apartment complexes — you'll receive a QR code by SMS to pick up your parcel</span>
+  </div>
+</section>
+
+<!-- ============================================================ TRAVEL & BOOKING -->
+<section class="section" id="travel">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div class="section-header-inner">
+      <h2>Travel &amp; Booking Services</h2>
+      <div class="section-cn">旅行与预订服务</div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#007DC3"/><text x="32" y="40" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="white" text-anchor="middle">trip</text><text x="32" y="53" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">.com</text></svg></span>
+      <h3>Trip.com</h3>
+      <div class="card-cn">携程 — xié chéng</div>
+      <p><strong>Best booking platform for foreigners.</strong> Full English interface, accepts foreign cards, books trains using passport number. Domestic flights, hotels, airport transfers. Use this over 12306 for trains.</p>
+      <div class="badges">
+        <span class="badge badge-green">Full English</span>
+        <span class="badge badge-green">Foreign Cards</span>
+        <span class="badge badge-green">Trains + Flights</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF6A00"/><text x="32" y="42" font-family="Arial Black,Arial" font-weight="900" font-size="22" fill="white" text-anchor="middle">飞猪</text></svg></span>
+      <h3>Fliggy</h3>
+      <div class="card-cn">飞猪 — fēi zhū</div>
+      <p>Alibaba's travel platform. Better deals on international flights and packages. Linked to Alipay. Some English support. Good secondary option for hotels and tour packages.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Partial English</span>
+        <span class="badge badge-green">Via Alipay</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ Hotel Booking — Foreigner Considerations</div>
+    <span>Not all accommodation in China accepts foreign passport holders. Budget hostels and private apartments sometimes refuse foreign guests due to police registration difficulties. When booking, filter for hotels that explicitly state <span class="mono">接待外宾</span> (accept foreign guests). Major hotel chains (Hilton, Marriott, Sheraton, and major Chinese brands like Huazhu) always accept foreigners.</span>
+  </div>
+</section>
+
+<!-- ============================================================ AI TOOLS -->
+<section class="section" id="ai">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div class="section-header-inner">
+      <h2>AI &amp; Productivity Tools in China</h2>
+      <div class="section-cn">中国的人工智能工具</div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#4D6BFE"/><text x="32" y="38" font-family="Arial Black,Arial" font-weight="900" font-size="11" fill="white" text-anchor="middle">Deep</text><text x="32" y="52" font-family="Arial Black,Arial" font-weight="900" font-size="11" fill="rgba(255,255,255,0.75)" text-anchor="middle">Seek</text></svg></span>
+      <h3>DeepSeek</h3>
+      <div class="card-cn">深度求索</div>
+      <p>China's breakthrough AI model, internationally acclaimed. Available via website and app. <strong>Strong English support.</strong> Excellent for research, translation, and productivity. Free tier available. No VPN needed. Register with email or phone.</p>
+      <div class="badges">
+        <span class="badge badge-green">English Support</span>
+        <span class="badge badge-green">No VPN Needed</span>
+        <span class="badge badge-green">Free Tier</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#1C1C1E"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="white" text-anchor="middle">Kimi</text></svg></span>
+      <h3>Kimi AI</h3>
+      <div class="card-cn">Kimi智能助手</div>
+      <p>Moonshot AI's assistant. Good English support, strong for long-document analysis. Used by Chinese professionals. Register with phone number (foreign numbers work). Useful as a ChatGPT alternative while in China.</p>
+      <div class="badges">
+        <span class="badge badge-green">English Available</span>
+        <span class="badge badge-green">No VPN</span>
+        <span class="badge badge-yellow">Phone Registration</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#2932E1"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="28" fill="white" text-anchor="middle">百</text></svg></span>
+      <h3>Ernie Bot (文心一言)</h3>
+      <div class="card-cn">文心一言 — wénxīn yīyán</div>
+      <p>Baidu's AI assistant. Primarily Chinese language but improving in English. Best for China-specific queries, local knowledge, and content in Chinese. Register with Baidu account.</p>
+      <div class="badges">
+        <span class="badge badge-yellow">Mostly Chinese</span>
+        <span class="badge badge-green">No VPN</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon" style="display:flex;align-items:center;justify-content:center;font-size:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#C21B27"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="22" fill="white" text-anchor="middle">WPS</text></svg></span>
+      <h3>WPS Office</h3>
+      <div class="card-cn">WPS办公软件</div>
+      <p>China's Microsoft Office equivalent, dominant in the workplace. Free version powerful. English UI available. Use when collaborating with Chinese companies who share WPS files (.wps format). No VPN needed.</p>
+      <div class="badges">
+        <span class="badge badge-green">English Available</span>
+        <span class="badge badge-green">Free</span>
+        <span class="badge badge-green">No VPN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TOP 15 APPS -->
+<section class="section" id="top15">
+  <div class="section-header">
+    <div class="section-num">14</div>
+    <div class="section-header-inner">
+      <h2>Top 15 Essential Apps for China</h2>
+      <div class="section-cn">外国人在华必备的15款应用</div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#1677FF"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="34" fill="white" text-anchor="middle">支</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">1</span></div>
+    <div class="rank-body">
+      <h3>Alipay — 支付宝</h3>
+      <div class="rank-cn">Zhīfùbǎo · alipay.com</div>
+      <p>The single most critical app. Without working payments, you cannot eat, travel, or function in China. Set up before arrival with foreign card + passport. <strong>Priority #1.</strong></p>
+      <div class="badges"><span class="badge badge-green">Essential</span><span class="badge badge-green">English UI</span><span class="badge badge-green">Foreign Cards</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#07C160"/><ellipse cx="24" cy="30" rx="13" ry="9" fill="white"/><circle cx="19" cy="30" r="2.2" fill="#07C160"/><circle cx="25" cy="30" r="2.2" fill="#07C160"/><ellipse cx="42" cy="36" rx="10" ry="7" fill="rgba(255,255,255,0.75)"/><circle cx="38" cy="36" r="1.8" fill="#07C160"/><circle cx="43" cy="36" r="1.8" fill="#07C160"/></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">2</span></div>
+    <div class="rank-body">
+      <h3>WeChat — 微信</h3>
+      <div class="rank-cn">Wēixìn · weixin.qq.com</div>
+      <p>Everything app — messaging, payments, mini-programs (mini apps within WeChat), business cards, city services. If someone wants to contact you in China, they'll ask for your WeChat ID. Not optional.</p>
+      <div class="badges"><span class="badge badge-green">Essential</span><span class="badge badge-green">English UI</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF6000"/><circle cx="32" cy="27" r="10" fill="white"/><path d="M32 37 Q32 54 32 54 Q24 42 22 37 A13 13 0 1 1 42 37 Q40 42 32 54 Q32 54 32 37Z" fill="white"/><circle cx="32" cy="27" r="5" fill="#FF6000"/></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">3</span></div>
+    <div class="rank-body">
+      <h3>Amap (Gaode Maps) — 高德地图</h3>
+      <div class="rank-cn">Gāodé Dìtú · amap.com</div>
+      <p>Best navigation app for foreigners. English available, offline maps, integrates with Didi. More accurate than Google Maps by design (uses correct Chinese coordinate system). Download before arrival.</p>
+      <div class="badges"><span class="badge badge-green">Essential</span><span class="badge badge-green">English</span><span class="badge badge-green">Offline Maps</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF7A00"/><text x="32" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="38" fill="white" text-anchor="middle">D</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">4</span></div>
+    <div class="rank-body">
+      <h3>Didi — 滴滴出行</h3>
+      <div class="rank-cn">Dīdī Chūxíng · didiglobal.com</div>
+      <p>Ride-hailing for all city transport. International number registration, foreign card via Alipay, full English. Street taxis have virtually disappeared in major cities — Didi is how you get around.</p>
+      <div class="badges"><span class="badge badge-green">Essential</span><span class="badge badge-green">English</span><span class="badge badge-green">Int'l Number</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#333"/><rect x="16" y="22" width="32" height="22" rx="4" fill="none" stroke="white" stroke-width="3"/><rect x="24" y="16" width="16" height="10" rx="4" fill="none" stroke="white" stroke-width="3"/><circle cx="32" cy="33" r="4" fill="white"/></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">5</span></div>
+    <div class="rank-body">
+      <h3>VPN (ExpressVPN / NordVPN)</h3>
+      <div class="rank-cn">翻墙工具 · Install before arrival</div>
+      <p>Without a VPN, you lose all Google services, WhatsApp, Instagram, Gmail, and most Western apps on arrival. <strong>Must download before entering China</strong> — cannot be downloaded once inside.</p>
+      <div class="badges"><span class="badge badge-red">Critical — Pre-install Only</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#007DC3"/><text x="32" y="40" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="white" text-anchor="middle">trip</text><text x="32" y="53" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">.com</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">6</span></div>
+    <div class="rank-body">
+      <h3>Trip.com — 携程</h3>
+      <div class="rank-cn">Xié Chéng · trip.com</div>
+      <p>Book trains, flights, hotels in English with foreign cards. Best alternative to 12306 for high-speed rail. Accepts passport details for train bookings. Customer service in English.</p>
+      <div class="badges"><span class="badge badge-green">English</span><span class="badge badge-green">Foreign Cards</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#2932E1"/><text x="22" y="36" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="white">A</text><text x="36" y="50" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="rgba(255,255,255,0.75)">中</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">7</span></div>
+    <div class="rank-body">
+      <h3>Baidu Translate — 百度翻译</h3>
+      <div class="rank-cn">Bǎidù Fānyì · fanyi.baidu.com</div>
+      <p>Camera translation for menus, signs, and documents. Offline pack available. More accurate than Google Translate for Chinese dialects and regional terms. Works without VPN.</p>
+      <div class="badges"><span class="badge badge-green">Offline Mode</span><span class="badge badge-green">Camera Mode</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FFCC00"/><text x="32" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="36" fill="#1A1A1A" text-anchor="middle">M</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">8</span></div>
+    <div class="rank-body">
+      <h3>Meituan — 美团</h3>
+      <div class="rank-cn">Měitiān · meituan.com</div>
+      <p>Food delivery, restaurant discovery, hotel booking, entertainment tickets. One of the most-used apps in China for daily living. Log in via WeChat.</p>
+      <div class="badges"><span class="badge badge-yellow">Chinese UI</span><span class="badge badge-green">WeChat Login</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#4D6BFE"/><text x="32" y="38" font-family="Arial Black,Arial" font-weight="900" font-size="11" fill="white" text-anchor="middle">Deep</text><text x="32" y="52" font-family="Arial Black,Arial" font-weight="900" font-size="11" fill="rgba(255,255,255,0.75)" text-anchor="middle">Seek</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">9</span></div>
+    <div class="rank-body">
+      <h3>DeepSeek — 深度求索</h3>
+      <div class="rank-cn">Shēndù Qiúsuǒ · deepseek.com</div>
+      <p>Best available AI assistant in China without a VPN. Strong English support. Use for translation help, itinerary planning, reading Chinese text, and information about China. Free and fast.</p>
+      <div class="badges"><span class="badge badge-green">English</span><span class="badge badge-green">Free</span><span class="badge badge-green">No VPN</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#07C160"/><ellipse cx="24" cy="28" rx="13" ry="9" fill="white"/><circle cx="19" cy="28" r="2.2" fill="#07C160"/><circle cx="25" cy="28" r="2.2" fill="#07C160"/><ellipse cx="42" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.75)"/><circle cx="38" cy="34" r="1.8" fill="#07C160"/><circle cx="43" cy="34" r="1.8" fill="#07C160"/><text x="32" y="56" font-family="Arial Black,Arial" font-weight="900" font-size="9" fill="white" text-anchor="middle">PAY</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">10</span></div>
+    <div class="rank-body">
+      <h3>WeChat Pay — 微信支付</h3>
+      <div class="rank-cn">Wēixìn Zhīfù (built into WeChat)</div>
+      <p>Second payment method after Alipay. Set up both — when one fails at a merchant, the other usually works. Removed the "Chinese friend guarantee" requirement in 2026.</p>
+      <div class="badges"><span class="badge badge-green">Foreign Cards</span><span class="badge badge-green">2026 Updated</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#FF2442"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="26" fill="white" text-anchor="middle">RED</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">11</span></div>
+    <div class="rank-body">
+      <h3>Xiaohongshu (RED) — 小红书</h3>
+      <div class="rank-cn">Xiǎo Hóngshū · xiaohongshu.com</div>
+      <p>Instagram meets Yelp. Best app for discovering authentic local restaurants, hidden spots, and real visitor experiences. Search in Chinese for best results. Register with phone number.</p>
+      <div class="badges"><span class="badge badge-yellow">Chinese UI Preferred</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#07C160"/><ellipse cx="24" cy="30" rx="13" ry="9" fill="white"/><circle cx="19" cy="30" r="2.2" fill="#07C160"/><circle cx="25" cy="30" r="2.2" fill="#07C160"/><ellipse cx="42" cy="36" rx="10" ry="7" fill="rgba(255,255,255,0.75)"/><circle cx="38" cy="36" r="1.8" fill="#07C160"/><circle cx="43" cy="36" r="1.8" fill="#07C160"/></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">12</span></div>
+    <div class="rank-body">
+      <h3>WeChat Mini Programs — 小程序</h3>
+      <div class="rank-cn">Xiǎo Chéngxù (within WeChat)</div>
+      <p>Thousands of mini-apps within WeChat: metro ticketing, hospital appointments, museum tickets, government services, bike sharing. Access via WeChat's bottom discovery bar or scan QR codes posted in venues.</p>
+      <div class="badges"><span class="badge badge-green">Built into WeChat</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#6C3AFF"/><text x="32" y="38" font-family="Arial Black,Arial" font-weight="900" font-size="10" fill="white" text-anchor="middle">eSIM</text><text x="32" y="52" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Airalo</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">13</span></div>
+    <div class="rank-body">
+      <h3>Airalo / Nomad (eSIM)</h3>
+      <div class="rank-cn">国际eSIM服务 · airalo.com</div>
+      <p>Buy before departure. Instant activation on landing. For trips under 2 weeks, this is the fastest internet setup — no airport counter queues. Home-country routing often bypasses Great Firewall.</p>
+      <div class="badges"><span class="badge badge-blue">Pre-Purchase Only</span><span class="badge badge-green">English</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#2932E1"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="28" fill="white" text-anchor="middle">百</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">14</span></div>
+    <div class="rank-body">
+      <h3>Baidu Maps — 百度地图</h3>
+      <div class="rank-cn">Bǎidù Dìtú · map.baidu.com</div>
+      <p>Best for indoor navigation in complex venues (airports, malls, hospitals). More detailed POI data than Amap. Use alongside Amap rather than as replacement. Primarily Chinese interface.</p>
+      <div class="badges"><span class="badge badge-yellow">Chinese UI</span><span class="badge badge-green">Best Indoor Maps</span></div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:60px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30" height="30" style="display:block"><rect width="64" height="64" rx="14" fill="#F05A28"/><text x="32" y="44" font-family="Arial Black,Arial" font-weight="900" font-size="22" fill="white" text-anchor="middle">Pleco</text></svg><span style="font-size:1.6rem;font-weight:700;color:rgba(0,0,0,0.08);font-family:'Space Mono',monospace;line-height:1;">15</span></div>
+    <div class="rank-body">
+      <h3>Pleco (Dictionary)</h3>
+      <div class="rank-cn">Pleco Chinese Dictionary · pleco.com</div>
+      <p>The best Chinese-English dictionary app. Hand-writing input for characters you can't type, stroke-order animations, offline usage. Invaluable for decoding signs, menus, and documents. One-time purchase for premium features.</p>
+      <div class="badges"><span class="badge badge-green">English UI</span><span class="badge badge-green">Offline</span><span class="badge badge-green">No VPN</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TROUBLESHOOTING -->
+<section class="section" id="troubleshoot">
+  <div class="section-header">
+    <div class="section-num">15</div>
+    <div class="section-header-inner">
+      <h2>Troubleshooting for Foreigners</h2>
+      <div class="section-cn">外国人常见问题解决</div>
+    </div>
+  </div>
+
+  <div class="trouble-grid">
+    <div class="trouble-card">
+      <h4>💳 Foreign Card Rejected</h4>
+      <p>Your bank is blocking the China transaction, not the app itself. This is the #1 cause of payment failures.</p>
+      <div class="fix">✅ Fix: Call your bank before travel to enable China transactions. Try a secondary card (Visa if Mastercard failed). Use Alipay Tour Pass as fallback. Wise/Revolut cards typically have fewer blocks.</div>
+    </div>
+
+    <div class="trouble-card">
+      <h4>🔵 Alipay Verification Loop</h4>
+      <p>Stuck in identity verification — passport scan not accepted or repeatedly failing.</p>
+      <div class="fix">✅ Fix: Ensure photo is sharp, all 4 corners of passport visible, no glare. Use front camera in good light. If still failing, clear app cache and retry. Contact Alipay support via the Help section with a foreign number.</div>
+    </div>
+
+    <div class="trouble-card warning">
+      <h4>💬 WeChat Account Blocked</h4>
+      <p>WeChat may lock new accounts that add too many strangers too quickly, or that were flagged for unusual activity.</p>
+      <div class="fix">✅ Fix: Ask a known WeChat contact to scan your QR code to vouch for you. Avoid adding strangers in bulk during the first week. Use WeChat through a reliable mobile number, not VPN-masked IP.</div>
+    </div>
+
+    <div class="trouble-card">
+      <h4>📶 No Chinese Phone Number</h4>
+      <p>Some mini-programs and apps require a Chinese number for SMS verification.</p>
+      <div class="fix">✅ Fix: Buy a local SIM card at the airport (China Unicom, ¥200–300). Without it, use WeChat login instead of phone-number registration wherever possible. International eSIM doesn't give you a Chinese number.</div>
+    </div>
+
+    <div class="trouble-card warning">
+      <h4>🚕 Didi Driver Cancels</h4>
+      <p>Driver calls your number but you're on data-only eSIM and can't receive the call. Driver cancels.</p>
+      <div class="fix">✅ Fix: In Didi chat, message "我在这里等您" (I'm waiting here). Send a screenshot of your surroundings. Or ask hotel staff to call the driver. Best long-term fix: buy local SIM with voice calls.</div>
+    </div>
+
+    <div class="trouble-card">
+      <h4>🔒 VPN Not Working</h4>
+      <p>VPN blocked or too slow — happens especially during national holidays and political events.</p>
+      <div class="fix">✅ Fix: Try a different server (Japan, Singapore, or Hong Kong usually most stable for China). Switch VPN protocol (Lightway/WireGuard over OpenVPN). Have 2 VPN apps installed as backup. eSIM is more reliable than VPN for basic unblocking.</div>
+    </div>
+
+    <div class="trouble-card">
+      <h4>🚄 Train Booking Failed</h4>
+      <p>12306 app won't accept passport or foreign card.</p>
+      <div class="fix">✅ Fix: Use Trip.com instead — designed for foreign passport bookings. Alternatively, go to the train station ticket window with your passport and book in person. All major stations have international windows (国际服务窗口).</div>
+    </div>
+
+    <div class="trouble-card danger">
+      <h4>🏨 Hotel Refusing Foreigners</h4>
+      <p>Some hotels — especially budget guesthouses — cannot accept foreign guests due to police registration system access.</p>
+      <div class="fix">✅ Fix: When booking, filter for major chains or properties that specify "外宾接待" (accepts foreign guests). If refused on arrival, show your booking confirmation and ask for manager — they often can process it. Have backup hotel address ready.</div>
+    </div>
+
+    <div class="trouble-card">
+      <h4>🗺️ Address Confusion</h4>
+      <p>Delivery or Didi can't find your location. Chinese addresses are complex.</p>
+      <div class="fix">✅ Fix: Always have your address in Chinese characters. Use Amap to drop a pin and share the pin link (much more precise than typed address). For Didi, adjust the pickup pin manually on the map.</div>
+    </div>
+
+    <div class="trouble-card danger">
+      <h4>🆘 Lost Passport</h4>
+      <p>Most critical emergency in China — your passport is your identity document for everything.</p>
+      <div class="fix">✅ Fix: 1) Contact your embassy/consulate immediately for an Emergency Travel Document. 2) Report to local PSB (police) for a lost document report. 3) Keep a digital scan in cloud storage. 4) Keep a photo copy separate from your actual passport.</div>
+    </div>
+
+    <div class="trouble-card warning">
+      <h4>📱 Lost Phone</h4>
+      <p>Your phone contains all your payments, navigation, and communication. Critical emergency.</p>
+      <div class="fix">✅ Fix: Immediately notify Alipay/WeChat via customer service (have backup email/recovery linked). Use "Find My" or Google Find My Device. File a police report at the nearest PSB. Carry emergency cash (¥500) and your hotel address on paper at all times.</div>
+    </div>
+
+    <div class="trouble-card">
+      <h4>🍔 Food Delivery Not Working</h4>
+      <p>Cannot place order on Meituan/Ele.me — address not recognized or payment failing.</p>
+      <div class="fix">✅ Fix: Use your GPS location for address rather than typing. Pay via Alipay (Ele.me) or WeChat Pay (Meituan). If QR code payment doesn't work, ask hotel concierge to order for you — a common and accepted service.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ EMERGENCY -->
+<section class="section" id="emergency">
+  <div class="section-header">
+    <div class="section-num">16</div>
+    <div class="section-header-inner">
+      <h2>Emergency Contacts &amp; Government Resources</h2>
+      <div class="section-cn">紧急联系与官方资源</div>
+    </div>
+  </div>
+
+  <div class="emergency-grid">
+    <div class="emergency-card">
+      <span class="enum">110</span>
+      <div class="ename">Police</div>
+      <div class="ecn">警察局</div>
+    </div>
+    <div class="emergency-card">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="44" height="44"><rect width="64" height="64" rx="10" fill="#E60026"/><rect x="27" y="14" width="10" height="36" rx="3" fill="white"/><rect x="14" y="27" width="36" height="10" rx="3" fill="white"/></svg>
+        <span class="enum" style="font-size:1.6rem;">120</span></div>
+      <div class="ename">Ambulance</div>
+      <div class="ecn">急救</div>
+    </div>
+    <div class="emergency-card">
+      <span class="enum">119</span>
+      <div class="ename">Fire</div>
+      <div class="ecn">消防</div>
+    </div>
+    <div class="emergency-card">
+      <span class="enum">12308</span>
+      <div class="ename">Tourism Complaint Hotline</div>
+      <div class="ecn">旅游投诉</div>
+    </div>
+    <div class="emergency-card">
+      <span class="enum">12315</span>
+      <div class="ename">Consumer Rights</div>
+      <div class="ecn">消费者权益</div>
+    </div>
+    <div class="emergency-card">
+      <span class="enum">12345</span>
+      <div class="ename">Government Hotline</div>
+      <div class="ecn">政府服务热线</div>
+    </div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:1.5rem;">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Website / App</th>
+          <th>Language</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>NIA (National Immigration Admin)</strong></td>
+          <td>nia.gov.cn</td>
+          <td>Chinese + English</td>
+          <td>Visa, residency, registration queries</td>
+        </tr>
+        <tr>
+          <td><strong>China Customs Declaration</strong></td>
+          <td>海关总署 App</td>
+          <td>Chinese + English</td>
+          <td>File digital customs on arrival</td>
+        </tr>
+        <tr>
+          <td><strong>Beijing Emergency Translation</strong></td>
+          <td>+86 10-65322255</td>
+          <td>Multiple Languages</td>
+          <td>24-hour emergency translation for foreigners</td>
+        </tr>
+        <tr>
+          <td><strong>Your Embassy in China</strong></td>
+          <td>Check before travel</td>
+          <td>Home country language</td>
+          <td>Lost passport, legal emergency, arrest</td>
+        </tr>
+        <tr>
+          <td><strong>Hospital Emergency</strong></td>
+          <td>Call 120</td>
+          <td>Chinese (some English)</td>
+          <td>International hospitals in major cities have English-speaking staff</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MOFA block removed -->
+  <div style="display:none">
+    <div class="mofa-header">
+      <div class="mofa-flag">🇦🇪</div>
+      <div class="mofa-header-text">
+        <div class="mofa-title-en">UAE MINISTRY OF FOREIGN AFFAIRS — وزارة الخارجية الإماراتية</div>
+        <div class="mofa-title-main">رسالة رسمية للمواطنين الإماراتيين المسافرين إلى الصين</div>
+      </div>
+    </div>
+
+    <!-- Single unified body — Arabic official message on right, EN translation on left -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0;">
+
+      <!-- === ARABIC OFFICIAL MESSAGE (exact text) === -->
+      <div style="padding:1.8rem 2rem; border-left:1px solid rgba(255,255,255,0.1); direction:rtl; text-align:right; font-family:'Noto Kufi Arabic',sans-serif;">
+
+        <div style="font-size:1rem; font-weight:700; color:#FFD700; margin-bottom:1.2rem; letter-spacing:0.5px;">
+          الرسالة الرسمية
+        </div>
+
+        <div style="font-size:0.92rem; color:rgba(255,255,255,0.92); line-height:2; margin-bottom:1.4rem;">
+          الحمدلله على سلامة الوصول مع تمنياتنا لكم برحلة سعيدة،<br>
+          يسعدنا تواصلكم معنا على الأرقام التالية:
+        </div>
+
+        <!-- Contacts -->
+        <div style="background:rgba(0,0,0,0.25); padding:1rem 1.2rem; margin-bottom:1.4rem; border-right:3px solid #FFD700;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">الاستفسارات</span>
+            <a href="tel:+97180044444" dir="ltr" style="font-family:'Space Mono',monospace; font-size:1rem; color:#FFD700; font-weight:700; text-decoration:none; letter-spacing:1px; unicode-bidi:embed;">+97180044444</a>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0;">
+            <span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">الحالات الطارئة</span>
+            <a href="tel:+97180024" dir="ltr" style="font-family:'Space Mono',monospace; font-size:1rem; color:#FF6B6B; font-weight:700; text-decoration:none; letter-spacing:1px; unicode-bidi:embed;">+97180024</a>
+          </div>
+        </div>
+
+        <!-- Body text -->
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.82); line-height:2; margin-bottom:1.4rem;">
+          ولكي نبقى الى جانبكم نرجو منكم التسجيل في خدمة تواجدي:
+        </div>
+
+        <!-- Twajudi link -->
+        <a href="https://www.mofa.gov.ae/ar-ae/Services/Twajudi" target="_blank"
+           style="display:flex; align-items:center; justify-content:flex-end; gap:0.6rem; background:rgba(255,215,0,0.12); border:1px solid rgba(255,215,0,0.4); color:#FFD700; text-decoration:none; padding:0.7rem 1rem; margin-bottom:0.8rem; font-size:0.82rem; font-family:'Noto Kufi Arabic',sans-serif; font-weight:600; transition:all 0.2s;">
+          خدمة تواجدي — سجّل الآن 📍
+        </a>
+
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.82); line-height:2; margin-bottom:0.8rem;">
+          لضمان رحلة ميسرة وآمنة اطلع على إرشادات السفر الخاصة بوجهتك عبر الرابط:
+        </div>
+
+        <!-- Travel advisory link -->
+        <a href="https://www.mofa.gov.ae/travel-updates?code=CHN" target="_blank"
+           style="display:flex; align-items:center; justify-content:flex-end; gap:0.6rem; background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.25); color:rgba(255,215,0,0.85); text-decoration:none; padding:0.7rem 1rem; margin-bottom:1.4rem; font-size:0.8rem; font-family:'Noto Kufi Arabic',sans-serif; transition:all 0.2s;">
+          إرشادات السفر إلى الصين 🌐
+        </a>
+
+        <!-- Sign-off -->
+        <div style="font-size:0.88rem; color:rgba(255,255,255,0.5); line-height:1.9; border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem;">
+          دمتم بحفظ الله ورعايته<br>
+          <strong style="color:rgba(255,255,255,0.7);">وزارة الخارجية</strong>
+        </div>
+      </div>
+
+      <!-- === ENGLISH TRANSLATION === -->
+      <div style="padding:1.8rem 2rem;">
+
+        <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:2.5px; color:#FFD700; font-weight:600; margin-bottom:1.2rem;">
+          Official Message — English Translation
+        </div>
+
+        <div style="font-size:0.88rem; color:rgba(255,255,255,0.88); line-height:1.85; margin-bottom:1.4rem;">
+          Praise be to God for your safe arrival. We wish you a happy and pleasant journey.<br>
+          We are pleased to be at your service at the following numbers:
+        </div>
+
+        <!-- Contacts EN -->
+        <div style="background:rgba(0,0,0,0.25); padding:1rem 1.2rem; margin-bottom:1.4rem; border-left:3px solid #FFD700;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:0.75rem; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:1px;">Enquiries</span>
+            <a href="tel:+97180044444" style="font-family:'Space Mono',monospace; font-size:1rem; color:#FFD700; font-weight:700; text-decoration:none; letter-spacing:1px;">+97180044444</a>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0;">
+            <span style="font-size:0.75rem; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:1px;">Emergencies</span>
+            <a href="tel:+97180024" style="font-family:'Space Mono',monospace; font-size:1rem; color:#FF6B6B; font-weight:700; text-decoration:none; letter-spacing:1px;">+97180024</a>
+          </div>
+        </div>
+
+        <!-- Body EN -->
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.78); line-height:1.85; margin-bottom:1rem;">
+          To stay by your side, please register on the <strong style="color:#FFD700;">Twajudi</strong> service so we can reach you in emergencies:
+        </div>
+
+        <!-- Twajudi EN -->
+        <a href="https://www.mofa.gov.ae/ar-ae/Services/Twajudi" target="_blank"
+           style="display:flex; align-items:center; gap:0.6rem; background:rgba(255,215,0,0.12); border:1px solid rgba(255,215,0,0.4); color:#FFD700; text-decoration:none; padding:0.7rem 1rem; margin-bottom:0.8rem; font-size:0.82rem; font-weight:600; transition:all 0.2s;">
+          📍 Register on Twajudi Service
+        </a>
+
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.78); line-height:1.85; margin-bottom:0.8rem;">
+          For a smooth and safe trip, check the travel advisories for your destination:
+        </div>
+
+        <!-- Advisory EN -->
+        <a href="https://www.mofa.gov.ae/travel-updates?code=CHN" target="_blank"
+           style="display:flex; align-items:center; gap:0.6rem; background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.25); color:rgba(255,215,0,0.85); text-decoration:none; padding:0.7rem 1rem; margin-bottom:1.4rem; font-size:0.8rem; transition:all 0.2s;">
+          🌐 China Travel Advisories — mofa.gov.ae
+        </a>
+
+        <!-- Sign-off EN -->
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.45); line-height:1.85; border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem;">
+          May God keep you safe and well.<br>
+          <strong style="color:rgba(255,255,255,0.65);">UAE Ministry of Foreign Affairs</strong>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ Before You Arrive</div>
+    <span>Find your home country's embassy address and emergency phone number in China <strong>before you travel</strong>. Save it in your phone and on paper. In Beijing, the Embassy District (使馆区) is in Sanlitun. Shanghai and other cities have consulates. Use VPN to access your home country embassy website from China.</span>
+  </div>
+</section>
+
+<!-- ============================================================ ETIQUETTE -->
+<section class="section" id="etiquette">
+  <div class="section-header">
+    <div class="section-num">17</div>
+    <div class="section-header-inner">
+      <h2>Digital Etiquette &amp; Cultural Notes</h2>
+      <div class="section-cn">数字礼仪与文化注意事项</div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon">📱</span>
+      <h3>QR Code Culture</h3>
+      <p>QR codes replace almost everything: menus, business cards, payments, locker access, social media follows, event check-ins, government forms. <strong>Always scan QR codes with WeChat</strong> — it's the universal scanner. Have your WeChat QR code ready when meeting Chinese contacts.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">💬</span>
+      <h3>WeChat is Work &amp; Life</h3>
+      <p>In China, WeChat is used for business communication the way email and Slack are in the West. Colleagues, clients, and service providers communicate via WeChat. Respond to WeChat messages promptly in professional contexts. Voice messages (语音消息) are very common — don't be surprised to receive them.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🔇</span>
+      <h3>Phone Etiquette</h3>
+      <p>Chinese people frequently use their phone speaker in public (calls, videos, voice messages). This is culturally normal, not rude. In restaurants, on trains, in waiting areas — don't be alarmed by loud phone use. You're expected to tolerate it; don't ask them to stop.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">💴</span>
+      <h3>Payment Etiquette</h3>
+      <p>Presenting cash at a small street stall can cause embarrassment as many no longer have change. Always use mobile QR payment where possible. At restaurants, it's normal to fight over the bill (争着付钱) — this is a genuine cultural expression of generosity, not theatre.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🔴</span>
+      <h3>Super-App Ecosystem</h3>
+      <p>WeChat alone contains thousands of mini-programs covering banking, healthcare, government services, and retail. The concept of multiple single-purpose apps barely exists in China — everything flows through WeChat or Alipay. Embrace this once you understand it, it's more powerful than any Western app ecosystem.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🎋</span>
+      <h3>Privacy Expectations</h3>
+      <p>CCTV cameras are ubiquitous in Chinese cities. Your movements, purchases, and accommodation are registered with authorities automatically. This is simply the reality of living in China. Avoid discussing sensitive political topics — online or in public. Focus on your purpose of travel.</p>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">ℹ️ Final Note for Visitors</div>
+    <span>China's digital infrastructure is not designed against foreigners — it's designed for Chinese citizens first. The learning curve is real but short. Most foreigners who struggle did not prepare their payments and apps before arrival. With proper preparation, modern China is remarkably easy to navigate — faster transportation, better food discovery, and more seamless daily transactions than most Western countries.</span>
+  </div>
+
+
+
+
+</section>
+
+<!-- ============================================================ GUIDE HUB -->
+<div class="guide-hub" id="more-guides">
+  <div class="guide-hub-header">
+    <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:3px; color:var(--muted); margin-bottom:0.5rem;">18 — More Guides</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:0.2rem;">More Guides Coming Soon</h2>
+    <div style="font-family:'Noto Serif SC',serif; font-size:0.78rem; color:var(--muted); letter-spacing:2px;">更多指南 · Gèng Duō Zhǐnán</div>
+  </div>
+
+  <div class="guide-hub-grid">
+
+    <!-- Chinese Patent Medicines — LIVE -->
+    <a href="medicines.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <circle cx="32" cy="32" r="30" fill="#E8F5E9"/>
+          <path d="M32 12 C28 16 18 20 18 30 C18 42 32 52 32 52 C32 52 46 42 46 30 C46 20 36 16 32 12Z" fill="#4CAF50" opacity="0.8"/>
+          <path d="M32 18 C30 22 24 25 24 32 C24 40 32 47 32 47 C32 47 40 40 40 32 C40 25 34 22 32 18Z" fill="#2E7D32"/>
+          <line x1="32" y1="18" x2="32" y2="47" stroke="#A5D6A7" stroke-width="1.5"/>
+          <line x1="26" y1="28" x2="38" y2="28" stroke="#A5D6A7" stroke-width="1"/>
+          <line x1="24" y1="35" x2="40" y2="35" stroke="#A5D6A7" stroke-width="1"/>
+        </svg>
+      </div>
+      <h4>Chinese Patent Medicines</h4>
+      <p>OTC herbal remedies for cold &amp; fever — adults and children. TCM theory, symptom lookup, pharmacy phrases.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+    <!-- Beijing -->
+    <a href="beijing.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <rect width="64" height="64" rx="32" fill="#FFF3E0"/>
+          <!-- Temple of Heaven simplified -->
+          <rect x="20" y="44" width="24" height="8" fill="#8D6E63"/>
+          <rect x="22" y="36" width="20" height="10" fill="#A1887F"/>
+          <rect x="25" y="28" width="14" height="10" fill="#BCAAA4"/>
+          <rect x="28" y="22" width="8" height="8" fill="#D7CCC8"/>
+          <!-- curved roofs -->
+          <path d="M18 44 Q32 38 46 44" fill="#C8A97A" stroke="none"/>
+          <path d="M20 36 Q32 30 44 36" fill="#D4AA70" stroke="none"/>
+          <path d="M23 28 Q32 23 41 28" fill="#DEB887" stroke="none"/>
+          <path d="M26 22 Q32 18 38 22" fill="#E8C98A" stroke="none"/>
+          <!-- top finial -->
+          <circle cx="32" cy="17" r="3" fill="#C8A97A"/>
+          <line x1="32" y1="14" x2="32" y2="10" stroke="#C8A97A" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h4>Beijing Guide</h4>
+      <p>What makes Beijing unique, must-see areas, local transport, and the best international, Arabic, and Indian restaurants.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+    <!-- Shanghai -->
+    <a href="shanghai.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <rect width="64" height="64" rx="32" fill="#E3F2FD"/>
+          <!-- Skyline silhouette -->
+          <!-- Oriental Pearl Tower -->
+          <rect x="29" y="20" width="6" height="30" fill="#90CAF9"/>
+          <circle cx="32" cy="25" r="5" fill="#64B5F6"/>
+          <circle cx="32" cy="38" r="8" fill="#42A5F5"/>
+          <circle cx="32" cy="38" r="5" fill="#1E88E5"/>
+          <!-- Buildings -->
+          <rect x="10" y="34" width="8" height="16" fill="#78909C"/>
+          <rect x="20" y="30" width="7" height="20" fill="#90A4AE"/>
+          <rect x="38" y="32" width="7" height="18" fill="#90A4AE"/>
+          <rect x="47" y="36" width="8" height="14" fill="#78909C"/>
+          <!-- Ground -->
+          <rect x="8" y="50" width="48" height="4" rx="1" fill="#B0BEC5"/>
+        </svg>
+      </div>
+      <h4>Shanghai Guide</h4>
+      <p>The Bund, expat districts, halal dining, South Asian restaurants, and foreigner-friendly neighbourhoods.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+    <!-- Guangzhou -->
+    <a href="guangzhou.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <rect width="64" height="64" rx="32" fill="#FCE4EC"/>
+          <!-- Canton Tower simplified -->
+          <path d="M28 52 L26 20 L38 20 L36 52Z" fill="#F48FB1" opacity="0.5"/>
+          <path d="M30 52 L29 24 L35 24 L34 52Z" fill="#E91E63"/>
+          <!-- Lattice lines -->
+          <line x1="27" y1="28" x2="37" y2="32" stroke="#F06292" stroke-width="1"/>
+          <line x1="27" y1="34" x2="37" y2="38" stroke="#F06292" stroke-width="1"/>
+          <line x1="27" y1="40" x2="37" y2="44" stroke="#F06292" stroke-width="1"/>
+          <line x1="37" y1="28" x2="27" y2="32" stroke="#F06292" stroke-width="1"/>
+          <line x1="37" y1="34" x2="27" y2="38" stroke="#F06292" stroke-width="1"/>
+          <line x1="37" y1="40" x2="27" y2="44" stroke="#F06292" stroke-width="1"/>
+          <!-- Top sphere -->
+          <circle cx="32" cy="18" r="5" fill="#E91E63"/>
+          <circle cx="32" cy="18" r="3" fill="#F48FB1"/>
+          <!-- Flower petals -->
+          <circle cx="20" cy="48" r="5" fill="#F48FB1" opacity="0.6"/>
+          <circle cx="44" cy="48" r="5" fill="#F48FB1" opacity="0.6"/>
+          <circle cx="32" cy="52" r="4" fill="#F48FB1" opacity="0.5"/>
+        </svg>
+      </div>
+      <h4>Guangzhou Guide</h4>
+      <p>Canton cuisine, Little Africa, Arab Street (小北), African-run restaurants, and city transport.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+    <!-- Arabic Restaurants -->
+    <a href="arabic.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <rect width="64" height="64" rx="32" fill="#FFF8E1"/>
+          <!-- Mosque dome and minarets -->
+          <!-- Main dome -->
+          <path d="M18 38 Q32 18 46 38Z" fill="#FFB300"/>
+          <rect x="18" y="38" width="28" height="14" fill="#FFA000"/>
+          <!-- Door arch -->
+          <path d="M27 52 L27 44 Q32 40 37 44 L37 52Z" fill="#FF8F00"/>
+          <!-- Left minaret -->
+          <rect x="10" y="30" width="6" height="22" fill="#FFB300"/>
+          <path d="M10 30 Q13 24 16 30Z" fill="#FFA000"/>
+          <circle cx="13" cy="24" r="2" fill="#FFB300"/>
+          <!-- Right minaret -->
+          <rect x="48" y="30" width="6" height="22" fill="#FFB300"/>
+          <path d="M48 30 Q51 24 54 30Z" fill="#FFA000"/>
+          <circle cx="51" cy="24" r="2" fill="#FFB300"/>
+          <!-- Crescent on dome -->
+          <path d="M30 22 A4 4 0 1 1 34 22 A2.5 2.5 0 1 0 30 22Z" fill="#FFF8E1"/>
+        </svg>
+      </div>
+      <h4>Arabic Restaurants</h4>
+      <p>Halal dining across China's major cities — Chinese halal, Middle Eastern, Yemeni, Lebanese, and Egyptian cuisines by city.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+    <!-- Indian Restaurants -->
+    <a href="indian.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <rect width="64" height="64" rx="32" fill="#FFF3E0"/>
+          <!-- Curry bowl -->
+          <ellipse cx="32" cy="42" rx="18" ry="6" fill="#E65100"/>
+          <path d="M14 38 Q14 50 32 50 Q50 50 50 38 Q50 32 32 32 Q14 32 14 38Z" fill="#EF6C00"/>
+          <ellipse cx="32" cy="34" rx="18" ry="6" fill="#FF8F00"/>
+          <!-- Steam lines -->
+          <path d="M24 28 Q22 24 24 20 Q26 16 24 12" stroke="#FFCC80" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M32 26 Q30 22 32 18 Q34 14 32 10" stroke="#FFCC80" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M40 28 Q38 24 40 20 Q42 16 40 12" stroke="#FFCC80" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Spice dots on top -->
+          <circle cx="26" cy="33" r="2" fill="#BF360C"/>
+          <circle cx="32" cy="31" r="2.5" fill="#BF360C"/>
+          <circle cx="38" cy="33" r="2" fill="#BF360C"/>
+        </svg>
+      </div>
+      <h4>Indian Restaurants</h4>
+      <p>Best Indian and South Asian restaurants in Beijing, Shanghai, Shenzhen, and Guangzhou — including vegetarian options.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+    <!-- International Dining -->
+    <a href="intl.html" class="guide-hub-card live">
+      <div class="hub-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52">
+          <circle cx="32" cy="32" r="28" fill="#E3F2FD"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#90CAF9" stroke-width="1.5"/>
+          <!-- Globe grid lines -->
+          <ellipse cx="32" cy="32" rx="14" ry="28" fill="none" stroke="#90CAF9" stroke-width="1"/>
+          <ellipse cx="32" cy="32" rx="22" ry="28" fill="none" stroke="#90CAF9" stroke-width="0.5"/>
+          <line x1="4" y1="32" x2="60" y2="32" stroke="#90CAF9" stroke-width="1"/>
+          <ellipse cx="32" cy="32" rx="28" ry="10" fill="none" stroke="#90CAF9" stroke-width="0.8"/>
+          <ellipse cx="32" cy="32" rx="28" ry="19" fill="none" stroke="#90CAF9" stroke-width="0.5"/>
+          <!-- Continents rough shapes -->
+          <path d="M20 24 L28 22 L32 26 L28 30 L22 30Z" fill="#81C784" opacity="0.7"/>
+          <path d="M34 20 L42 22 L44 28 L40 30 L36 28Z" fill="#81C784" opacity="0.7"/>
+          <path d="M24 34 L30 33 L32 38 L28 40 L24 38Z" fill="#A5D6A7" opacity="0.7"/>
+          <path d="M36 36 L42 34 L44 40 L38 42Z" fill="#A5D6A7" opacity="0.6"/>
+          <path d="M14 30 L18 28 L20 32 L16 34Z" fill="#81C784" opacity="0.5"/>
+        </svg>
+      </div>
+      <h4>International Dining</h4>
+      <p>Western, European, Turkish, Persian, Japanese, Korean, and Southeast Asian dining for foreign visitors in major cities.</p>
+      <span class="hub-badge live-badge">✓ Available Now</span>
+    </a>
+
+  </div>
+</div>
+
+<div style="padding:0; margin:0;">
+  <div style="margin-top:0; padding:2rem; background:var(--charcoal); color:rgba(255,255,255,0.6); font-size:0.75rem; text-align:center;">
+    <div style="font-family:'Noto Serif SC',serif; font-size:1.5rem; color:var(--gold); letter-spacing:4px; margin-bottom:0.5rem;">一路平安</div>
+    <div style="letter-spacing:2px; font-size:0.65rem; text-transform:uppercase; margin-bottom:0.8rem;">Safe Travels · Yīlù Píng'ān</div>
+    <div>China Digital Survival Guide 2026 — Researched from Chinese-language sources, official portals, and updated traveler experiences.</div>
+    <div style="margin-top:0.5rem; color:rgba(255,255,255,0.3);">Information verified as of May 2026. Policies, apps, and regulations change frequently — always cross-check with official sources before travel.</div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// SCROLL NAV HIGHLIGHT
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === '#' + current) item.classList.add('active');
+  });
+});
+
+// CHECKLIST TOGGLE
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  if (el.classList.contains('checked')) {
+    el.textContent = '\u2713';
+    el.parentElement.style.opacity = '0.55';
+    el.parentElement.style.textDecoration = 'line-through';
+  } else {
+    el.textContent = '';
+    el.parentElement.style.opacity = '1';
+    el.parentElement.style.textDecoration = 'none';
+  }
+}
+</script>
+
+</body>
+</html>

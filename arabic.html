@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arabic Restaurants in China — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --gold-lt: #F0C86E; --ink: #1A1008;
+    --parchment: #FAF6EE; --warm: #FFFDF8; --charcoal: #2C2416;
+    --muted: #7A6A58; --border: #E8DFD0; --red: #C0392B;
+    --green: #27AE60; --blue: #2980B9; --warn: #E67E22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  /* SIDEBAR */
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+  .nav-item.soon{opacity:.35;pointer-events:none}
+  .soon-tag{font-size:.5rem;background:rgba(212,168,83,0.15);color:var(--gold);padding:.1rem .35rem;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* MAIN */
+  #main{margin-left:260px;min-height:100vh}
+
+  /* HERO */
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75;margin-bottom:1.5rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+  .chip{font-size:.65rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:.25rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+  /* SECTIONS */
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+  .card{background:var(--warm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.4rem;transition:box-shadow .2s;position:relative}
+  .section:nth-child(even) .card{background:var(--parchment)}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+  .card-num{position:absolute;top:.9rem;right:1rem;font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:rgba(0,0,0,0.05);line-height:1}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;padding-right:2rem}
+  .card-sub{font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:.7rem}
+  .card p{font-size:.82rem;color:#4a3f35;line-height:1.65}
+  .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .5rem}
+  .tag{font-size:.62rem;padding:.18rem .5rem;border-radius:2px;font-weight:500;background:rgba(212,168,83,0.1);color:#7A5820;border:1px solid rgba(212,168,83,0.2)}
+  .tag.r{background:rgba(192,57,43,0.08);color:#8B1A10;border-color:rgba(192,57,43,0.18)}
+  .tag.g{background:rgba(39,174,96,0.08);color:#1a6b3c;border-color:rgba(39,174,96,0.18)}
+  .tag.b{background:rgba(41,128,185,0.08);color:#1a4a70;border-color:rgba(41,128,185,0.18)}
+
+  /* CALLOUTS */
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:var(--warn);color:#5a3800}
+  .callout.warn .callout-title{color:var(--warn)}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.gold{background:#fdf8ee;border-color:var(--gold);color:#4a3000}
+  .callout.gold .callout-title{color:var(--gold)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .tbl tr:hover td{background:rgba(212,168,83,0.04)}
+
+  /* COMING SOON PLACEHOLDER */
+  .placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;color:var(--muted);margin:1.5rem 0}
+  .placeholder h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem;color:var(--ink);opacity:.5}
+  .placeholder p{font-size:.8rem;line-height:1.6;max-width:400px;margin:0 auto .8rem;opacity:.6}
+  .placeholder-badge{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);padding:.2rem .7rem;border-radius:2px;font-weight:600}
+
+  /* FOOTER */
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.hero,.section{padding:2.5rem 2rem}.hero h1{font-size:2.2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">حلال</span>
+    <span class="sb-en">Arabic Restaurants in China</span>
+    <div class="sb-sub">Halal Dining Across China</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item " href="index.html">📱 Digital Survival Guide</a>
+<a class="nav-item " href="medicines.html">🌿 Patent Medicines</a>
+<a class="nav-item " href="beijing.html">🏯 Beijing Guide</a>
+<a class="nav-item " href="shanghai.html">🏙 Shanghai Guide</a>
+<a class="nav-item " href="guangzhou.html">🌺 Guangzhou Guide</a>
+<a class="nav-item active" href="arabic.html">🕌 Arabic Restaurants</a>
+<a class="nav-item " href="indian.html">🍛 Indian Restaurants</a>
+<a class="nav-item " href="intl.html">🌍 International Dining</a>
+
+  </div>
+</nav>
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">清真</div>
+  <div class="hero-tag">餐厅指南 · Dining Guide · 2026</div>
+  <div class="hero-cn">阿拉伯餐厅指南</div>
+  <h1>Arabic &amp; Halal <em>Dining in China</em></h1>
+  <p class="hero-sub">A comprehensive guide to Arabic, Middle Eastern, and halal-certified dining across China's major cities. From Guangzhou's authentic Yemeni restaurants to Beijing's Muslim quarter street food.</p>
+  <div class="hero-chips">
+    <span class="chip">Halal Certified</span><span class="chip">Arabic Cuisine</span><span class="chip">Middle Eastern</span><span class="chip">Chinese Halal</span><span class="chip">By City</span>
+  </div>
+</div>
+
+<section class="section" id="how-to-find">
+  <div class="sec-hdr"><div class="sec-num">01</div><div><h2>How to Find Halal Food in China</h2><div class="sec-cn">如何在中国找到清真食物</div></div></section>
+  <div class="callout gold"><div class="callout-title">🕌 The 清真 Symbol</div>Look for the Arabic calligraphy <strong>حلال</strong> or the Chinese characters <strong>清真</strong> (qīngzhēn) on restaurant fronts, menus, and packaging. This indicates halal-certified food. Chinese Muslim (Hui) restaurants use this symbol consistently and are regulated by the China Islamic Association.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Arabic on Dianping</h3><div class="card-sub">大众点评</div><p>Search <strong>清真餐厅</strong> (halal restaurant) or <strong>阿拉伯餐厅</strong> (Arabic restaurant) on Dianping (大众点评) — China's Yelp. Filter by your city. User reviews include photos of the 清真 certificate. Available on WeChat mini-program.</p></div>
+    <div class="card"><h3>Search on Amap</h3><div class="card-sub">高德地图</div><p>Open Amap and search <strong>清真</strong> near your location. Drops pins for all halal-certified restaurants nearby. Includes hours, photos, and navigation. The fastest way to find halal food anywhere in China.</p></div>
+    <div class="card"><h3>Meituan Delivery</h3><div class="card-sub">美团外卖</div><p>Meituan and Ele.me both allow filtering delivery restaurants by <strong>清真</strong>. In major cities, multiple halal restaurants offer delivery. Useful when you don't want to go out or can't find nearby options.</p></div>
+    <div class="card"><h3>Hotel Concierge</h3><div class="card-sub">酒店礼宾部</div><p>In major international hotels, the concierge can recommend halal restaurants. In Guangzhou, Beijing, and Shanghai, this is now a standard request. Specify Arabic-style (阿拉伯风味) vs Chinese Muslim halal (清真).</p></div>
+  </div>
+</section>
+
+<section class="section" id="guangzhou">
+  <div class="sec-hdr"><div class="sec-num">02</div><div><h2>Guangzhou — Best City for Arabic Dining</h2><div class="sec-cn">广州 — 最佳阿拉伯美食城市</div></div></div>
+  <div class="callout tip"><div class="callout-title">✅ Guangzhou Has the Most Authentic Arabic Food in China</div>Xiaobei Road (小北路) in Guangzhou has the most authentic, concentrated Arabic restaurant scene in mainland China. Run by Arab nationals — mostly Yemeni, Egyptian, Moroccan, and Levantine — this is genuine Arab cuisine, not Chinese-adapted.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Xiaobei Road (小北路)</h3><div class="card-sub">Yuexiu District · Metro: Xiaobei</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag g">Top Pick</span></div><p>The core of Guangzhou's Arab quarter. Dozens of restaurants serving Yemeni mandi, Egyptian koshari, Lebanese mezze, Moroccan tagine, and more. Arabic signage everywhere. Best visited 12pm–2pm and 7pm–11pm.</p></div>
+    <div class="card"><h3>Yemeni Rice Houses</h3><div class="card-sub">也门大米餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Yemeni</span></div><p>Guangzhou has the world's largest concentration of Yemeni restaurants outside Yemen. Whole roasted lamb over saffron rice (مندي), slow-cooked stew (فهسة), and Yemeni flatbreads. Budget ¥50–80 per person for a feast.</p></div>
+    <div class="card"><h3>Dengfeng Area</h3><div class="card-sub">登丰路周边</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Diverse</span></div><p>Adjacent to Xiaobei, Dengfeng has more halal options including Somali, Nigerian, and Pakistani restaurants serving the African-Arab-South Asian trading community. Less touristy, very authentic.</p></div>
+    <div class="card"><h3>Huanshi West Road</h3><div class="card-sub">环市西路</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Lebanese</span></div><p>Several Lebanese and Syrian restaurants on and around Huanshi West Road. More upscale than Xiaobei options, with private dining rooms suitable for business entertainment. Accepts WeChat Pay and some cards.</p></div>
+  </div>
+</section>
+
+<section class="section" id="beijing">
+  <div class="sec-hdr"><div class="sec-num">03</div><div><h2>Beijing Halal &amp; Arabic Dining</h2><div class="sec-cn">北京清真及阿拉伯餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Niujie Street (牛街)</h3><div class="card-sub">Xicheng District · Metro: Changchunjie</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag g">Historic</span></div><p>Beijing's 1,000-year-old Muslim quarter. Chinese Muslim (Hui) street food — lamb skewers, sesame flatbreads (烧饼), beef offal soup, and Muslim snacks. Authentic, affordable, and a genuine local experience.</p></div>
+    <div class="card"><h3>Sanlitun Embassy Area</h3><div class="card-sub">三里屯使馆区</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag b">Diplomatic</span></div><p>Sanlitun has a cluster of Arabic and Lebanese restaurants near the Arab embassies. Catering to diplomats and expats. More expensive than Guangzhou options but convenient for central Beijing visitors.</p></div>
+    <div class="card"><h3>Xinjiang Restaurants</h3><div class="card-sub">新疆清真餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Central Asian</span></div><p>Widespread across Beijing. Lamb noodles (新疆拌面), pilaf (抓饭), naan (馕), and grilled skewers (烤肉). Search 新疆餐厅 on Amap. The Weigongcun (魏公村) area near the university district has several good options.</p></div>
+  </div>
+</section>
+
+<section class="section" id="shanghai">
+  <div class="sec-hdr"><div class="sec-num">04</div><div><h2>Shanghai Halal &amp; Arabic Dining</h2><div class="sec-cn">上海清真及阿拉伯餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Jing'an District Arabic</h3><div class="card-sub">静安区阿拉伯餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag b">Expat</span></div><p>Several Arabic and Lebanese restaurants in Jing'an serve the Middle Eastern business and diplomatic community. Higher price point but good quality. Convenient for visitors staying in Jing'an hotels.</p></div>
+    <div class="card"><h3>Shanghai Xiaobei-Style</h3><div class="card-sub">上海清真小吃</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Xinjiang</span></div><p>Shanghai lacks a dedicated Arab quarter like Guangzhou, but Xinjiang-style halal restaurants are widely distributed. Search 清真 on Amap for your neighbourhood. Quality and authenticity vary.</p></div>
+  </div>
+  <div class="placeholder">
+    <h3>Individual Restaurant Listings</h3>
+    <p>Specific restaurant names, addresses, photos, price ranges, hours, and booking methods will be added as this guide is updated.</p>
+    <span class="placeholder-badge">Being Researched</span>
+  </div>
+</section>
+
+<section class="section" id="phrases" style="border-bottom:none">
+  <div class="sec-hdr"><div class="sec-num">05</div><div><h2>Useful Phrases for Halal Dining</h2><div class="sec-cn">清真饮食常用语</div></div></div>
+  <div style="max-width:700px">
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">这个是清真的吗？</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Zhège shì qīngzhēn de ma?</div>
+      <div>Is this halal?</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">有没有清真菜单？</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Yǒu méiyǒu qīngzhēn càidān?</div>
+      <div>Do you have a halal menu?</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">不要猪肉</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Bùyào zhūròu</div>
+      <div>No pork please</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">不要酒精</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Bùyào jiǔjīng</div>
+      <div>No alcohol please</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">附近有清真餐厅吗？</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Fùjìn yǒu qīngzhēn cāntīng ma?</div>
+      <div>Is there a halal restaurant nearby?</div>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">حلال</div>
+    <div style="margin-top:.3rem">Arabic Restaurants in China · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Information current as of May 2026. Always verify locally.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+<script>
+const secs = document.querySelectorAll('section[id]');
+const items = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  items.forEach(i => { i.classList.remove('active'); if (i.getAttribute('href') === '#' + cur) i.classList.add('active'); });
+});
+</script>
+</body>
+</html>

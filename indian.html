@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Restaurants in China — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --gold-lt: #F0C86E; --ink: #1A1008;
+    --parchment: #FAF6EE; --warm: #FFFDF8; --charcoal: #2C2416;
+    --muted: #7A6A58; --border: #E8DFD0; --red: #C0392B;
+    --green: #27AE60; --blue: #2980B9; --warn: #E67E22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  /* SIDEBAR */
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+  .nav-item.soon{opacity:.35;pointer-events:none}
+  .soon-tag{font-size:.5rem;background:rgba(212,168,83,0.15);color:var(--gold);padding:.1rem .35rem;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* MAIN */
+  #main{margin-left:260px;min-height:100vh}
+
+  /* HERO */
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75;margin-bottom:1.5rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+  .chip{font-size:.65rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:.25rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+  /* SECTIONS */
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+  .card{background:var(--warm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.4rem;transition:box-shadow .2s;position:relative}
+  .section:nth-child(even) .card{background:var(--parchment)}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+  .card-num{position:absolute;top:.9rem;right:1rem;font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:rgba(0,0,0,0.05);line-height:1}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;padding-right:2rem}
+  .card-sub{font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:.7rem}
+  .card p{font-size:.82rem;color:#4a3f35;line-height:1.65}
+  .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .5rem}
+  .tag{font-size:.62rem;padding:.18rem .5rem;border-radius:2px;font-weight:500;background:rgba(212,168,83,0.1);color:#7A5820;border:1px solid rgba(212,168,83,0.2)}
+  .tag.r{background:rgba(192,57,43,0.08);color:#8B1A10;border-color:rgba(192,57,43,0.18)}
+  .tag.g{background:rgba(39,174,96,0.08);color:#1a6b3c;border-color:rgba(39,174,96,0.18)}
+  .tag.b{background:rgba(41,128,185,0.08);color:#1a4a70;border-color:rgba(41,128,185,0.18)}
+
+  /* CALLOUTS */
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:var(--warn);color:#5a3800}
+  .callout.warn .callout-title{color:var(--warn)}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.gold{background:#fdf8ee;border-color:var(--gold);color:#4a3000}
+  .callout.gold .callout-title{color:var(--gold)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .tbl tr:hover td{background:rgba(212,168,83,0.04)}
+
+  /* COMING SOON PLACEHOLDER */
+  .placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;color:var(--muted);margin:1.5rem 0}
+  .placeholder h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem;color:var(--ink);opacity:.5}
+  .placeholder p{font-size:.8rem;line-height:1.6;max-width:400px;margin:0 auto .8rem;opacity:.6}
+  .placeholder-badge{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);padding:.2rem .7rem;border-radius:2px;font-weight:600}
+
+  /* FOOTER */
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.hero,.section{padding:2.5rem 2rem}.hero h1{font-size:2.2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">印度</span>
+    <span class="sb-en">Indian Restaurants in China</span>
+    <div class="sb-sub">South Asian Dining Across China</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item " href="index.html">📱 Digital Survival Guide</a>
+<a class="nav-item " href="medicines.html">🌿 Patent Medicines</a>
+<a class="nav-item " href="beijing.html">🏯 Beijing Guide</a>
+<a class="nav-item " href="shanghai.html">🏙 Shanghai Guide</a>
+<a class="nav-item " href="guangzhou.html">🌺 Guangzhou Guide</a>
+<a class="nav-item " href="arabic.html">🕌 Arabic Restaurants</a>
+<a class="nav-item active" href="indian.html">🍛 Indian Restaurants</a>
+<a class="nav-item " href="intl.html">🌍 International Dining</a>
+
+  </div>
+</nav>
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">印</div>
+  <div class="hero-tag">餐厅指南 · Dining Guide · 2026</div>
+  <div class="hero-cn">印度餐厅指南</div>
+  <h1>Indian &amp; South Asian <em>Dining in China</em></h1>
+  <p class="hero-sub">A guide to Indian, Pakistani, Sri Lankan and Bangladeshi restaurants across China's major cities — including vegetarian options, halal-certified restaurants, and business dining recommendations.</p>
+  <div class="hero-chips">
+    <span class="chip">North Indian</span><span class="chip">South Indian</span><span class="chip">Vegetarian</span><span class="chip">Halal</span><span class="chip">By City</span>
+  </div>
+</div>
+
+<section class="section" id="overview">
+  <div class="sec-hdr"><div class="sec-num">01</div><div><h2>Indian Dining in China — Overview</h2><div class="sec-cn">中国印度餐厅概览</div></div></div>
+  <div class="callout info"><div class="callout-title">ℹ️ Finding Indian Food in China</div>Indian restaurants in China cluster around diplomatic districts (Sanlitun in Beijing, Jing'an in Shanghai), business areas near Canton Fair venues in Guangzhou, and tech corridors in Shenzhen. Quality has risen significantly in the last decade as India-China business travel increased.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Search Tips</h3><div class="card-sub">如何搜索</div><p>Search <strong>印度餐厅</strong> (yìndù cāntīng — Indian restaurant) on Amap or Dianping. Also try <strong>咖喱餐厅</strong> (curry restaurant) for broader results. In Guangzhou, also try <strong>南亚餐厅</strong> (South Asian restaurant).</p></div>
+    <div class="card"><h3>Vegetarian Options</h3><div class="card-sub">素食选择</div><div class="card-tags"><span class="tag g">Vegetarian</span></div><p>Indian restaurants in China almost universally have extensive vegetarian menus — a huge advantage in a country where pure vegetarian dining is otherwise very limited. Dal, paneer dishes, vegetable curries and thalis are all available.</p></div>
+    <div class="card"><h3>Delivery Available</h3><div class="card-sub">外卖可送</div><p>Several established Indian restaurants in Beijing and Shanghai offer Meituan (美团) delivery. Search 印度餐厅 in Meituan for options near you. Delivery quality varies — soups and rice dishes travel best.</p></div>
+    <div class="card"><h3>Price Range</h3><div class="card-sub">价格范围</div><p>Indian restaurants in China range from affordable neighbourhood spots (¥60–100/person) to upscale business dining (¥200–400/person). Lunch thalis (套餐) offer the best value at ¥50–80 for a full meal with bread, rice, dal and curry.</p></div>
+  </div>
+</section>
+
+<section class="section" id="beijing">
+  <div class="sec-hdr"><div class="sec-num">02</div><div><h2>Beijing Indian Restaurants</h2><div class="sec-cn">北京印度餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Sanlitun Area</h3><div class="card-sub">三里屯周边</div><div class="card-tags"><span class="tag b">Best Area</span><span class="tag">North Indian</span></div><p>Beijing's highest concentration of Indian restaurants is in and around Sanlitun. Serving the diplomatic community and expats. North Indian cuisine dominates — butter chicken, biryani, naan. Several are halal-certified. English menus standard.</p></div>
+    <div class="card"><h3>Chaoyang CBD</h3><div class="card-sub">朝阳CBD</div><div class="card-tags"><span class="tag b">Business</span><span class="tag">Lunch</span></div><p>Multiple Indian restaurants in the Guomao/CBD area cater to the IT and financial services Indian community. Good business lunch options. Thali sets available at lunch, à la carte dinner. Most accept WeChat Pay.</p></div>
+    <div class="card"><h3>Pakistani Options</h3><div class="card-sub">巴基斯坦餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Pakistani</span></div><p>A handful of Pakistani restaurants near Yayuncun (亚运村) serve the South Asian diplomatic and student community. Karahi, nihari, and tandoor breads. Very affordable (¥40–70/person). Cash or WeChat Pay.</p></div>
+  </div>
+  <div class="placeholder"><h3>Full Listings Coming</h3><p>Individual restaurant names, addresses, and booking details will be added.</p><span class="placeholder-badge">Being Researched</span></div>
+</section>
+
+<section class="section" id="shanghai">
+  <div class="sec-hdr"><div class="sec-num">03</div><div><h2>Shanghai Indian Restaurants</h2><div class="sec-cn">上海印度餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Jing'an Cluster</h3><div class="card-sub">静安区</div><div class="card-tags"><span class="tag b">Best Area</span></div><p>The best Indian restaurants in Shanghai are in Jing'an District. Several have been operating for 10+ years serving the Indian business community. North Indian, South Indian, and fusion options. Book ahead for Friday/Saturday dinner.</p></div>
+    <div class="card"><h3>French Concession</h3><div class="card-sub">法租界</div><div class="card-tags"><span class="tag">Upscale</span><span class="tag">Fusion</span></div><p>A few upscale Indian-fusion restaurants in the Former French Concession — modern Indian cooking in beautiful concession-era settings. More expensive but excellent quality. Good for business entertaining.</p></div>
+    <div class="card"><h3>Vegetarian Focus</h3><div class="card-sub">纯素食选项</div><div class="card-tags"><span class="tag g">Vegetarian</span></div><p>Shanghai has at least two dedicated Indian vegetarian restaurants — a rarity in China. Pure veg thalis, South Indian dosas, and Jain-friendly options. Popular with the local Shanghai vegetarian community as well as Indian visitors.</p></div>
+  </div>
+  <div class="placeholder"><h3>Full Listings Coming</h3><p>Individual restaurant names, addresses, photos, and booking details will be added.</p><span class="placeholder-badge">Being Researched</span></div>
+</section>
+
+<section class="section" id="guangzhou">
+  <div class="sec-hdr"><div class="sec-num">04</div><div><h2>Guangzhou &amp; Shenzhen Indian Restaurants</h2><div class="sec-cn">广州及深圳印度餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Guangzhou — Xiaobei Area</h3><div class="card-sub">小北周边</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">South Asian</span></div><p>The Xiaobei area in Guangzhou that hosts Arab restaurants also has Pakistani and Indian restaurants serving traders. Particularly busy during Canton Fair. Affordable and authentic — the traders' circuit.</p></div>
+    <div class="card"><h3>Guangzhou — Tianhe CBD</h3><div class="card-sub">天河CBD</div><div class="card-tags"><span class="tag b">Business</span></div><p>Several Indian restaurants in Tianhe cater to IT and business professionals. Better ambience and more upscale than Xiaobei options. English menus. Good for client entertainment during Canton Fair visits.</p></div>
+    <div class="card"><h3>Shenzhen</h3><div class="card-sub">深圳</div><div class="card-tags"><span class="tag b">Tech Hub</span><span class="tag">Indian</span></div><p>Shenzhen's large Indian IT professional community supports a cluster of Indian restaurants in Nanshan (南山) and Futian (福田) districts. Good quality North and South Indian options. More vegetarian-friendly than other Chinese cities.</p></div>
+  </div>
+</section>
+
+<section class="section" id="phrases" style="border-bottom:none">
+  <div class="sec-hdr"><div class="sec-num">05</div><div><h2>Useful Phrases for Indian Restaurants</h2><div class="sec-cn">常用语</div></div></div>
+  <div style="max-width:700px">
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">我是素食者</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Wǒ shì sùshí zhě</div>
+      <div>I am vegetarian</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">不要太辣</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Bùyào tài là</div>
+      <div>Not too spicy please</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">有没有午市套餐？</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Yǒu méiyǒu wǔshì tàocān?</div>
+      <div>Do you have a lunch set menu?</div>
+    </div>
+    <div style="display:flex;gap:1.5rem;padding:.7rem 0;font-size:.83rem;align-items:center">
+      <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--red);min-width:140px">不含牛肉</div>
+      <div style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);min-width:130px">Bù hán niúròu</div>
+      <div>No beef please</div>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">印度</div>
+    <div style="margin-top:.3rem">Indian Restaurants in China · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Information current as of May 2026. Always verify locally.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+<script>
+const secs = document.querySelectorAll('section[id]');
+const items = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  items.forEach(i => { i.classList.remove('active'); if (i.getAttribute('href') === '#' + cur) i.classList.add('active'); });
+});
+</script>
+</body>
+</html>

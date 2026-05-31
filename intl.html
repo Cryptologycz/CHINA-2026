@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International Dining in China — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --gold-lt: #F0C86E; --ink: #1A1008;
+    --parchment: #FAF6EE; --warm: #FFFDF8; --charcoal: #2C2416;
+    --muted: #7A6A58; --border: #E8DFD0; --red: #C0392B;
+    --green: #27AE60; --blue: #2980B9; --warn: #E67E22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  /* SIDEBAR */
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+  .nav-item.soon{opacity:.35;pointer-events:none}
+  .soon-tag{font-size:.5rem;background:rgba(212,168,83,0.15);color:var(--gold);padding:.1rem .35rem;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* MAIN */
+  #main{margin-left:260px;min-height:100vh}
+
+  /* HERO */
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75;margin-bottom:1.5rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+  .chip{font-size:.65rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:.25rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+  /* SECTIONS */
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+  .card{background:var(--warm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.4rem;transition:box-shadow .2s;position:relative}
+  .section:nth-child(even) .card{background:var(--parchment)}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+  .card-num{position:absolute;top:.9rem;right:1rem;font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:rgba(0,0,0,0.05);line-height:1}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;padding-right:2rem}
+  .card-sub{font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:.7rem}
+  .card p{font-size:.82rem;color:#4a3f35;line-height:1.65}
+  .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .5rem}
+  .tag{font-size:.62rem;padding:.18rem .5rem;border-radius:2px;font-weight:500;background:rgba(212,168,83,0.1);color:#7A5820;border:1px solid rgba(212,168,83,0.2)}
+  .tag.r{background:rgba(192,57,43,0.08);color:#8B1A10;border-color:rgba(192,57,43,0.18)}
+  .tag.g{background:rgba(39,174,96,0.08);color:#1a6b3c;border-color:rgba(39,174,96,0.18)}
+  .tag.b{background:rgba(41,128,185,0.08);color:#1a4a70;border-color:rgba(41,128,185,0.18)}
+
+  /* CALLOUTS */
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:var(--warn);color:#5a3800}
+  .callout.warn .callout-title{color:var(--warn)}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.gold{background:#fdf8ee;border-color:var(--gold);color:#4a3000}
+  .callout.gold .callout-title{color:var(--gold)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .tbl tr:hover td{background:rgba(212,168,83,0.04)}
+
+  /* COMING SOON PLACEHOLDER */
+  .placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;color:var(--muted);margin:1.5rem 0}
+  .placeholder h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem;color:var(--ink);opacity:.5}
+  .placeholder p{font-size:.8rem;line-height:1.6;max-width:400px;margin:0 auto .8rem;opacity:.6}
+  .placeholder-badge{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);padding:.2rem .7rem;border-radius:2px;font-weight:600}
+
+  /* FOOTER */
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.hero,.section{padding:2.5rem 2rem}.hero h1{font-size:2.2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">美食</span>
+    <span class="sb-en">International Dining in China</span>
+    <div class="sb-sub">Global Cuisines Across China</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item " href="index.html">📱 Digital Survival Guide</a>
+<a class="nav-item " href="medicines.html">🌿 Patent Medicines</a>
+<a class="nav-item " href="beijing.html">🏯 Beijing Guide</a>
+<a class="nav-item " href="shanghai.html">🏙 Shanghai Guide</a>
+<a class="nav-item " href="guangzhou.html">🌺 Guangzhou Guide</a>
+<a class="nav-item " href="arabic.html">🕌 Arabic Restaurants</a>
+<a class="nav-item " href="indian.html">🍛 Indian Restaurants</a>
+<a class="nav-item active" href="intl.html">🌍 International Dining</a>
+
+  </div>
+</nav>
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">食</div>
+  <div class="hero-tag">餐厅指南 · Dining Guide · 2026</div>
+  <div class="hero-cn">国际餐厅指南</div>
+  <h1>International <em>Dining in China</em></h1>
+  <p class="hero-sub">Western, European, Japanese, Korean, Turkish, Persian, Southeast Asian and more — a guide to non-Chinese international dining for foreign visitors in China's major cities.</p>
+  <div class="hero-chips">
+    <span class="chip">Western</span><span class="chip">Japanese</span><span class="chip">Korean</span><span class="chip">Turkish</span><span class="chip">Southeast Asian</span><span class="chip">European</span>
+  </div>
+</div>
+
+<section class="section" id="overview">
+  <div class="sec-hdr"><div class="sec-num">01</div><div><h2>International Dining Overview</h2><div class="sec-cn">国际餐饮概览</div></div></div>
+  <div class="callout info"><div class="callout-title">ℹ️ China's International Food Scene Has Matured</div>As of 2026, Beijing and Shanghai have world-class international restaurant scenes. You can eat genuinely excellent Italian, French, Japanese, Korean, Turkish, and Southeast Asian food in both cities. Guangzhou and Shenzhen are catching up fast. The key is knowing which areas to look in.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Best Cities for International Dining</h3><p><strong>Shanghai</strong> — most diverse and highest quality. <strong>Beijing</strong> — strong diplomatic community drives demand. <strong>Guangzhou</strong> — Southeast Asian and African cuisine standouts. <strong>Shenzhen</strong> — fast-growing, good Japanese and Korean.</p></div>
+    <div class="card"><h3>Finding Restaurants</h3><p>Use <strong>Dianping</strong> (大众点评) — China's most comprehensive restaurant review platform. Filter by cuisine type. Read recent photo reviews for accurate current status. WeChat mini-program is easier than the app for foreigners.</p></div>
+    <div class="card"><h3>Booking</h3><p>Top international restaurants in Beijing and Shanghai require advance booking. Use the restaurant's WeChat mini-program, Dianping reservation system, or simply call. Most high-end international restaurants speak English.</p></div>
+    <div class="card"><h3>Price Reference</h3><p>Budget international (¥80–150/person): Western fast casual, Korean BBQ neighbourhood spots. Mid-range (¥150–350/person): proper Japanese, Italian, French bistros. Fine dining (¥500+/person): Bund restaurants, Michelin-level.</p></div>
+  </div>
+</section>
+
+<section class="section" id="japanese">
+  <div class="sec-hdr"><div class="sec-num">02</div><div><h2>Japanese Restaurants</h2><div class="sec-cn">日本料理</div></div></div>
+  <div class="callout tip"><div class="callout-title">✅ Japan Food is Everywhere in China</div>Japanese cuisine is the most popular non-Chinese international food in China. Every major shopping mall has ramen, sushi, and izakaya options. Quality ranges from fast food to genuine Michelin-level.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Shanghai Japanese Cluster</h3><div class="card-sub">上海日本餐厅</div><div class="card-tags"><span class="tag b">Shanghai</span><span class="tag g">Best Selection</span></div><p>Shanghai has Japan's largest restaurant scene outside Japan. The Hongqiao/Gubei (虹桥/古北) area — known as "Little Tokyo" — has an entire district of authentic Japanese restaurants, izakayas, ramen shops and convenience stores serving the large Japanese expat community.</p></div>
+    <div class="card"><h3>Beijing Japanese</h3><div class="card-sub">北京日本料理</div><div class="card-tags"><span class="tag b">Beijing</span></div><p>Sanlitun, Chaoyang CBD, and the Liangmahe area have quality Japanese options. Omakase sushi at higher price points is available in Beijing's upscale hotel restaurants. Ramen shops are widespread across the city.</p></div>
+    <div class="card"><h3>Mall-Based Japanese</h3><div class="card-sub">购物中心日料</div><div class="card-tags"><span class="tag">Accessible</span><span class="tag">Mid-Range</span></div><p>Every major mall in China (IAPM, TAIKOO LI, Mixc) has quality Japanese options. Yoshinoya and other chains aside — look for independently-operated ramen, sushi and yakiniku restaurants in the B1 and L1 food courts.</p></div>
+  </div>
+</section>
+
+<section class="section" id="korean">
+  <div class="sec-hdr"><div class="sec-num">03</div><div><h2>Korean Restaurants</h2><div class="sec-cn">韩国料理</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Wangjing — Beijing Korean Town</h3><div class="card-sub">望京 · 北京韩国城</div><div class="card-tags"><span class="tag b">Beijing</span><span class="tag g">Authentic</span></div><p>Wangjing (望京) in northeast Beijing is home to the largest Korean community in China. Authentic Korean BBQ, Korean fried chicken (炸鸡), kimchi jjigae, and Korean bakeries. Walk Wangjing West Road for the best selection.</p></div>
+    <div class="card"><h3>Shanghai Korean</h3><div class="card-sub">上海韩国料理</div><div class="card-tags"><span class="tag b">Shanghai</span></div><p>Korean restaurants in Shanghai are widespread in the Jing'an and Hongqiao areas. Many run by Korean expats. Korean BBQ remains the most popular format — charcoal grills, banchan spreads, and soju.</p></div>
+    <div class="card"><h3>Korean BBQ Tips</h3><div class="card-sub">韩国烤肉攻略</div><p>At table-grill Korean BBQ (自助烤肉): staff usually grill for you in upscale places; self-grill in mid-range spots. Order samgyeopsal (三层肉) or galbi (排骨) first. Wrap in lettuce leaves with garlic and ssamjang paste.</p></div>
+  </div>
+</section>
+
+<section class="section" id="western">
+  <div class="sec-hdr"><div class="sec-num">04</div><div><h2>Western &amp; European Restaurants</h2><div class="sec-cn">西餐及欧洲餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>The Bund — Shanghai Fine Dining</h3><div class="card-sub">外滩精致西餐</div><div class="card-tags"><span class="tag r">Premium</span><span class="tag b">Shanghai</span></div><p>The Bund buildings house some of Asia's best international restaurants. Jean-Georges, Ultraviolet, Mr &amp; Mrs Bund, and The Chop Chop Club. Booking weeks in advance required for most. Prices match comparable fine dining globally.</p></div>
+    <div class="card"><h3>Sanlitun Casual Western — Beijing</h3><div class="card-sub">三里屯西餐</div><div class="card-tags"><span class="tag b">Beijing</span><span class="tag">Casual</span></div><p>TAIKOO LI Sanlitun has a strong casual Western dining cluster — burgers, pasta, pizzas, and brunch cafes. More affordable than Shanghai equivalents. Good base for Western food during multi-day Beijing stays.</p></div>
+    <div class="card"><h3>Italian Restaurants</h3><div class="card-sub">意大利餐厅</div><div class="card-tags"><span class="tag">Italian</span></div><p>Both Beijing and Shanghai have numerous Italian restaurants ranging from affordable to fine dining. Pizza and pasta quality in top-end Shanghai Italian restaurants is genuinely world-class. Look for wood-fired ovens (柴火窑炉) as a quality signal.</p></div>
+    <div class="card"><h3>Brunch Culture</h3><div class="card-sub">周末早午餐</div><div class="card-tags"><span class="tag">Brunch</span><span class="tag">Weekend</span></div><p>Shanghai and Beijing have a strong brunch culture in expat areas. The French Concession in Shanghai is the best area — Egg, Shake, Smart, and Brut are popular spots. Weekend brunch bookings fill up — reserve Friday evening at the latest.</p></div>
+  </div>
+</section>
+
+<section class="section" id="turkish">
+  <div class="sec-hdr"><div class="sec-num">05</div><div><h2>Turkish &amp; Persian Restaurants</h2><div class="sec-cn">土耳其及波斯餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Turkish in Beijing</h3><div class="card-sub">北京土耳其餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag b">Beijing</span></div><p>Several Turkish restaurants in Sanlitun and Chaoyang serve the diplomatic community. Kebabs, mezes, börek and baklava. The Turkish Embassy area has the most authentic options. Mostly halal-certified.</p></div>
+    <div class="card"><h3>Turkish in Shanghai</h3><div class="card-sub">上海土耳其餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag b">Shanghai</span></div><p>A handful of Turkish restaurants in Jing'an and the Former French Concession. Less common than in Beijing but quality has improved. Search 土耳其餐厅 on Dianping for current options.</p></div>
+    <div class="card"><h3>Persian / Iranian</h3><div class="card-sub">波斯 / 伊朗餐厅</div><div class="card-tags"><span class="tag r">Halal</span></div><p>Persian cuisine is rare in China but exists in Beijing and Shanghai near Iranian business communities. Chelow kebab, ghormeh sabzi, and saffron rice. Search 伊朗餐厅 or 波斯餐厅 on Dianping. Mostly halal-certified.</p></div>
+  </div>
+</section>
+
+<section class="section" id="southeast-asian" style="border-bottom:none">
+  <div class="sec-hdr"><div class="sec-num">06</div><div><h2>Southeast Asian Restaurants</h2><div class="sec-cn">东南亚餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Thai Restaurants</h3><div class="card-sub">泰国餐厅</div><div class="card-tags"><span class="tag">Thai</span><span class="tag g">Common</span></div><p>Thai food is the most widely available Southeast Asian cuisine in China. Tom yum, pad thai, green curry, and Thai BBQ are popular. Both cities have Thai restaurant clusters in upscale areas. Quality varies — look for restaurants with Thai ownership.</p></div>
+    <div class="card"><h3>Vietnamese</h3><div class="card-sub">越南餐厅</div><div class="card-tags"><span class="tag">Vietnamese</span></div><p>Vietnamese restaurants are common in major Chinese cities, especially near university areas. Phở, bánh mì, and fresh spring rolls. Yunnan province's proximity to Vietnam means the border cuisine is particularly good.</p></div>
+    <div class="card"><h3>Malaysian &amp; Singaporean</h3><div class="card-sub">马来西亚 / 新加坡餐厅</div><div class="card-tags"><span class="tag">Malaysian</span><span class="tag r">Halal options</span></div><p>Nasi lemak, laksa, Hainanese chicken rice, and char kway teow are available at Malaysian restaurants in Shanghai and Beijing. Some Malay restaurants are halal-certified. Search 马来西亚餐厅 on Dianping.</p></div>
+    <div class="card"><h3>Indonesian</h3><div class="card-sub">印度尼西亚餐厅</div><div class="card-tags"><span class="tag">Indonesian</span><span class="tag r">Halal</span></div><p>Indonesian restaurants are less common but growing, particularly in Shanghai. Nasi goreng, rendang, satay and gado-gado. Several are halal-certified serving the Indonesian Muslim community in China.</p></div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">美食</div>
+    <div style="margin-top:.3rem">International Dining in China · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Information current as of May 2026. Always verify locally.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+<script>
+const secs = document.querySelectorAll('section[id]');
+const items = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  items.forEach(i => { i.classList.remove('active'); if (i.getAttribute('href') === '#' + cur) i.classList.add('active'); });
+});
+</script>
+</body>
+</html>

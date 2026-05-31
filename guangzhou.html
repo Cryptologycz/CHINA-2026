@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guangzhou Guide — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --gold-lt: #F0C86E; --ink: #1A1008;
+    --parchment: #FAF6EE; --warm: #FFFDF8; --charcoal: #2C2416;
+    --muted: #7A6A58; --border: #E8DFD0; --red: #C0392B;
+    --green: #27AE60; --blue: #2980B9; --warn: #E67E22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  /* SIDEBAR */
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+  .nav-item.soon{opacity:.35;pointer-events:none}
+  .soon-tag{font-size:.5rem;background:rgba(212,168,83,0.15);color:var(--gold);padding:.1rem .35rem;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* MAIN */
+  #main{margin-left:260px;min-height:100vh}
+
+  /* HERO */
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75;margin-bottom:1.5rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+  .chip{font-size:.65rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:.25rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+  /* SECTIONS */
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+  .card{background:var(--warm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.4rem;transition:box-shadow .2s;position:relative}
+  .section:nth-child(even) .card{background:var(--parchment)}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+  .card-num{position:absolute;top:.9rem;right:1rem;font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:rgba(0,0,0,0.05);line-height:1}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;padding-right:2rem}
+  .card-sub{font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:.7rem}
+  .card p{font-size:.82rem;color:#4a3f35;line-height:1.65}
+  .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .5rem}
+  .tag{font-size:.62rem;padding:.18rem .5rem;border-radius:2px;font-weight:500;background:rgba(212,168,83,0.1);color:#7A5820;border:1px solid rgba(212,168,83,0.2)}
+  .tag.r{background:rgba(192,57,43,0.08);color:#8B1A10;border-color:rgba(192,57,43,0.18)}
+  .tag.g{background:rgba(39,174,96,0.08);color:#1a6b3c;border-color:rgba(39,174,96,0.18)}
+  .tag.b{background:rgba(41,128,185,0.08);color:#1a4a70;border-color:rgba(41,128,185,0.18)}
+
+  /* CALLOUTS */
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:var(--warn);color:#5a3800}
+  .callout.warn .callout-title{color:var(--warn)}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.gold{background:#fdf8ee;border-color:var(--gold);color:#4a3000}
+  .callout.gold .callout-title{color:var(--gold)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .tbl tr:hover td{background:rgba(212,168,83,0.04)}
+
+  /* COMING SOON PLACEHOLDER */
+  .placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;color:var(--muted);margin:1.5rem 0}
+  .placeholder h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem;color:var(--ink);opacity:.5}
+  .placeholder p{font-size:.8rem;line-height:1.6;max-width:400px;margin:0 auto .8rem;opacity:.6}
+  .placeholder-badge{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);padding:.2rem .7rem;border-radius:2px;font-weight:600}
+
+  /* FOOTER */
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.hero,.section{padding:2.5rem 2rem}.hero h1{font-size:2.2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">广州</span>
+    <span class="sb-en">Guangzhou Guide</span>
+    <div class="sb-sub">The Trade Capital</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item " href="index.html">📱 Digital Survival Guide</a>
+<a class="nav-item " href="medicines.html">🌿 Patent Medicines</a>
+<a class="nav-item " href="beijing.html">🏯 Beijing Guide</a>
+<a class="nav-item " href="shanghai.html">🏙 Shanghai Guide</a>
+<a class="nav-item active" href="guangzhou.html">🌺 Guangzhou Guide</a>
+<a class="nav-item " href="arabic.html">🕌 Arabic Restaurants</a>
+<a class="nav-item " href="indian.html">🍛 Indian Restaurants</a>
+<a class="nav-item " href="intl.html">🌍 International Dining</a>
+
+  </div>
+</nav>
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">穗</div>
+  <div class="hero-tag">城市指南 · City Guide · 2026</div>
+  <div class="hero-cn">广州指南</div>
+  <h1>Guangzhou — <em>The Trade Capital</em></h1>
+  <p class="hero-sub">China's oldest international trading port and the birthplace of Cantonese cuisine. Home to the world's largest trade fair, a significant African business community, an Arab quarter, and a food culture that rivals anywhere on earth.</p>
+  <div class="hero-chips">
+    <span class="chip">Cantonese Cuisine</span><span class="chip">Trade Hub</span><span class="chip">Little Africa</span><span class="chip">Arab Quarter</span><span class="chip">Canton Fair</span>
+  </div>
+</div>
+
+<section class="section" id="overview">
+  <div class="sec-hdr"><div class="sec-num">01</div><div><h2>What Makes Guangzhou Unique</h2><div class="sec-cn">广州的独特之处</div></div></div>
+  <div class="callout gold"><div class="callout-title">🌍 China's Most Diverse City</div>Guangzhou has hosted foreign traders for over 2,000 years. Today it has the largest African community in Asia (Guangzhou's "Little Africa" in Sanyuanli), a historic Arab Quarter (小北 Xiaobei), and the world's largest trade fair. Its diversity is unlike any other Chinese city.</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-num">01</div><h3>Cantonese Cuisine</h3><div class="card-sub">粤菜 · Yuècài</div><div class="card-tags"><span class="tag">Food</span><span class="tag g">World Class</span></div><p>Cantonese cuisine (粤菜) is considered the finest in China. Dim sum (点心), roasted meats (烧腊), fresh seafood, and the legendary yum cha (饮茶) breakfast culture. Guangzhou people live to eat.</p></div>
+    <div class="card"><div class="card-num">02</div><h3>Canton Fair</h3><div class="card-sub">广交会</div><div class="card-tags"><span class="tag b">Business</span><span class="tag">Trade</span></div><p>The China Import and Export Fair (April and October) is the world's largest trade exhibition. 25,000+ exhibitors, 200,000+ buyers from 220 countries. Hotels become scarce and expensive during fair periods.</p></div>
+    <div class="card"><div class="card-num">03</div><h3>Little Africa</h3><div class="card-sub">非洲城 · Sanyuanli</div><div class="card-tags"><span class="tag">African</span><span class="tag">Unique</span></div><p>Guangzhou's Sanyuanli and Dengfeng areas host the largest concentration of Africans in Asia — an estimated 20,000–100,000 African traders and residents. African restaurants, markets, and hair salons are concentrated here.</p></div>
+    <div class="card"><div class="card-num">04</div><h3>Arab Quarter — Xiaobei</h3><div class="card-sub">小北阿拉伯街</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Arab</span></div><p>Xiaobei Road (小北路) is Guangzhou's Arab and Middle Eastern quarter. Arabic signage, halal restaurants, hookah cafes, Islamic goods shops, and a large Arab/South Asian trading community. The most authentic Arab dining outside the Middle East in China.</p></div>
+    <div class="card"><div class="card-num">05</div><h3>Shamian Island</h3><div class="card-sub">沙面岛</div><div class="card-tags"><span class="tag">History</span><span class="tag">Architecture</span></div><p>A beautiful colonial island in the Pearl River with preserved European architecture from the British and French concession era. Quiet, leafy, and a stark contrast to the surrounding city. Excellent for photography.</p></div>
+    <div class="card"><div class="card-num">06</div><h3>Pearl River Night Cruise</h3><div class="card-sub">珠江夜游</div><div class="card-tags"><span class="tag">Night</span><span class="tag">Views</span></div><p>The Pearl River night cruise is Guangzhou's most popular tourist activity. The illuminated Canton Tower, Haiyin Bridge, and Guangzhou Bridge create a spectacular river panorama. Boats depart from Tianzi Pier.</p></div>
+  </div>
+</section>
+
+<section class="section" id="arabic">
+  <div class="sec-hdr"><div class="sec-num">02</div><div><h2>Arabic &amp; Middle Eastern Restaurants</h2><div class="sec-cn">阿拉伯及中东餐厅</div></div></div>
+  <div class="callout gold"><div class="callout-title">🕌 The Best Arab Dining in Mainland China</div>Guangzhou's Xiaobei Road area has the most authentic, concentrated, and diverse Arabic and Middle Eastern dining of any Chinese city. Yemeni, Egyptian, Lebanese, Syrian, and Moroccan cuisines are all represented. Most restaurants are run by Arab nationals.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Xiaobei Road Arabic Strip</h3><div class="card-sub">小北路阿拉伯街</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag g">Best in China</span></div><p>The main strip on and around Xiaobei Road (小北路) and Huanshi West Road has dozens of Arabic restaurants, shawarma stands, Yemeni rice houses, Egyptian ful medames spots, and Lebanese grill restaurants. Walk the street and choose.</p></div>
+    <div class="card"><h3>Yemeni Restaurants</h3><div class="card-sub">也门餐厅</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Yemeni</span></div><p>Guangzhou has the largest concentration of Yemeni restaurants outside the Middle East. Lamb mandi (مندي), fahsa, saltah, and Yemeni breads. The community is centred around Xiaobei and the nearby Dengfeng area.</p></div>
+    <div class="card"><h3>Hookah Cafes</h3><div class="card-sub">水烟咖啡馆</div><div class="card-tags"><span class="tag">Arab Culture</span></div><p>Several hookah cafes on Xiaobei Road offer a full Arab social experience — shisha, Arabic coffee, mint tea, and mezze. Predominantly Arab clientele. Open late. A genuine taste of Arab social culture.</p></div>
+    <div class="card"><h3>Halal Muslim Cantonese</h3><div class="card-sub">清真粤菜</div><div class="card-tags"><span class="tag r">Halal</span><span class="tag">Cantonese</span></div><p>Guangzhou also has several restaurants serving Cantonese-style cooking in a halal-certified environment — allowing Muslim visitors to experience authentic Cantonese cuisine without pork. Look for the 清真 certificate displayed at the entrance.</p></div>
+  </div>
+</section>
+
+<section class="section" id="indian">
+  <div class="sec-hdr"><div class="sec-num">03</div><div><h2>Indian &amp; South Asian Restaurants</h2><div class="sec-cn">印度及南亚餐厅</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Xiaobei South Asian Cluster</h3><div class="card-sub">小北南亚餐厅</div><div class="card-tags"><span class="tag">Indian</span><span class="tag r">Halal</span></div><p>The Xiaobei area that hosts the Arab community also has a significant South Asian (Indian, Pakistani, Bangladeshi) trading community and their restaurants. Curry, biryani, and halal grills available.</p></div>
+    <div class="card"><h3>Canton Fair Period Options</h3><div class="card-sub">广交会期间</div><div class="card-tags"><span class="tag b">Trade Fair</span><span class="tag">Indian</span></div><p>During Canton Fair periods (April and October), Indian restaurants across Guangzhou expand service to accommodate thousands of Indian buyers. Pre-booking recommended. Several hotels add Indian buffet options.</p></div>
+    <div class="card"><h3>Tianhe District Indian</h3><div class="card-sub">天河区印度料理</div><div class="card-tags"><span class="tag">Indian</span><span class="tag b">Business</span></div><p>Guangzhou's CBD Tianhe District has several quality Indian restaurants catering to the IT and business community. More upscale than Xiaobei options, with English menus and card payment.</p></div>
+  </div>
+</section>
+
+<section class="section" id="food">
+  <div class="sec-hdr"><div class="sec-num">04</div><div><h2>Cantonese Food You Must Try</h2><div class="sec-cn">必尝粤菜</div></div></div>
+  <div class="callout info"><div class="callout-title">ℹ️ Yum Cha Culture</div>Yum cha (饮茶 — "drink tea") is the Cantonese tradition of breakfast or brunch with dim sum. Guangzhou people do this daily. Arrive at a large dim sum restaurant before 9am, order jasmine tea, and point at passing dim sum trolleys or tick boxes on paper menus.</div>
+  <div class="card-grid">
+    <div class="card"><h3>Dim Sum (点心)</h3><p>Har gow (shrimp dumplings), siu mai, cheung fun (rice noodle rolls), egg tarts (蛋挞), turnip cake (萝卜糕). The variety in Guangzhou far exceeds anything available elsewhere. Order by pointing or ticking a paper menu.</p></div>
+    <div class="card"><h3>Roasted Meats (烧腊)</h3><p>Char siu (叉烧 — BBQ pork), roast goose (烧鹅), and crispy roast pork (脆皮烧肉) are Cantonese icons. Look for 烧腊 shops with meats hanging in the window. Order a mixed plate over rice (烧腊饭) for ¥30–50.</p></div>
+    <div class="card"><h3>Wonton Noodles (云吞面)</h3><p>Guangzhou wonton noodles are made with springy egg noodles and plump pork-shrimp wontons in a clear bone broth. A ¥15–25 bowl is one of the best value meals in China. Available from 7am at noodle shops.</p></div>
+    <div class="card"><h3>Seafood (海鲜)</h3><p>Guangzhou is near the coast — fresh seafood is exceptional and affordable. Huangsha seafood market (黄沙水产市场) lets you buy live seafood and have it cooked next door. Steamed fish with ginger and scallion is the Cantonese classic.</p></div>
+  </div>
+</section>
+
+<section class="section" id="tips" style="border-bottom:none">
+  <div class="sec-hdr"><div class="sec-num">05</div><div><h2>Guangzhou Practical Tips</h2><div class="sec-cn">广州实用建议</div></div></div>
+  <div class="card-grid">
+    <div class="card"><h3>Getting There</h3><p>Guangzhou Baiyun International Airport (CAN) is one of China's busiest. Metro Line 3 connects directly to the city in 40 minutes (¥7). During Canton Fair periods, book hotels 2–3 months in advance.</p></div>
+    <div class="card"><h3>Weather</h3><p>Subtropical climate — hot and rainy from April to September, mild October to December, cool but rarely cold in winter. The best weather is October–December. Avoid Canton Fair weeks unless you're attending.</p></div>
+    <div class="card"><h3>Language</h3><p>Cantonese (粤语) is the local dialect — different from Mandarin. Most locals speak Mandarin as a second language. In Xiaobei, Arabic is spoken alongside Mandarin. English is more limited than Beijing or Shanghai.</p></div>
+    <div class="card"><h3>Safety in Xiaobei</h3><p>Xiaobei and Dengfeng are safe areas with a lively atmosphere. Standard precautions apply. The area is busiest in the afternoon and evening. Many restaurants and shops open late — the street is active until midnight.</p></div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">广州</div>
+    <div style="margin-top:.3rem">Guangzhou Guide · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Information current as of May 2026. Always verify locally.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+<script>
+const secs = document.querySelectorAll('section[id]');
+const items = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  items.forEach(i => { i.classList.remove('active'); if (i.getAttribute('href') === '#' + cur) i.classList.add('active'); });
+});
+</script>
+</body>
+</html>
