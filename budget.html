@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Daily Budget Calculator — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --ink: #1A1008; --parchment: #FAF6EE;
+    --warm: #FFFDF8; --charcoal: #2C2416; --muted: #7A6A58;
+    --border: #E8DFD0; --red: #C0392B; --green: #27AE60; --blue: #2980B9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+
+  #main{margin-left:260px;min-height:100vh}
+
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75}
+
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CALCULATOR */
+  .calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+  .calc-panel{background:var(--charcoal);color:#fff;padding:2rem;position:sticky;top:2rem}
+  .calc-panel h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+
+  .result-total{font-family:'Space Mono',monospace;font-size:2.8rem;font-weight:700;color:var(--gold);margin:.5rem 0;line-height:1}
+  .result-sub{font-size:.75rem;color:rgba(255,255,255,0.45);margin-bottom:1.5rem}
+
+  .result-breakdown{border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;margin-top:1rem}
+  .result-row{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .result-row:last-child{border:none}
+  .result-label{color:rgba(255,255,255,0.55)}
+  .result-val{font-family:'Space Mono',monospace;color:rgba(255,255,255,0.85);font-size:.78rem}
+
+  .currency-row{display:flex;gap:.5rem;margin-top:1.2rem;flex-wrap:wrap}
+  .currency-btn{flex:1;padding:.5rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:.7rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all .2s;text-transform:uppercase;letter-spacing:1px}
+  .currency-btn.active,.currency-btn:hover{background:rgba(212,168,83,0.2);border-color:var(--gold);color:var(--gold)}
+
+  /* SLIDERS */
+  .control-group{margin-bottom:1.4rem}
+  .control-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem}
+  .control-label{font-size:.82rem;font-weight:500;color:var(--ink)}
+  .control-value{font-family:'Space Mono',monospace;font-size:.88rem;font-weight:700;color:var(--red)}
+
+  input[type=range]{width:100%;-webkit-appearance:none;height:4px;background:var(--border);outline:none;cursor:pointer;border-radius:2px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--charcoal);border:2px solid var(--gold);border-radius:50%;cursor:pointer;transition:transform .2s}
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+
+  .control-options{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
+  .opt-btn{padding:.3rem .7rem;font-size:.68rem;border:1px solid var(--border);background:var(--warm);cursor:pointer;transition:all .2s;font-weight:500;border-radius:2px}
+  .opt-btn.active{background:var(--charcoal);color:var(--gold);border-color:var(--charcoal)}
+
+  /* TIPS TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .price-lo{color:var(--green);font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700}
+  .price-hi{color:var(--red);font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700}
+  .price-mid{color:var(--blue);font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700}
+
+  /* CITY CARDS */
+  .city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1rem 0}
+  .city-card{border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.2rem}
+  .city-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.2rem}
+  .city-cn{font-family:'Noto Serif SC',serif;font-size:.72rem;color:var(--muted);letter-spacing:1px;margin-bottom:.8rem}
+  .city-stat{display:flex;justify-content:space-between;font-size:.75rem;padding:.25rem 0;border-bottom:1px solid var(--border)}
+  .city-stat:last-child{border:none}
+  .stat-label{color:var(--muted)}
+  .stat-val{font-family:'Space Mono',monospace;font-weight:700}
+
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:#E67E22;color:#5a3800}
+  .callout.warn .callout-title{color:#E67E22}
+
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.calc-wrap{grid-template-columns:1fr}.calc-panel{position:static}.hero,.section{padding:2.5rem 2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">预算</span>
+    <span class="sb-en">Budget Calculator</span>
+    <div class="sb-sub">Daily Cost Estimator</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">This Page</div>
+    <a class="nav-item active" href="#calculator">🧮 Budget Calculator</a>
+    <a class="nav-item" href="#price-guide">💴 Price Guide</a>
+    <a class="nav-item" href="#by-city">🏙 Cost by City</a>
+    <a class="nav-item" href="#money-tips">💡 Money Tips</a>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item" href="index.html">📱 Digital Survival Guide</a>
+    <a class="nav-item" href="medicines.html">🌿 Patent Medicines</a>
+    <a class="nav-item" href="beijing.html">🏯 Beijing</a>
+    <a class="nav-item" href="shanghai.html">🏙 Shanghai</a>
+    <a class="nav-item" href="guangzhou.html">🌺 Guangzhou</a>
+    <a class="nav-item" href="arabic.html">🕌 Arabic Restaurants</a>
+    <a class="nav-item" href="indian.html">🍛 Indian Restaurants</a>
+    <a class="nav-item" href="intl.html">🌍 International Dining</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">钱</div>
+  <div class="hero-tag">旅行预算 · Travel Budget · 2026</div>
+  <div class="hero-cn">中国旅行预算计算器</div>
+  <h1>China Daily <em>Budget Calculator</em></h1>
+  <p class="hero-sub">Real 2026 prices for accommodation, food, transport, and activities. Adjust sliders to match your travel style and get an instant daily budget estimate in CNY, USD, AED, or GBP.</p>
+</div>
+
+<!-- CALCULATOR -->
+<section class="section" id="calculator" style="padding-top:2.5rem">
+  <div class="sec-hdr">
+    <div class="sec-num">01</div>
+    <div><h2>Your Daily Budget Estimator</h2><div class="sec-cn">每日预算估算器</div></div>
+  </div>
+
+  <div class="calc-wrap">
+
+    <!-- LEFT: Controls -->
+    <div>
+
+      <!-- Accommodation -->
+      <div class="control-group">
+        <div class="control-header">
+          <span class="control-label">🏨 Accommodation (per night)</span>
+          <span class="control-value" id="hotel-val">¥450</span>
+        </div>
+        <input type="range" id="hotel" min="80" max="2500" value="450" step="10">
+        <div class="control-options">
+          <button class="opt-btn" onclick="setVal('hotel',120,'hotel-val')">Hostel dorm<br><small>¥80–150</small></button>
+          <button class="opt-btn active" onclick="setVal('hotel',450,'hotel-val')">Budget hotel<br><small>¥300–600</small></button>
+          <button class="opt-btn" onclick="setVal('hotel',900,'hotel-val')">Mid-range<br><small>¥600–1200</small></button>
+          <button class="opt-btn" onclick="setVal('hotel',1800,'hotel-val')">Luxury<br><small>¥1200–2500+</small></button>
+        </div>
+      </div>
+
+      <!-- Food -->
+      <div class="control-group">
+        <div class="control-header">
+          <span class="control-label">🍜 Food (3 meals per day)</span>
+          <span class="control-value" id="food-val">¥120</span>
+        </div>
+        <input type="range" id="food" min="40" max="600" value="120" step="10">
+        <div class="control-options">
+          <button class="opt-btn" onclick="setVal('food',55,'food-val')">Street food<br><small>¥40–70</small></button>
+          <button class="opt-btn active" onclick="setVal('food',120,'food-val')">Local restaurants<br><small>¥90–150</small></button>
+          <button class="opt-btn" onclick="setVal('food',250,'food-val')">Mix + Western<br><small>¥180–320</small></button>
+          <button class="opt-btn" onclick="setVal('food',500,'food-val')">Fine dining<br><small>¥400–600+</small></button>
+        </div>
+      </div>
+
+      <!-- Transport -->
+      <div class="control-group">
+        <div class="control-header">
+          <span class="control-label">🚇 Local Transport (per day)</span>
+          <span class="control-value" id="transport-val">¥40</span>
+        </div>
+        <input type="range" id="transport" min="10" max="200" value="40" step="5">
+        <div class="control-options">
+          <button class="opt-btn" onclick="setVal('transport',15,'transport-val')">Metro only<br><small>¥10–20</small></button>
+          <button class="opt-btn active" onclick="setVal('transport',40,'transport-val')">Metro + Didi<br><small>¥30–60</small></button>
+          <button class="opt-btn" onclick="setVal('transport',100,'transport-val')">Mostly Didi<br><small>¥80–150</small></button>
+        </div>
+      </div>
+
+      <!-- Activities -->
+      <div class="control-group">
+        <div class="control-header">
+          <span class="control-label">🎯 Activities & Entrance Fees</span>
+          <span class="control-value" id="activity-val">¥80</span>
+        </div>
+        <input type="range" id="activity" min="0" max="400" value="80" step="10">
+        <div class="control-options">
+          <button class="opt-btn" onclick="setVal('activity',0,'activity-val')">Free sights<br><small>Parks, hutongs</small></button>
+          <button class="opt-btn active" onclick="setVal('activity',80,'activity-val')">1–2 paid sites<br><small>¥60–100</small></button>
+          <button class="opt-btn" onclick="setVal('activity',200,'activity-val')">Museums + tours<br><small>¥150–300</small></button>
+        </div>
+      </div>
+
+      <!-- Drinks & Extras -->
+      <div class="control-group">
+        <div class="control-header">
+          <span class="control-label">☕ Drinks, Snacks & Extras</span>
+          <span class="control-value" id="extras-val">¥60</span>
+        </div>
+        <input type="range" id="extras" min="0" max="300" value="60" step="10">
+        <div class="control-options">
+          <button class="opt-btn" onclick="setVal('extras',20,'extras-val')">Minimal<br><small>¥10–30</small></button>
+          <button class="opt-btn active" onclick="setVal('extras',60,'extras-val')">Coffee + snacks<br><small>¥40–80</small></button>
+          <button class="opt-btn" onclick="setVal('extras',150,'extras-val')">Bars + shopping<br><small>¥100–250</small></button>
+        </div>
+      </div>
+
+      <!-- Trip length for total -->
+      <div class="control-group">
+        <div class="control-header">
+          <span class="control-label">📅 Trip Length (days)</span>
+          <span class="control-value" id="days-val">7 days</span>
+        </div>
+        <input type="range" id="days" min="1" max="30" value="7" step="1">
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Result Panel -->
+    <div class="calc-panel">
+      <h3>💴 Your Estimated Budget</h3>
+
+      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:.3rem">Daily Total</div>
+      <div class="result-total" id="daily-cny">¥750</div>
+      <div class="result-sub" id="daily-converted">≈ $104 USD · AED 382 · £82 GBP</div>
+
+      <div class="result-breakdown">
+        <div class="result-row"><span class="result-label">🏨 Accommodation</span><span class="result-val" id="r-hotel">¥450</span></div>
+        <div class="result-row"><span class="result-label">🍜 Food</span><span class="result-val" id="r-food">¥120</span></div>
+        <div class="result-row"><span class="result-label">🚇 Transport</span><span class="result-val" id="r-transport">¥40</span></div>
+        <div class="result-row"><span class="result-label">🎯 Activities</span><span class="result-val" id="r-activity">¥80</span></div>
+        <div class="result-row"><span class="result-label">☕ Extras</span><span class="result-val" id="r-extras">¥60</span></div>
+      </div>
+
+      <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.1)">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:.3rem">Total Trip Budget (<span id="trip-days-label">7</span> days)</div>
+        <div style="font-family:'Space Mono',monospace;font-size:1.8rem;font-weight:700;color:#fff" id="trip-total-cny">¥5,250</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,0.4);margin-top:.2rem" id="trip-converted">≈ $728 USD · AED 2,674 · £574 GBP</div>
+      </div>
+
+      <div class="currency-row">
+        <button class="currency-btn active" onclick="setCurrency('CNY',this)">¥ CNY</button>
+        <button class="currency-btn" onclick="setCurrency('USD',this)">$ USD</button>
+        <button class="currency-btn" onclick="setCurrency('AED',this)">د.إ AED</button>
+        <button class="currency-btn" onclick="setCurrency('GBP',this)">£ GBP</button>
+      </div>
+
+      <div style="margin-top:1.5rem;padding:1rem;background:rgba(212,168,83,0.08);border:1px solid rgba(212,168,83,0.2);font-size:.75rem;color:rgba(255,255,255,0.55);line-height:1.6">
+        💡 Add <strong style="color:rgba(255,255,255,0.7)">20–25%</strong> buffer for unexpected costs, SIM cards, souvenirs, and VPN subscription. Rates as of July 2026.
+      </div>
+
+      <div style="margin-top:1rem;font-size:.65rem;color:rgba(255,255,255,0.25);line-height:1.6">
+        Exchange rates used: 1 CNY = 0.138 USD · 0.507 AED · 0.109 GBP<br>
+        Prices based on real 2026 traveler data across Beijing, Shanghai, Guangzhou.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE REFERENCE TABLE -->
+<section class="section" id="price-guide">
+  <div class="sec-hdr">
+    <div class="sec-num">02</div>
+    <div><h2>Real 2026 Price Reference</h2><div class="sec-cn">2026年真实价格参考</div></div>
+  </div>
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.2rem">Actual prices verified from Dianping, Meituan, Trip.com and traveler reports — July 2026.</p>
+
+  <div style="overflow-x:auto">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Budget</th>
+          <th>Mid-Range</th>
+          <th>Splurge</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Street food meal</strong></td><td class="price-lo">¥8–20</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Jianbing, dumplings, noodles, baozi</td></tr>
+        <tr><td><strong>Local restaurant meal</strong></td><td class="price-lo">¥25–50</td><td class="price-mid">¥60–120</td><td class="price-hi">¥200–500+</td><td>Per person, no alcohol</td></tr>
+        <tr><td><strong>Coffee (local chain)</strong></td><td class="price-lo">¥15–22</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Luckin Coffee, Manner</td></tr>
+        <tr><td><strong>Coffee (Starbucks)</strong></td><td class="price-lo">—</td><td class="price-mid">¥38–48</td><td class="price-hi">—</td><td>Similar to Western prices</td></tr>
+        <tr><td><strong>Beer (supermarket)</strong></td><td class="price-lo">¥4–8</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Tsingtao, Snow</td></tr>
+        <tr><td><strong>Beer (bar)</strong></td><td class="price-lo">—</td><td class="price-mid">¥35–60</td><td class="price-hi">¥80–150</td><td>Local vs. imported</td></tr>
+        <tr><td><strong>Metro ride</strong></td><td class="price-lo">¥3–7</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Per journey, most cities</td></tr>
+        <tr><td><strong>Didi (5km ride)</strong></td><td class="price-lo">¥12–18</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Standard car, city centre</td></tr>
+        <tr><td><strong>Didi (airport, 30km)</strong></td><td class="price-lo">¥90–150</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Depends on city and traffic</td></tr>
+        <tr><td><strong>High-speed train (2hr)</strong></td><td class="price-lo">¥100–180</td><td class="price-mid">¥200–350</td><td class="price-hi">¥600–900</td><td>2nd / 1st / Business class</td></tr>
+        <tr><td><strong>Budget hotel (per night)</strong></td><td class="price-lo">¥150–350</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Clean, central, verified on Trip.com</td></tr>
+        <tr><td><strong>Mid-range hotel</strong></td><td class="price-lo">—</td><td class="price-mid">¥400–900</td><td class="price-hi">—</td><td>4-star equivalent</td></tr>
+        <tr><td><strong>Luxury hotel</strong></td><td class="price-lo">—</td><td class="price-mid">—</td><td class="price-hi">¥1,200–3,000+</td><td>Marriott, Hilton, Shangri-La</td></tr>
+        <tr><td><strong>Forbidden City entry</strong></td><td class="price-lo">¥60</td><td class="price-mid">—</td><td class="price-hi">—</td><td>Book online only — sells out</td></tr>
+        <tr><td><strong>Great Wall (Mutianyu)</strong></td><td class="price-lo">¥65</td><td class="price-mid">¥120</td><td class="price-hi">—</td><td>Entry + cable car</td></tr>
+        <tr><td><strong>Shanghai Tower observation</strong></td><td class="price-lo">—</td><td class="price-mid">¥180</td><td class="price-hi">—</td><td>Highest deck in China</td></tr>
+        <tr><td><strong>SIM card (30 days, 20GB)</strong></td><td class="price-lo">¥200–300</td><td class="price-mid">—</td><td class="price-hi">—</td><td>One-off cost, airport counter</td></tr>
+        <tr><td><strong>VPN subscription</strong></td><td class="price-lo">¥50–100/mo</td><td class="price-mid">—</td><td class="price-hi">—</td><td>ExpressVPN, NordVPN</td></tr>
+        <tr><td><strong>Massage (foot, 60min)</strong></td><td class="price-lo">¥60–100</td><td class="price-mid">¥120–200</td><td class="price-hi">—</td><td>Street shop vs. hotel spa</td></tr>
+        <tr><td><strong>Peking Duck (full duck)</strong></td><td class="price-lo">—</td><td class="price-mid">¥180–280</td><td class="price-hi">¥380–600</td><td>Quanjude vs. DaDong</td></tr>
+        <tr><td><strong>Dim sum brunch (per person)</strong></td><td class="price-lo">¥60–100</td><td class="price-mid">¥120–220</td><td class="price-hi">—</td><td>Guangzhou / Shanghai</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- COST BY CITY -->
+<section class="section" id="by-city">
+  <div class="sec-hdr">
+    <div class="sec-num">03</div>
+    <div><h2>Cost of Living by City</h2><div class="sec-cn">各城市费用对比</div></div>
+  </div>
+  <div class="callout info"><div class="callout-title">ℹ️ Budget Index</div>Costs below are relative to Beijing = 100. Shanghai is slightly more expensive; Guangzhou and Chengdu are cheaper. All cities are significantly cheaper than comparable Western or Gulf cities for food and transport.</div>
+  <div class="city-grid">
+    <div class="city-card">
+      <div class="city-name">Beijing</div><div class="city-cn">北京</div>
+      <div class="city-stat"><span class="stat-label">Budget/day</span><span class="stat-val">¥400–600</span></div>
+      <div class="city-stat"><span class="stat-label">Mid-range/day</span><span class="stat-val">¥700–1,200</span></div>
+      <div class="city-stat"><span class="stat-label">Meal (local)</span><span class="stat-val">¥30–60</span></div>
+      <div class="city-stat"><span class="stat-label">Didi 5km</span><span class="stat-val">¥14–20</span></div>
+      <div class="city-stat"><span class="stat-label">Cost index</span><span class="stat-val">100</span></div>
+    </div>
+    <div class="city-card">
+      <div class="city-name">Shanghai</div><div class="city-cn">上海</div>
+      <div class="city-stat"><span class="stat-label">Budget/day</span><span class="stat-val">¥450–700</span></div>
+      <div class="city-stat"><span class="stat-label">Mid-range/day</span><span class="stat-val">¥800–1,400</span></div>
+      <div class="city-stat"><span class="stat-label">Meal (local)</span><span class="stat-val">¥35–70</span></div>
+      <div class="city-stat"><span class="stat-label">Didi 5km</span><span class="stat-val">¥15–22</span></div>
+      <div class="city-stat"><span class="stat-label">Cost index</span><span class="stat-val">115</span></div>
+    </div>
+    <div class="city-card">
+      <div class="city-name">Guangzhou</div><div class="city-cn">广州</div>
+      <div class="city-stat"><span class="stat-label">Budget/day</span><span class="stat-val">¥350–550</span></div>
+      <div class="city-stat"><span class="stat-label">Mid-range/day</span><span class="stat-val">¥650–1,100</span></div>
+      <div class="city-stat"><span class="stat-label">Meal (local)</span><span class="stat-val">¥25–55</span></div>
+      <div class="city-stat"><span class="stat-label">Didi 5km</span><span class="stat-val">¥12–18</span></div>
+      <div class="city-stat"><span class="stat-label">Cost index</span><span class="stat-val">88</span></div>
+    </div>
+    <div class="city-card">
+      <div class="city-name">Shenzhen</div><div class="city-cn">深圳</div>
+      <div class="city-stat"><span class="stat-label">Budget/day</span><span class="stat-val">¥380–580</span></div>
+      <div class="city-stat"><span class="stat-label">Mid-range/day</span><span class="stat-val">¥700–1,200</span></div>
+      <div class="city-stat"><span class="stat-label">Meal (local)</span><span class="stat-val">¥30–60</span></div>
+      <div class="city-stat"><span class="stat-label">Didi 5km</span><span class="stat-val">¥13–18</span></div>
+      <div class="city-stat"><span class="stat-label">Cost index</span><span class="stat-val">95</span></div>
+    </div>
+    <div class="city-card">
+      <div class="city-name">Chengdu</div><div class="city-cn">成都</div>
+      <div class="city-stat"><span class="stat-label">Budget/day</span><span class="stat-val">¥280–450</span></div>
+      <div class="city-stat"><span class="stat-label">Mid-range/day</span><span class="stat-val">¥550–950</span></div>
+      <div class="city-stat"><span class="stat-label">Meal (local)</span><span class="stat-val">¥20–45</span></div>
+      <div class="city-stat"><span class="stat-label">Didi 5km</span><span class="stat-val">¥10–15</span></div>
+      <div class="city-stat"><span class="stat-label">Cost index</span><span class="stat-val">72</span></div>
+    </div>
+    <div class="city-card">
+      <div class="city-name">Xi'an</div><div class="city-cn">西安</div>
+      <div class="city-stat"><span class="stat-label">Budget/day</span><span class="stat-val">¥250–400</span></div>
+      <div class="city-stat"><span class="stat-label">Mid-range/day</span><span class="stat-val">¥500–900</span></div>
+      <div class="city-stat"><span class="stat-label">Meal (local)</span><span class="stat-val">¥18–40</span></div>
+      <div class="city-stat"><span class="stat-label">Didi 5km</span><span class="stat-val">¥10–14</span></div>
+      <div class="city-stat"><span class="stat-label">Cost index</span><span class="stat-val">68</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONEY TIPS -->
+<section class="section" id="money-tips" style="border-bottom:none">
+  <div class="sec-hdr">
+    <div class="sec-num">04</div>
+    <div><h2>Money-Saving Tips for China</h2><div class="sec-cn">在中国省钱的技巧</div></div>
+  </div>
+  <div class="callout tip"><div class="callout-title">✅ China is Very Affordable — If You Eat Local</div>The biggest budget lever in China is food. Eating at local restaurants (本地餐厅) instead of Western restaurants can cut your food budget by 60–70%. A full hot meal with soup costs ¥25–40 at a local spot vs ¥150–200 at an international restaurant.</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;margin-top:1.2rem">
+    <div style="border:1px solid var(--border);border-left:4px solid var(--green);padding:1.2rem">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;margin-bottom:.5rem">💰 Accommodation</div>
+      <ul style="font-size:.82rem;color:#4a3f35;line-height:1.8;padding-left:1rem">
+        <li>Book on Trip.com (携程) for best domestic prices</li>
+        <li>Search <strong>经济型酒店</strong> for budget hotels — cleaner than the name suggests</li>
+        <li>Avoid peak weeks: Golden Week (Oct 1–7), Spring Festival, Canton Fair</li>
+        <li>Mid-week rates are 20–30% cheaper than weekends</li>
+      </ul>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--green);padding:1.2rem">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;margin-bottom:.5rem">🍜 Food</div>
+      <ul style="font-size:.82rem;color:#4a3f35;line-height:1.8;padding-left:1rem">
+        <li>Eat where locals eat — look for full restaurants</li>
+        <li>Lunch sets (午餐套餐) give best value: ¥25–40 for a full meal</li>
+        <li>Supermarket chain Hema (盒马) has excellent ready-to-eat food at low prices</li>
+        <li>Avoid tourist-area restaurants — double the price, half the quality</li>
+      </ul>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--green);padding:1.2rem">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;margin-bottom:.5rem">🚇 Transport</div>
+      <ul style="font-size:.82rem;color:#4a3f35;line-height:1.8;padding-left:1rem">
+        <li>Metro is always cheaper than Didi — use it as default</li>
+        <li>High-speed train 2nd class is great value (¥100–180 per 2hr)</li>
+        <li>Book train tickets 30 days in advance on Trip.com</li>
+        <li>City buses cost ¥1–2 — extremely cheap if you know the route</li>
+      </ul>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--green);padding:1.2rem">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;margin-bottom:.5rem">🎯 Activities</div>
+      <ul style="font-size:.82rem;color:#4a3f35;line-height:1.8;padding-left:1rem">
+        <li>Many parks, temples and hutong areas are free</li>
+        <li>Book tickets online — cheaper than door price and avoids queues</li>
+        <li>Museum free days: most state museums are free on specific weekdays</li>
+        <li>Temple of Heaven park entry ¥15, inner areas ¥30 — skip the inner sections</li>
+      </ul>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--green);padding:1.2rem">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;margin-bottom:.5rem">💳 Payment & Cards</div>
+      <ul style="font-size:.82rem;color:#4a3f35;line-height:1.8;padding-left:1rem">
+        <li>Use a <strong>Wise</strong> or <strong>Revolut</strong> card — minimal forex fees vs standard cards (save 3%)</li>
+        <li>Withdraw CNY at Bank of China ATMs — best exchange rates</li>
+        <li>Keep ¥500 cash as backup — some small vendors are cash only</li>
+        <li>Alipay Tour Pass charges 3% — factor into budget</li>
+      </ul>
+    </div>
+    <div style="border:1px solid var(--border);border-left:4px solid var(--green);padding:1.2rem">
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;margin-bottom:.5rem">📱 Digital</div>
+      <ul style="font-size:.82rem;color:#4a3f35;line-height:1.8;padding-left:1rem">
+        <li>China Unicom SIM ¥200–300 for 30 days is cheaper than international roaming</li>
+        <li>Trip.com eSIM or Alipay eSIM avoids firewall — may save VPN cost</li>
+        <li>Meituan food delivery is cheaper than eating out most evenings</li>
+        <li>Luckin Coffee (瑞幸) and Manner are half the price of Starbucks</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warn" style="margin-top:1.5rem">
+    <div class="callout-title">⚠️ Hidden Costs to Budget For</div>
+    <strong>One-off costs on arrival:</strong> SIM card (¥200–300) + VPN subscription (¥50–100) + initial Alipay top-up processing fee. Also budget for: checked baggage on domestic flights, tourist site photography fees (rare but exist), and tips at high-end international restaurants (5–10% is emerging in Shanghai).
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">旅行预算</div>
+    <div style="margin-top:.3rem">China Budget Calculator · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Prices verified July 2026. All figures in CNY unless stated. Exchange rates approximate.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+
+<script>
+// Exchange rates (July 2026 approximate)
+const rates = { CNY: 1, USD: 0.138, AED: 0.507, GBP: 0.109 };
+const symbols = { CNY: '¥', USD: '$', AED: 'AED ', GBP: '£' };
+let currency = 'CNY';
+
+function getTotal() {
+  return ['hotel','food','transport','activity','extras']
+    .reduce((s, id) => s + parseInt(document.getElementById(id).value), 0);
+}
+
+function fmt(cny) {
+  const v = (cny * rates[currency]);
+  const s = symbols[currency];
+  if (currency === 'CNY') return `¥${Math.round(v).toLocaleString()}`;
+  return `${s}${v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+}
+
+function fmtAll(cny) {
+  const parts = [];
+  if (currency !== 'USD') parts.push(`$${(cny * 0.138).toFixed(0)} USD`);
+  if (currency !== 'AED') parts.push(`AED ${(cny * 0.507).toFixed(0)}`);
+  if (currency !== 'GBP') parts.push(`£${(cny * 0.109).toFixed(0)} GBP`);
+  if (currency !== 'CNY') parts.unshift(`¥${Math.round(cny).toLocaleString()} CNY`);
+  return '≈ ' + parts.slice(0,2).join(' · ');
+}
+
+function update() {
+  const ids = ['hotel','food','transport','activity','extras'];
+  const vals = {};
+  ids.forEach(id => {
+    vals[id] = parseInt(document.getElementById(id).value);
+    document.getElementById(id + '-val').textContent = `¥${vals[id]}`;
+    document.getElementById('r-' + id).textContent = fmt(vals[id]);
+  });
+  const days = parseInt(document.getElementById('days').value);
+  document.getElementById('days-val').textContent = `${days} day${days > 1 ? 's' : ''}`;
+  document.getElementById('trip-days-label').textContent = days;
+
+  const daily = getTotal();
+  document.getElementById('daily-cny').textContent = fmt(daily);
+  document.getElementById('daily-converted').textContent = fmtAll(daily);
+  document.getElementById('trip-total-cny').textContent = fmt(daily * days);
+  document.getElementById('trip-converted').textContent = fmtAll(daily * days);
+}
+
+function setVal(id, val, labelId) {
+  document.getElementById(id).value = val;
+  document.querySelectorAll(`button[onclick*="${id}"]`).forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  update();
+}
+
+function setCurrency(cur, btn) {
+  currency = cur;
+  document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  update();
+}
+
+// Attach listeners to all sliders
+['hotel','food','transport','activity','extras','days'].forEach(id => {
+  document.getElementById(id).addEventListener('input', update);
+});
+
+update();
+</script>
+</body>
+</html>

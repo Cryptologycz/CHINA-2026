@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visa & Entry Guide 2026 — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --gold-lt: #F0C86E; --ink: #1A1008;
+    --parchment: #FAF6EE; --warm: #FFFDF8; --charcoal: #2C2416;
+    --muted: #7A6A58; --border: #E8DFD0; --red: #C0392B;
+    --green: #27AE60; --blue: #2980B9; --warn: #E67E22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  /* SIDEBAR */
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+  .nav-item.soon{opacity:.35;pointer-events:none}
+  .soon-tag{font-size:.5rem;background:rgba(212,168,83,0.15);color:var(--gold);padding:.1rem .35rem;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* MAIN */
+  #main{margin-left:260px;min-height:100vh}
+
+  /* HERO */
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75;margin-bottom:1.5rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+  .chip{font-size:.65rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:.25rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+  /* SECTIONS */
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+  .card{background:var(--warm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.4rem;transition:box-shadow .2s;position:relative}
+  .section:nth-child(even) .card{background:var(--parchment)}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+  .card-num{position:absolute;top:.9rem;right:1rem;font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:rgba(0,0,0,0.05);line-height:1}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;padding-right:2rem}
+  .card-sub{font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:.7rem}
+  .card p{font-size:.82rem;color:#4a3f35;line-height:1.65}
+  .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .5rem}
+  .tag{font-size:.62rem;padding:.18rem .5rem;border-radius:2px;font-weight:500;background:rgba(212,168,83,0.1);color:#7A5820;border:1px solid rgba(212,168,83,0.2)}
+  .tag.r{background:rgba(192,57,43,0.08);color:#8B1A10;border-color:rgba(192,57,43,0.18)}
+  .tag.g{background:rgba(39,174,96,0.08);color:#1a6b3c;border-color:rgba(39,174,96,0.18)}
+  .tag.b{background:rgba(41,128,185,0.08);color:#1a4a70;border-color:rgba(41,128,185,0.18)}
+
+  /* CALLOUTS */
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:var(--warn);color:#5a3800}
+  .callout.warn .callout-title{color:var(--warn)}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.gold{background:#fdf8ee;border-color:var(--gold);color:#4a3000}
+  .callout.gold .callout-title{color:var(--gold)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .tbl tr:hover td{background:rgba(212,168,83,0.04)}
+
+  /* COMING SOON PLACEHOLDER */
+  .placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;color:var(--muted);margin:1.5rem 0}
+  .placeholder h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem;color:var(--ink);opacity:.5}
+  .placeholder p{font-size:.8rem;line-height:1.6;max-width:400px;margin:0 auto .8rem;opacity:.6}
+  .placeholder-badge{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);padding:.2rem .7rem;border-radius:2px;font-weight:600}
+
+  /* FOOTER */
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.hero,.section{padding:2.5rem 2rem}.hero h1{font-size:2.2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+
+  /* ── VISA PAGE ── */
+  .passport-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:.7rem;margin:1.2rem 0}
+  .passport-card{border:1px solid var(--border);padding:.8rem 1rem;display:flex;align-items:center;gap:.8rem;font-size:.82rem;transition:border-color .15s}
+  .passport-card:hover{border-color:var(--gold)}
+  .passport-card .flag{font-size:1.4rem;flex-shrink:0}
+  .passport-card .country{font-weight:600;display:block;font-size:.82rem}
+  .passport-card .rule{font-size:.68rem;color:var(--muted);margin-top:.1rem}
+  .visa-badge{display:inline-block;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:.12rem .45rem;border-radius:2px;margin-top:.3rem}
+  .badge-free{background:rgba(39,174,96,.12);color:#1a6b3c}
+  .badge-transit{background:rgba(41,128,185,.12);color:#1a4a70}
+  .badge-visa{background:rgba(192,57,43,.1);color:#8B1A10}
+  .steps{margin:1.2rem 0}
+  .step{display:flex;gap:1.1rem;padding:.9rem 0;border-bottom:1px solid var(--border);align-items:flex-start}
+  .step:last-child{border-bottom:none}
+  .step-num{width:30px;height:30px;background:var(--charcoal);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;flex-shrink:0;border-radius:2px;margin-top:.1rem}
+  .step-body h4{font-size:.88rem;font-weight:700;margin-bottom:.25rem}
+  .step-body p{font-size:.8rem;color:#4a3f35;line-height:1.6}
+
+  /* ── HOLIDAYS PAGE ── */
+  .holiday-item{display:grid;grid-template-columns:115px 1fr;gap:1.4rem;padding:1.2rem 0;border-bottom:1px solid var(--border);align-items:start}
+  .holiday-item:last-child{border-bottom:none}
+  .holiday-date{text-align:center;background:var(--charcoal);color:white;padding:.75rem .4rem;border-top:3px solid var(--gold)}
+  .holiday-date .month{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);display:block}
+  .holiday-date .dates{font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700;display:block;margin-top:.2rem;line-height:1.3}
+  .holiday-date .dur{font-size:.58rem;color:rgba(255,255,255,.35);display:block;margin-top:.25rem}
+  .holiday-body h3{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;margin-bottom:.2rem}
+  .holiday-body .cn-name{font-family:'Noto Serif SC',serif;font-size:.72rem;color:var(--red);letter-spacing:1px;margin-bottom:.5rem}
+  .holiday-body p{font-size:.81rem;color:#4a3f35;line-height:1.62;margin-bottom:.45rem}
+  .impact-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.4rem}
+  .impact{font-size:.62rem;padding:.14rem .5rem;border-radius:2px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  .impact.red{background:rgba(192,57,43,.1);color:#8B1A10;border:1px solid rgba(192,57,43,.2)}
+  .impact.amber{background:rgba(230,126,34,.1);color:#7a3800;border:1px solid rgba(230,126,34,.2)}
+  .impact.green{background:rgba(39,174,96,.1);color:#1a6b3c;border:1px solid rgba(39,174,96,.2)}
+
+  /* ── ALERT BANNER ── */
+  .alert-banner{background:var(--red);color:white;padding:.7rem 1.5rem;font-size:.78rem;font-weight:600;text-align:center;letter-spacing:.3px}
+
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">签证</span>
+    <span class="sb-en">VISA & ENTRY GUIDE 2026</span>
+    <div class="sb-sub">China Entry Requirements 2026</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item" href="index.html">📱 Digital Survival Guide</a>
+    <a class="nav-item" href="medicines.html">🌿 Patent Medicines</a>
+    <a class="nav-item active" href="visa.html">🛂 Visa & Entry Guide</a>
+    <a class="nav-item" href="holidays.html">📅 Public Holidays</a>
+    <a class="nav-item" href="beijing.html">🏯 Beijing Guide</a>
+    <a class="nav-item" href="shanghai.html">🏙 Shanghai Guide</a>
+    <a class="nav-item" href="guangzhou.html">🌺 Guangzhou Guide</a>
+    <a class="nav-item" href="arabic.html">🕌 Arabic Restaurants</a>
+    <a class="nav-item" href="indian.html">🍛 Indian Restaurants</a>
+    <a class="nav-item" href="intl.html">🌍 International Dining</a>
+  </div>
+</nav>
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">签证</div>
+  <div class="hero-tag">入境指南 · Entry Guide · 2026</div>
+  <div class="hero-cn">签证与入境</div>
+  <h1>Visa &amp; Entry <em>Guide 2026</em></h1>
+  <p class="hero-sub">China's visa policy changed dramatically in 2025–2026. Many nationalities can now enter visa-free for 30 days. Others qualify for a 10-day transit without any paperwork. This page tells you exactly what you need before you fly.</p>
+  <div class="hero-chips">
+    <span class="chip">Updated July 2026</span>
+    <span class="chip">30-Day Visa-Free</span>
+    <span class="chip">240-Hour Transit</span>
+    <span class="chip">UAE · GCC · EU · US · UK</span>
+  </div>
+</div>
+
+<div class="alert-banner">⚡ Policy updated February 2026 — UK &amp; Canada added to 30-day visa-free list. Always verify with your local Chinese embassy before travel.</div>
+
+<section class="section" id="categories">
+  <div class="sec-hdr"><div class="sec-num">01</div><div><h2>What Category Are You?</h2><div class="sec-cn">您属于哪种入境类别？</div></div></div>
+  <p style="font-size:.88rem;color:var(--muted);max-width:580px;margin-bottom:1.4rem;line-height:1.7">China now has four main entry tracks for foreign visitors. Find yours below — then jump to the relevant section for full details.</p>
+  <div class="card-grid">
+    <div class="card" style="border-top-color:var(--green)"><h3>✅ 30-Day Visa-Free</h3><div class="card-sub">免签入境 · 约77国</div><p>Citizens of ~77 countries including <strong>UAE, all GCC, most of Europe, UK, Canada, Australia, Japan, South Korea, Singapore, Malaysia, Brazil</strong>. Enter with passport only — no visa, no application, no fee. Valid for tourism, business meetings, family visits.</p><div class="card-tags"><span class="tag g">No paperwork</span><span class="tag g">Best option</span></div></div>
+    <div class="card" style="border-top-color:var(--blue)"><h3>🔄 240-Hour Transit</h3><div class="card-sub">过境免签 · 55国 · 10天</div><p>Citizens of 55 countries including <strong>USA, Mexico, Indonesia, Qatar</strong>. Must be transiting to a third country — China cannot be your final destination. Onward ticket required at immigration.</p><div class="card-tags"><span class="tag b">Need onward ticket</span></div></div>
+    <div class="card" style="border-top-color:var(--gold)"><h3>🏝 Hainan 30-Day</h3><div class="card-sub">海南自由贸易港 · 59国</div><p>Separate programme for 59 countries visiting <strong>Hainan Island only</strong>. Cannot travel to mainland China without a separate visa. Good for resort stays and beach holidays.</p><div class="card-tags"><span class="tag">Hainan only</span></div></div>
+    <div class="card" style="border-top-color:var(--red)"><h3>📋 Visa Required</h3><div class="card-sub">需要签证</div><p>All other nationalities including <strong>India, Pakistan, most of Africa and Middle East</strong> (except UAE/GCC) must apply for a Chinese tourist visa (L visa) at their nearest embassy before travel.</p><div class="card-tags"><span class="tag r">Apply in advance</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="visa-free">
+  <div class="sec-hdr"><div class="sec-num">02</div><div><h2>30-Day Visa-Free Countries</h2><div class="sec-cn">30天免签国家</div></div></div>
+  <div class="callout tip"><div class="callout-title">✅ UAE &amp; GCC — All Visa-Free</div>UAE, Saudi Arabia, Qatar, Kuwait, Oman, and Bahrain passport holders all have <strong>30-day visa-free access</strong> to mainland China in 2026. Enter at any international port with your passport only.</div>
+
+  <h3 style="font-size:.95rem;font-weight:700;margin:1.4rem 0 .8rem">Middle East &amp; Asia-Pacific</h3>
+  <div class="passport-grid">
+    <div class="passport-card"><span class="flag">🇦🇪</span><div><span class="country">United Arab Emirates</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇸🇦</span><div><span class="country">Saudi Arabia</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇶🇦</span><div><span class="country">Qatar</span><span class="rule">30 days + 240h transit</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇰🇼</span><div><span class="country">Kuwait</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇴🇲</span><div><span class="country">Oman</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇧🇭</span><div><span class="country">Bahrain</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇸🇬</span><div><span class="country">Singapore</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇲🇾</span><div><span class="country">Malaysia</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇯🇵</span><div><span class="country">Japan</span><span class="rule">30 days + 240h transit</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇰🇷</span><div><span class="country">South Korea</span><span class="rule">30 days + 240h transit</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇦🇺</span><div><span class="country">Australia</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇳🇿</span><div><span class="country">New Zealand</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+  </div>
+
+  <h3 style="font-size:.95rem;font-weight:700;margin:1.4rem 0 .8rem">Europe (30 days visa-free)</h3>
+  <div class="passport-grid">
+    <div class="passport-card"><span class="flag">🇬🇧</span><div><span class="country">United Kingdom</span><span class="rule">Added Feb 2026</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇩🇪</span><div><span class="country">Germany</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇫🇷</span><div><span class="country">France</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇮🇹</span><div><span class="country">Italy</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇪🇸</span><div><span class="country">Spain</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇳🇱</span><div><span class="country">Netherlands</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇨🇭</span><div><span class="country">Switzerland</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇸🇪</span><div><span class="country">Sweden</span><span class="rule">Added Nov 2025</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇷🇺</span><div><span class="country">Russia</span><span class="rule">Added Sep 2025</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇵🇱</span><div><span class="country">Poland</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇬🇷</span><div><span class="country">Greece</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇵🇹</span><div><span class="country">Portugal</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+  </div>
+
+  <h3 style="font-size:.95rem;font-weight:700;margin:1.4rem 0 .8rem">Americas</h3>
+  <div class="passport-grid">
+    <div class="passport-card"><span class="flag">🇨🇦</span><div><span class="country">Canada</span><span class="rule">30 days — added Feb 2026</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇧🇷</span><div><span class="country">Brazil</span><span class="rule">30 days + 240h transit</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇦🇷</span><div><span class="country">Argentina</span><span class="rule">30 days visa-free</span><span class="visa-badge badge-free">✓ Free</span></div></div>
+    <div class="passport-card"><span class="flag">🇲🇽</span><div><span class="country">Mexico</span><span class="rule">240-hour transit only</span><span class="visa-badge badge-transit">Transit</span></div></div>
+    <div class="passport-card"><span class="flag">🇺🇸</span><div><span class="country">United States</span><span class="rule">240-hour transit only</span><span class="visa-badge badge-transit">Transit</span></div></div>
+  </div>
+
+  <h3 style="font-size:.95rem;font-weight:700;margin:1.4rem 0 .8rem">Visa Required</h3>
+  <div class="passport-grid">
+    <div class="passport-card"><span class="flag">🇮🇳</span><div><span class="country">India</span><span class="rule">L visa required</span><span class="visa-badge badge-visa">Visa</span></div></div>
+    <div class="passport-card"><span class="flag">🇵🇰</span><div><span class="country">Pakistan</span><span class="rule">L visa required</span><span class="visa-badge badge-visa">Visa</span></div></div>
+    <div class="passport-card"><span class="flag">🇪🇬</span><div><span class="country">Egypt</span><span class="rule">L visa required</span><span class="visa-badge badge-visa">Visa</span></div></div>
+    <div class="passport-card"><span class="flag">🇲🇦</span><div><span class="country">Morocco</span><span class="rule">L visa required</span><span class="visa-badge badge-visa">Visa</span></div></div>
+    <div class="passport-card"><span class="flag">🇳🇬</span><div><span class="country">Nigeria</span><span class="rule">L visa required</span><span class="visa-badge badge-visa">Visa</span></div></div>
+    <div class="passport-card"><span class="flag">🇵🇭</span><div><span class="country">Philippines</span><span class="rule">L visa required</span><span class="visa-badge badge-visa">Visa</span></div></div>
+  </div>
+  <div class="callout warn" style="margin-top:1.4rem"><div class="callout-title">⚠️ Always Verify Before Booking Flights</div>China's visa-free list updates frequently. Confirm on the official Ministry of Foreign Affairs website (mfa.gov.cn) or with your local Chinese embassy before purchasing tickets.</div>
+</section>
+
+<section class="section" id="transit">
+  <div class="sec-hdr"><div class="sec-num">03</div><div><h2>240-Hour Visa-Free Transit (10 Days)</h2><div class="sec-cn">240小时过境免签</div></div></div>
+  <div class="callout info"><div class="callout-title">ℹ️ For US Passport Holders — This Is Your Option</div>US citizens cannot enter China visa-free for tourism, but can use the <strong>240-hour transit (10 days)</strong> when flying through China to a third country. Example: New York → Beijing → Tokyo → New York. You can explore Beijing, Shanghai, Xi'an and more during the 10-day layover.</div>
+  <h3 style="font-size:.95rem;font-weight:700;margin:1.4rem 0 .7rem">The 3 Rules</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Eligible passport (55 countries)</h4><p>USA, Canada, Mexico, all EU, UK, Australia, Japan, South Korea, UAE, Qatar, Singapore, Indonesia, Brazil and more. Full list on China National Immigration Administration website (nia.gov.cn).</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Confirmed onward ticket to a third country</h4><p>China cannot be your final destination. You need a booked flight, train, or cruise to a <em>different</em> country departing within 240 hours. Have this printed or on your phone — immigration will check it.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Use a designated port of entry/exit</h4><p>65 approved ports across 24 provinces — including Beijing (PEK/PKX), Shanghai (PVG), Guangzhou (CAN), Shenzhen, Chengdu, Xi'an. Tibet and Xinjiang excluded from the transit zone.</p></div></div>
+  </div>
+  <h3 style="font-size:.95rem;font-weight:700;margin:1.4rem 0 .7rem">At Immigration</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Go to the 过境 (transit) counter</h4><p>Not the regular arrivals queue. Look for signs saying 过境 (guòjìng) or ask airport staff.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Show passport + onward ticket</h4><p>Officer verifies nationality and onward booking. Processing: 10–30 minutes. Stamp shows entry date and departure deadline.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Register at hotel within 24 hours</h4><p>Same registration rules apply — hotels handle this automatically at check-in. Apartments require PSB visit within 24 hours.</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="l-visa">
+  <div class="sec-hdr"><div class="sec-num">04</div><div><h2>Tourist Visa (L Visa) — If Required</h2><div class="sec-cn">旅游签证 · L签证</div></div></div>
+  <div class="callout gold"><div class="callout-title">📋 Apply 4–6 Weeks Before Travel</div>Peak periods (Canton Fair April/October, summer, Golden Week) can slow processing to 2–3 weeks. Apply at the Chinese Embassy in your country or at a CVASC (Chinese Visa Application Service Centre).</div>
+  <div class="card-grid">
+    <div class="card"><h3>Documents Required</h3><p>Valid passport (6+ months remaining), completed application form, 2 passport photos (white background, 33×48mm), flight and hotel bookings, bank statement (last 3 months), return/onward ticket. Requirements vary by nationality — confirm with your embassy.</p></div>
+    <div class="card"><h3>Single vs Multiple Entry</h3><p>Request <strong>double or multiple-entry</strong> if visiting Hong Kong or Macau during your trip — crossing into HK/Macau counts as leaving mainland China and requires re-entry. Single-entry is fine for a straightforward mainland visit.</p></div>
+    <div class="card"><h3>Indian Passport</h3><p>Streamlined since 2025 with dedicated India-China business visa counters in Delhi and Mumbai. Allow 7–10 business days. A Chinese company invitation letter significantly speeds processing for business visits.</p></div>
+    <div class="card"><h3>Visa Duration vs Stay</h3><p>A "30-day" visa means you can stay 30 days <em>per entry</em>, not 30 days from issue. The entry validity (e.g. 3 months) is how long you have to use the visa — not how long you can stay.</p></div>
+  </div>
+</section>
+
+<section class="section" id="border">
+  <div class="sec-hdr"><div class="sec-num">05</div><div><h2>At the Border — Step by Step</h2><div class="sec-cn">入境流程</div></div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Arrival Card</h4><p>Since late 2025 China allows online pre-completion via the National Immigration Administration website. Also available on the plane and at airport kiosks.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Immigration — 外国人 Lane</h4><p>Use the foreigners lane (外国人 wàiguórén). Have passport, arrival card, and visa (if required) ready. Biometrics (fingerprints + photo) taken at most nationalities. Usually fast at major airports.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Customs Declaration</h4><p>Digital via WeChat mini-program at most major airports. Declare: cash over USD 5,000, commercial goods, certain medications. Nothing to declare? Green channel. Penalties for non-declaration are serious.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Enable VPN Immediately</h4><p>The moment you connect to any Chinese network — including airport WiFi — you lose Google, WhatsApp, Gmail. Open your pre-installed VPN before doing anything else online.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Hotel Registration Within 24 Hours</h4><p>Hotels do this automatically at check-in. Apartments require a PSB station visit within 24 hours. Fine for non-compliance: up to ¥2,000.</p></div></div>
+  </div>
+  <div class="callout warn"><div class="callout-title">⚠️ Items You Cannot Bring</div>Firearms and ammunition, large amounts of foreign currency (declare if over USD 5,000), fresh produce, politically sensitive material. For medications: carry a doctor's letter for anything controlled. Prescription medications in original packaging in reasonable quantities are generally permitted.</div>
+</section>
+
+<section class="section" id="extension" style="border-bottom:none">
+  <div class="sec-hdr"><div class="sec-num">06</div><div><h2>Extending Your Stay &amp; Overstay Warning</h2><div class="sec-cn">延期与逾期</div></div></div>
+  <div class="card-grid">
+    <div class="card" style="border-top-color:var(--green)"><h3>Visa Extension</h3><p>Apply at the local Public Security Bureau Exit-Entry Administration (公安局出入境管理局) at least 7 days before expiry. Typically grants a 30-day extension. Bring passport, hotel registration, and reason for extension.</p></div>
+    <div class="card" style="border-top-color:var(--red)"><h3>⚠️ Overstay — Serious Consequences</h3><p>Fine of <strong>¥500/day</strong> (up to ¥10,000), potential detention, and a multi-year re-entry ban. No grace period. If you're approaching your expiry date, go to PSB proactively — they are helpful to foreigners who come before expiry.</p></div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">签证</div>
+    <div style="margin-top:.3rem">Visa & Entry Guide 2026 · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Information current as of July 2026. Always verify locally.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+<script>
+const secs = document.querySelectorAll('section[id]');
+const items = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  items.forEach(i => { i.classList.remove('active'); if (i.getAttribute('href') === '#' + cur) i.classList.add('active'); });
+});
+</script>
+</body>
+</html>

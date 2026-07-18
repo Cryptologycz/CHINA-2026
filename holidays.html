@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Public Holidays 2026 — China Digital Survival Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A853; --gold-lt: #F0C86E; --ink: #1A1008;
+    --parchment: #FAF6EE; --warm: #FFFDF8; --charcoal: #2C2416;
+    --muted: #7A6A58; --border: #E8DFD0; --red: #C0392B;
+    --green: #27AE60; --blue: #2980B9; --warn: #E67E22;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);line-height:1.7;font-size:15px}
+
+  /* SIDEBAR */
+  #sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--charcoal);color:#fff;overflow-y:auto;z-index:100;display:flex;flex-direction:column;border-right:3px solid var(--gold)}
+  #sidebar::-webkit-scrollbar{width:3px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(212,168,83,0.3)}
+  .sb-logo{padding:1.8rem 1.5rem 1rem;border-bottom:1px solid rgba(212,168,83,0.2)}
+  .sb-back{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,0.4);text-decoration:none;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem;transition:color .2s}
+  .sb-back:hover{color:var(--gold)}
+  .sb-cn{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;display:block}
+  .sb-en{font-size:.58rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.35);margin-top:2px;display:block}
+  .sb-sub{font-size:.72rem;color:rgba(255,255,255,0.5);margin-top:.4rem;font-style:italic}
+  .nav-sec{padding:.5rem 0}
+  .nav-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.25);padding:.3rem 1.4rem}
+  .nav-item{display:flex;align-items:center;gap:.5rem;padding:.5rem 1.4rem;color:rgba(255,255,255,0.6);text-decoration:none;font-size:.78rem;font-weight:500;border-left:3px solid transparent;transition:all .2s}
+  .nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(212,168,83,0.08);border-left-color:var(--gold)}
+  .nav-item.soon{opacity:.35;pointer-events:none}
+  .soon-tag{font-size:.5rem;background:rgba(212,168,83,0.15);color:var(--gold);padding:.1rem .35rem;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* MAIN */
+  #main{margin-left:260px;min-height:100vh}
+
+  /* HERO */
+  .hero{background:var(--charcoal);color:#fff;padding:4rem 4rem 3rem;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold))}
+  .hero-watermark{position:absolute;right:-1rem;top:-2rem;font-family:'Noto Serif SC',serif;font-size:13rem;color:rgba(212,168,83,0.05);font-weight:700;pointer-events:none;line-height:1}
+  .hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:.6rem;text-transform:uppercase;letter-spacing:3px;padding:.25rem .7rem;margin-bottom:1rem;font-weight:600}
+  .hero-cn{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold);letter-spacing:5px;margin-bottom:.4rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:1rem;max-width:620px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero-sub{font-size:.9rem;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.75;margin-bottom:1.5rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+  .chip{font-size:.65rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:.25rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+  /* SECTIONS */
+  .section{padding:3rem 4rem;border-bottom:1px solid var(--border)}
+  .section:nth-child(even){background:var(--warm)}
+  .sec-hdr{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:2px solid var(--border)}
+  .sec-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin-top:.3rem;min-width:22px}
+  .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.9rem;line-height:1.1}
+  .sec-cn{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--muted);letter-spacing:2px;margin-top:.2rem}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+  .card{background:var(--warm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1.4rem;transition:box-shadow .2s;position:relative}
+  .section:nth-child(even) .card{background:var(--parchment)}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+  .card-num{position:absolute;top:.9rem;right:1rem;font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:rgba(0,0,0,0.05);line-height:1}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;padding-right:2rem}
+  .card-sub{font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:.7rem}
+  .card p{font-size:.82rem;color:#4a3f35;line-height:1.65}
+  .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .5rem}
+  .tag{font-size:.62rem;padding:.18rem .5rem;border-radius:2px;font-weight:500;background:rgba(212,168,83,0.1);color:#7A5820;border:1px solid rgba(212,168,83,0.2)}
+  .tag.r{background:rgba(192,57,43,0.08);color:#8B1A10;border-color:rgba(192,57,43,0.18)}
+  .tag.g{background:rgba(39,174,96,0.08);color:#1a6b3c;border-color:rgba(39,174,96,0.18)}
+  .tag.b{background:rgba(41,128,185,0.08);color:#1a4a70;border-color:rgba(41,128,185,0.18)}
+
+  /* CALLOUTS */
+  .callout{padding:1rem 1.3rem;margin:1.2rem 0;border-left:4px solid;font-size:.84rem;line-height:1.65}
+  .callout-title{font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem}
+  .callout.info{background:#edf5ff;border-color:var(--blue);color:#102a4a}
+  .callout.info .callout-title{color:var(--blue)}
+  .callout.warn{background:#fff8ed;border-color:var(--warn);color:#5a3800}
+  .callout.warn .callout-title{color:var(--warn)}
+  .callout.tip{background:#edfbf4;border-color:var(--green);color:#0d3d22}
+  .callout.tip .callout-title{color:var(--green)}
+  .callout.gold{background:#fdf8ee;border-color:var(--gold);color:#4a3000}
+  .callout.gold .callout-title{color:var(--gold)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0}
+  .tbl th{background:var(--charcoal);color:var(--gold);padding:.7rem 1rem;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px}
+  .tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .tbl tr:nth-child(even) td{background:rgba(0,0,0,0.015)}
+  .tbl tr:hover td{background:rgba(212,168,83,0.04)}
+
+  /* COMING SOON PLACEHOLDER */
+  .placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;color:var(--muted);margin:1.5rem 0}
+  .placeholder h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem;color:var(--ink);opacity:.5}
+  .placeholder p{font-size:.8rem;line-height:1.6;max-width:400px;margin:0 auto .8rem;opacity:.6}
+  .placeholder-badge{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:2px;background:rgba(212,168,83,0.12);color:var(--gold);padding:.2rem .7rem;border-radius:2px;font-weight:600}
+
+  /* FOOTER */
+  .page-footer{background:var(--charcoal);color:rgba(255,255,255,0.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+  .footer-cn{font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--gold);letter-spacing:3px}
+  .footer-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);text-decoration:none;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(212,168,83,0.35);padding:.4rem .9rem;transition:all .2s}
+  .footer-back:hover{background:rgba(212,168,83,0.1);border-color:var(--gold)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){#sidebar{width:220px}#main{margin-left:220px}.hero,.section{padding:2.5rem 2rem}.hero h1{font-size:2.2rem}}
+  @media(max-width:660px){#sidebar{display:none}#main{margin-left:0}}
+
+  /* ── VISA PAGE ── */
+  .passport-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:.7rem;margin:1.2rem 0}
+  .passport-card{border:1px solid var(--border);padding:.8rem 1rem;display:flex;align-items:center;gap:.8rem;font-size:.82rem;transition:border-color .15s}
+  .passport-card:hover{border-color:var(--gold)}
+  .passport-card .flag{font-size:1.4rem;flex-shrink:0}
+  .passport-card .country{font-weight:600;display:block;font-size:.82rem}
+  .passport-card .rule{font-size:.68rem;color:var(--muted);margin-top:.1rem}
+  .visa-badge{display:inline-block;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:.12rem .45rem;border-radius:2px;margin-top:.3rem}
+  .badge-free{background:rgba(39,174,96,.12);color:#1a6b3c}
+  .badge-transit{background:rgba(41,128,185,.12);color:#1a4a70}
+  .badge-visa{background:rgba(192,57,43,.1);color:#8B1A10}
+  .steps{margin:1.2rem 0}
+  .step{display:flex;gap:1.1rem;padding:.9rem 0;border-bottom:1px solid var(--border);align-items:flex-start}
+  .step:last-child{border-bottom:none}
+  .step-num{width:30px;height:30px;background:var(--charcoal);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;flex-shrink:0;border-radius:2px;margin-top:.1rem}
+  .step-body h4{font-size:.88rem;font-weight:700;margin-bottom:.25rem}
+  .step-body p{font-size:.8rem;color:#4a3f35;line-height:1.6}
+
+  /* ── HOLIDAYS PAGE ── */
+  .holiday-item{display:grid;grid-template-columns:115px 1fr;gap:1.4rem;padding:1.2rem 0;border-bottom:1px solid var(--border);align-items:start}
+  .holiday-item:last-child{border-bottom:none}
+  .holiday-date{text-align:center;background:var(--charcoal);color:white;padding:.75rem .4rem;border-top:3px solid var(--gold)}
+  .holiday-date .month{font-size:.55rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);display:block}
+  .holiday-date .dates{font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700;display:block;margin-top:.2rem;line-height:1.3}
+  .holiday-date .dur{font-size:.58rem;color:rgba(255,255,255,.35);display:block;margin-top:.25rem}
+  .holiday-body h3{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;margin-bottom:.2rem}
+  .holiday-body .cn-name{font-family:'Noto Serif SC',serif;font-size:.72rem;color:var(--red);letter-spacing:1px;margin-bottom:.5rem}
+  .holiday-body p{font-size:.81rem;color:#4a3f35;line-height:1.62;margin-bottom:.45rem}
+  .impact-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.4rem}
+  .impact{font-size:.62rem;padding:.14rem .5rem;border-radius:2px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  .impact.red{background:rgba(192,57,43,.1);color:#8B1A10;border:1px solid rgba(192,57,43,.2)}
+  .impact.amber{background:rgba(230,126,34,.1);color:#7a3800;border:1px solid rgba(230,126,34,.2)}
+  .impact.green{background:rgba(39,174,96,.1);color:#1a6b3c;border:1px solid rgba(39,174,96,.2)}
+
+  /* ── ALERT BANNER ── */
+  .alert-banner{background:var(--red);color:white;padding:.7rem 1.5rem;font-size:.78rem;font-weight:600;text-align:center;letter-spacing:.3px}
+
+</style>
+</head>
+<body>
+<nav id="sidebar">
+  <div class="sb-logo">
+    <a href="index.html" class="sb-back">← Main Guide</a>
+    <span class="sb-cn">假期</span>
+    <span class="sb-en">CHINA PUBLIC HOLIDAYS 2026</span>
+    <div class="sb-sub">When China Sleeps & When It Surges</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-lbl">All Guides</div>
+    <a class="nav-item" href="index.html">📱 Digital Survival Guide</a>
+    <a class="nav-item" href="medicines.html">🌿 Patent Medicines</a>
+    <a class="nav-item" href="visa.html">🛂 Visa & Entry Guide</a>
+    <a class="nav-item active" href="holidays.html">📅 Public Holidays</a>
+    <a class="nav-item" href="beijing.html">🏯 Beijing Guide</a>
+    <a class="nav-item" href="shanghai.html">🏙 Shanghai Guide</a>
+    <a class="nav-item" href="guangzhou.html">🌺 Guangzhou Guide</a>
+    <a class="nav-item" href="arabic.html">🕌 Arabic Restaurants</a>
+    <a class="nav-item" href="indian.html">🍛 Indian Restaurants</a>
+    <a class="nav-item" href="intl.html">🌍 International Dining</a>
+  </div>
+</nav>
+<main id="main">
+
+<div class="hero">
+  <div class="hero-watermark">假期</div>
+  <div class="hero-tag">实用指南 · Practical Guide · 2026</div>
+  <div class="hero-cn">公共假期与影响</div>
+  <h1>China Public Holidays <em>&amp; What Closes</em></h1>
+  <p class="hero-sub">China's seven official public holidays affect travel prices, crowd levels, hotel availability, and which services are open. Knowing the calendar before you book can save significant money and stress.</p>
+  <div class="hero-chips">
+    <span class="chip">2026 Dates</span><span class="chip">Golden Week</span><span class="chip">Spring Festival</span><span class="chip">What Stays Open</span><span class="chip">Booking Strategy</span>
+  </div>
+</div>
+
+<div class="alert-banner">⚠️ Golden Week (Oct 1–7) and Spring Festival (late Jan 2026) are the two periods foreigners most regret not planning around. Read this before booking.</div>
+
+<section class="section" id="overview">
+  <div class="sec-hdr"><div class="sec-num">01</div><div><h2>The 7 Official Public Holidays</h2><div class="sec-cn">七个法定节假日 · 2026年</div></div></div>
+  <div class="callout gold"><div class="callout-title">🇨🇳 How China's Holiday System Works</div>China has 7 official holidays totalling 11 days off. The government creates longer blocks by requiring make-up work on adjacent weekends — resulting in "Golden Weeks." During these periods <strong>hundreds of millions of people travel simultaneously</strong>. The impact on hotels, trains, and tourist sites is extreme.</div>
+  <div style="overflow-x:auto;margin:1.2rem 0">
+    <table class="tbl">
+      <thead><tr><th>Holiday</th><th>Chinese</th><th>2026 Dates</th><th>Days Off</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td><strong>New Year's Day</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">元旦</td><td>Jan 1</td><td>1 day</td><td><span class="impact amber">Low</span></td></tr>
+        <tr><td><strong>Spring Festival ⚠️</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">春节</td><td>Jan 28 – Feb 3</td><td>7 days</td><td><span class="impact red">Extreme</span></td></tr>
+        <tr><td><strong>Qingming Festival</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">清明节</td><td>Apr 4–6</td><td>3 days</td><td><span class="impact amber">Moderate</span></td></tr>
+        <tr><td><strong>Labour Day ⚠️</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">劳动节</td><td>May 1–5</td><td>5 days</td><td><span class="impact red">High</span></td></tr>
+        <tr><td><strong>Dragon Boat Festival</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">端午节</td><td>Jun 19–21</td><td>3 days</td><td><span class="impact green">Low–Moderate</span></td></tr>
+        <tr><td><strong>Mid-Autumn Festival</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">中秋节</td><td>Sep 29 – Oct 1</td><td>3 days</td><td><span class="impact amber">Moderate–High</span></td></tr>
+        <tr><td><strong>National Day Golden Week ⚠️⚠️</strong></td><td style="font-family:'Noto Serif SC',serif;color:var(--red)">国庆节</td><td>Oct 1–7</td><td>7 days</td><td><span class="impact red">Extreme</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info"><div class="callout-title">ℹ️ 2026 Note: 9-Day Mega Holiday in Late September / Early October</div>In 2026, Mid-Autumn Festival (Sep 29–Oct 1) falls directly before National Day (Oct 1–7), creating a combined <strong>9-day holiday block from Sep 29 to Oct 7</strong>. This is the single busiest travel period of 2026. Book everything months in advance if your trip overlaps with this.</div>
+</section>
+
+<section class="section" id="details">
+  <div class="sec-hdr"><div class="sec-num">02</div><div><h2>Each Holiday — What to Expect</h2><div class="sec-cn">各节假日详情</div></div></div>
+  <div class="holiday-timeline" style="margin:1.2rem 0">
+
+    <div class="holiday-item">
+      <div class="holiday-date"><span class="month">January</span><span class="dates">Jan 1</span><span class="dur">1 day</span></div>
+      <div class="holiday-body"><h3>New Year's Day — 元旦</h3><div class="cn-name">Yuándàn</div><p>A single-day holiday. Cities quickly return to normal. Major attractions, malls, restaurants and hotels all operate normally. One of the biggest retail sales periods — good for shopping.</p><div class="impact-row"><span class="impact green">Hotels: Normal prices</span><span class="impact green">Trains: Available</span><span class="impact green">Services: Open</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>Visitor tip:</strong> No action needed. Book normally.</p></div>
+    </div>
+
+    <div class="holiday-item">
+      <div class="holiday-date" style="border-top-color:var(--red)"><span class="month">Jan–Feb</span><span class="dates">Jan 28–Feb 3</span><span class="dur">7+ days</span></div>
+      <div class="holiday-body"><h3>Spring Festival — 春节 ⚠️</h3><div class="cn-name">Chūnjié · Chinese New Year 2026 = Year of the Horse 🐴</div><p>The world's largest annual human migration. An estimated 9 billion trips are made during the 40-day chunyun (春运) travel rush. Workers return to home provinces — Shanghai and Guangzhou empty out while smaller cities fill up. Most small restaurants, local shops, and small businesses <strong>close for 1–2 weeks</strong>. International hotels and chain restaurants stay open.</p><div class="impact-row"><span class="impact red">Hotels: +50–150% surge</span><span class="impact red">Trains: Sell out 30 days ahead</span><span class="impact red">Small restaurants: Closed</span><span class="impact red">Flights: Premium prices</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>Visitor tip:</strong> Book trains on Trip.com exactly 30 days in advance (tickets release at midnight CST). Book hotels 2–3 months ahead. If you can avoid this period — do so. If you stay, embrace the temple fairs (庙会) and fireworks — it's genuinely spectacular.</p></div>
+    </div>
+
+    <div class="holiday-item">
+      <div class="holiday-date"><span class="month">April</span><span class="dates">Apr 4–6</span><span class="dur">3 days</span></div>
+      <div class="holiday-body"><h3>Qingming Festival — 清明节</h3><div class="cn-name">Qīngmíng Jié · Tomb Sweeping Day</div><p>Traditional ancestor-remembrance festival. Families visit graves and burn paper offerings. Cemeteries are busy but cities are otherwise normal. Some parks and scenic areas see increased domestic visitors.</p><div class="impact-row"><span class="impact green">Hotels: Normal</span><span class="impact amber">Trains: Book 1 week ahead</span><span class="impact amber">Scenic spots: Busier</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>Visitor tip:</strong> Book trains a week early. No major disruption for foreign visitors.</p></div>
+    </div>
+
+    <div class="holiday-item">
+      <div class="holiday-date" style="border-top-color:var(--warn)"><span class="month">May</span><span class="dates">May 1–5</span><span class="dur">5 days</span></div>
+      <div class="holiday-body"><h3>Labour Day — 劳动节 ⚠️</h3><div class="cn-name">Láodòng Jié</div><p>Expanded to 5 days in recent years — now a "mini Golden Week." Popular scenic destinations (Zhangjiajie, Guilin, West Lake Hangzhou, Lijiang) become <strong>extremely crowded</strong>. Hotel prices in tourist cities spike by 30–80%.</p><div class="impact-row"><span class="impact red">Scenic spots: Very crowded</span><span class="impact amber">Hotels: +30–80% tourist cities</span><span class="impact amber">Trains: Book 2 weeks ahead</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>Visitor tip:</strong> Avoid Zhangjiajie, Guilin, Lijiang during this period. Major cities (Beijing, Shanghai) are manageable. Book trains 14+ days in advance.</p></div>
+    </div>
+
+    <div class="holiday-item">
+      <div class="holiday-date"><span class="month">June</span><span class="dates">Jun 19–21</span><span class="dur">3 days</span></div>
+      <div class="holiday-body"><h3>Dragon Boat Festival — 端午节</h3><div class="cn-name">Duānwǔ Jié</div><p>Traditional festival celebrating the poet Qu Yuan. Dragon boat racing on rivers and lakes across China. Zongzi (sticky rice dumplings wrapped in bamboo) are eaten everywhere. A pleasant cultural event — not a major travel disruption.</p><div class="impact-row"><span class="impact green">Hotels: Normal</span><span class="impact green">Services: Mostly open</span><span class="impact amber">Riverside areas: Crowded</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>Visitor tip:</strong> Watch a dragon boat race — free, spectacular, and a genuine cultural experience. Best in Guangzhou, Hangzhou, and Chengdu.</p></div>
+    </div>
+
+    <div class="holiday-item">
+      <div class="holiday-date" style="border-top-color:var(--warn)"><span class="month">Sep–Oct</span><span class="dates">Sep 29–Oct 1</span><span class="dur">3 days → 9 days in 2026</span></div>
+      <div class="holiday-body"><h3>Mid-Autumn Festival — 中秋节</h3><div class="cn-name">Zhōngqiū Jié · Moon Festival</div><p>Families gather to view the full moon and exchange mooncakes (月饼). In 2026, Mid-Autumn falls directly before National Day creating a <strong>9-day combined holiday (Sep 29 – Oct 7)</strong> — the longest travel period of the year. Treat this as Golden Week in terms of planning.</p><div class="impact-row"><span class="impact red">2026: Combined = 9-day break</span><span class="impact red">Hotels: Book months ahead</span><span class="impact amber">Mooncakes: Sold everywhere</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>Visitor tip:</strong> Try a mooncake — lotus paste with egg yolk is the classic. Brilliant for gifts. Apply Golden Week booking strategy for the full Sep 29–Oct 7 block.</p></div>
+    </div>
+
+    <div class="holiday-item">
+      <div class="holiday-date" style="border-top-color:var(--red)"><span class="month">October</span><span class="dates">Oct 1–7</span><span class="dur">7 days</span></div>
+      <div class="holiday-body"><h3>National Day Golden Week — 国庆节 ⚠️⚠️</h3><div class="cn-name">Guóqìng Jié · The Biggest Holiday of the Year</div><p>The single most impactful holiday for foreign visitors. Hundreds of millions of Chinese tourists travel simultaneously. The Forbidden City, West Lake, the Bund, Zhangjiajie, and every major scenic site becomes <strong>genuinely impassable</strong>. Train tickets sell out 30 days in advance at midnight. Hotel prices can double or triple. In 2026 this follows directly after Mid-Autumn Festival — making it a 9-day mega-holiday from Sep 29 to Oct 7.</p><div class="impact-row"><span class="impact red">Trains: Sold out at midnight, 30 days ahead</span><span class="impact red">Hotels: +100–200%</span><span class="impact red">Major sites: Impassable</span><span class="impact red">Tiananmen: Flag ceremony Oct 1</span></div><p style="margin-top:.5rem;font-size:.76rem;color:var(--muted)"><strong>If you must travel during Golden Week:</strong> (1) book hotels 3–4 months ahead, (2) buy train tickets the moment they open — midnight, 30 days before, (3) skip famous scenic spots and explore city neighbourhoods instead, (4) budget for 2× normal prices. Or better — avoid this period entirely.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="what-closes">
+  <div class="sec-hdr"><div class="sec-num">03</div><div><h2>What Stays Open vs What Closes</h2><div class="sec-cn">节假日营业情况</div></div></div>
+  <div class="card-grid">
+    <div class="card" style="border-top-color:var(--green)"><h3>✅ Always Open During Holidays</h3><p>International & chain hotels · Major tourist attractions · Convenience stores (7-Eleven, Family Mart, Lawson) · Supermarkets (Walmart, Carrefour) · Chain restaurants (McDonald's, KFC, Starbucks) · Shopping malls · Metro, buses, trains, airports · Hospitals and pharmacies · All digital services (Alipay, WeChat Pay, Didi, Meituan)</p></div>
+    <div class="card" style="border-top-color:var(--red)"><h3>❌ Often Closed — Spring Festival Only</h3><p>Small independent restaurants (may close 1–2 weeks) · Local barbershops and salons · Small boutiques and clothing shops · Wet markets and fresh food vendors · Small family-run businesses · Some factories (manufacturing halts) · Smaller family-run guesthouses</p></div>
+    <div class="card" style="border-top-color:var(--warn)"><h3>⚠️ Reduced Hours / Harder to Access</h3><p>Banks (may close on public holidays) · Post offices · Government services including PSB registration (plan ahead — may not be open on the day you need it) · Some museums require timed tickets booked weeks ahead during Golden Week · Hospital non-emergency departments</p></div>
+    <div class="card" style="border-top-color:var(--blue)"><h3>📱 Digital Services Unaffected</h3><p>Alipay and WeChat Pay work 24/7/365 · Didi ride-hailing available (surge pricing during holidays) · Meituan and Ele.me food delivery active · 12306 and Trip.com train/hotel booking · All navigation apps work normally · VPN services may be more restricted during major political dates</p></div>
+  </div>
+</section>
+
+<section class="section" id="booking" style="border-bottom:none">
+  <div class="sec-hdr"><div class="sec-num">04</div><div><h2>Booking Strategy for Holiday Periods</h2><div class="sec-cn">节假日预订策略</div></div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">🚄</div><div class="step-body"><h4>Train Tickets — The 30-Day Rule</h4><p>Chinese rail tickets open <strong>exactly 30 days before departure at midnight</strong> (00:00 China Standard Time, UTC+8). During Golden Week and Spring Festival, popular routes sell out in minutes. Set an alarm, have Trip.com open and logged in, and book the moment tickets release.</p></div></div>
+    <div class="step"><div class="step-num">🏨</div><div class="step-body"><h4>Hotels — Book 2–4 Months Ahead for Peak</h4><p>Good hotels in Beijing, Shanghai, Xi'an, and Chengdu book out months ahead during Golden Week. Rates triple or more. Always book <strong>free cancellation rates</strong> so you can adjust if plans change. Trip.com and Booking.com both work well for China.</p></div></div>
+    <div class="step"><div class="step-num">🎟</div><div class="step-body"><h4>Attractions — Pre-Book on WeChat</h4><p>The Forbidden City, Summer Palace, and many major sites require timed-entry tickets via WeChat mini-program. During Golden Week these sell out weeks ahead. Book major attraction tickets <strong>before arriving in China</strong>, not after.</p></div></div>
+    <div class="step"><div class="step-num">✈️</div><div class="step-body"><h4>Flights — 6–8 Weeks Ahead for Peak</h4><p>International flights into China during Golden Week and around Spring Festival are significantly more expensive. Domestic flights spike even more. Book both legs at least 6–8 weeks ahead if your dates overlap with any major holiday.</p></div></div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div>
+    <div class="footer-cn">假期</div>
+    <div style="margin-top:.3rem">China Public Holidays 2026 · China Digital Survival Guide 2026</div>
+    <div style="margin-top:.3rem;font-size:.65rem;color:rgba(255,255,255,.25)">Information current as of July 2026. Always verify locally.</div>
+  </div>
+  <a href="index.html" class="footer-back">← Back to Main Guide</a>
+</footer>
+</main>
+<script>
+const secs = document.querySelectorAll('section[id]');
+const items = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  items.forEach(i => { i.classList.remove('active'); if (i.getAttribute('href') === '#' + cur) i.classList.add('active'); });
+});
+</script>
+</body>
+</html>
